@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="generator" content="MediaWiki 1.19.5-1+deb7u1" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/haskellwiki/opensearch_desc.php" title="HaskellWiki (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="http://www.haskell.org/haskellwiki/api.php?action=rsd" />
+<link rel="copyright" href="/haskellwiki/HaskellWiki:Copyrights" />
+<link rel="alternate" type="application/atom+xml" title="HaskellWiki Atom feed" href="/haskellwiki/index.php?title=Special:RecentChanges&amp;feed=atom" />		<title>Jmacro - HaskellWiki</title>
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/
+			@import "/wikistatic/skins//common/shared.css?303";
+			@import "/wikistatic/skins//hawiki/main.css?303";
+		/*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="/wikistatic/skins//common/commonPrint.css?303" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/wikistatic/skins//hawiki/IE50Fixes.css?303";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/wikistatic/skins//hawiki/IE55Fixes.css?303";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/wikistatic/skins//hawiki/IE60Fixes.css?303";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/wikistatic/skins//hawiki/IE70Fixes.css?303";</style><![endif]-->
+		<!--[if lte IE 7]><script type="text/javascript" src="/wikistatic/skins//hawiki/IEFixes.js?303"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+                                                <script type="text/javascript">
+                        var isMSIE55 = (window.showModalDialog && window.clipboardData && window.createPopup); /*alert("test: " + isMSIE55);*/</script>
+
+		<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Jmacro","wgTitle":"Jmacro","wgCurRevisionId":41363,"wgArticleId":5651,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Web","Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgRelevantPageName":"Jmacro","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script>
+		<script type="text/javascript" src="/wikistatic/skins//common/wikibits.js?303"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+<script src="http://www.haskell.org/haskellwiki/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=hawiki&amp;*"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Jmacro","wgTitle":"Jmacro","wgCurRevisionId":41363,"wgArticleId":5651,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Web","Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgRelevantPageName":"Jmacro","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function($){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"highlightbroken":1,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":1,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"hawiki","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false});;},{},{});mw.loader.implement("user.tokens",function($){mw.user.tokens.set({"editToken":"+\\","watchToken":false});;},{},{});
+
+/* cache key: wikidb:resourceloader:filter:minify-js:7:befcdb5e3b24ff89f900613de9ed4ea3 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script><style type="text/css">/*<![CDATA[*/
+.source-haskell {line-height: normal;}
+.source-haskell li, .source-haskell pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for haskell
+ * CSS class: source-haskell, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.haskell.source-haskell .de1, .haskell.source-haskell .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.haskell.source-haskell  {font-family:monospace;}
+.haskell.source-haskell .imp {font-weight: bold; color: red;}
+.haskell.source-haskell li, .haskell.source-haskell .li1 {font-weight: normal; vertical-align:top;}
+.haskell.source-haskell .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.haskell.source-haskell .li2 {font-weight: bold; vertical-align:top;}
+.haskell.source-haskell .kw1 {color: #06c; font-weight: bold;}
+.haskell.source-haskell .kw2 {color: #06c; font-weight: bold;}
+.haskell.source-haskell .kw3 {font-weight: bold;}
+.haskell.source-haskell .kw4 {color: #cccc00; font-weight: bold;}
+.haskell.source-haskell .kw5 {color: maroon;}
+.haskell.source-haskell .co1 {color: #5d478b; font-style: italic;}
+.haskell.source-haskell .co2 {color: #339933; font-weight: bold;}
+.haskell.source-haskell .coMULTI {color: #5d478b; font-style: italic;}
+.haskell.source-haskell .es0 {background-color: #3cb371; font-weight: bold;}
+.haskell.source-haskell .br0 {color: green;}
+.haskell.source-haskell .sy0 {color: #339933; font-weight: bold;}
+.haskell.source-haskell .st0 {background-color: #3cb371;}
+.haskell.source-haskell .nu0 {color: red;}
+.haskell.source-haskell .me1 {color: #060;}
+.haskell.source-haskell .ln-xtra, .haskell.source-haskell li.ln-xtra, .haskell.source-haskell div.ln-xtra {background-color: #ffc;}
+.haskell.source-haskell span.xtra { display:block; }
+
+/*]]>*/
+</style>	</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Jmacro skin-hawiki">
+   <div id="topbar" class="noprint">
+	<div class="portlet noprint" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul><li><a class="homebutton" href="/haskellwiki/Haskell">Home</a></li>
+				<li id="pt-login"><a href="/haskellwiki/index.php?title=Special:UserLogin&amp;returnto=Jmacro">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+        	  <div id="p-search">
+	    <div id="searchBody" class="pBody">
+	       <form action="/haskellwiki/index.php" id="searchform"><div>
+	          <input type='hidden' name="title" value="Special:Search"/>
+	          <input id="searchInput" name="search" type="text" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" />
+
+	         </div></form>
+	    </div>
+	  </div>
+   </div>
+	<div id="globalWrapper">
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(/wikistatic/haskellwiki_logo.png);" href="/haskellwiki/Haskell"></a>
+	</div>
+	<div id="column-content">
+        <div id="notice-area" class="noprint">
+        <!-- ?php $this->data['sitenotice'] = 'This is a test instance.  Do not edit, your changes will be lost.'; ? -->
+			        </div>
+        <div id="content-wrapper">
+	<div id="p-cactions" class="portlet noprint">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/haskellwiki/Jmacro">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/haskellwiki/index.php?title=Talk:Jmacro&amp;action=edit&amp;redlink=1">Discussion</a></li>
+				 <li id="ca-viewsource"><a href="/haskellwiki/index.php?title=Jmacro&amp;action=edit">View source</a></li>
+				 <li id="ca-history"><a href="/haskellwiki/index.php?title=Jmacro&amp;action=history">History</a></li>			</ul>
+		</div>
+	</div>
+                        <div id="content">
+		<a name="top" id="top"></a>
+                        <h1 id="firstHeading" class="firstHeading">Jmacro</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From HaskellWiki</h3>
+			<div id="contentSub"></div>
+			<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><br />
+JMacro is a library for the programmatic generation of Javascript
+code. It is designed to be multipurpose -- it is useful whether you
+are writing nearly vanilla Javascript or you are programmatically
+generating Javascript either in an ad-hoc fashion or as the backend to
+a compiler or EDSL.
+</p><p>It provides support for hygienic names, as well as sharing of names
+between the generated Javascript and embedded Haskell antiquotation.
+</p><p>The jmacro package also provides a standalone executable, which may be used to compile JMacro syntax directly to Javascript.
+</p><p>JMacro provides a simple, lightweight quasiquoted syntax that is
+mainly compatible with standard Javascript. Most Javascript code in
+the wild can be used as JMacro code with no or minimal modification.
+However, JMacro extends Javascript syntax in a number of
+Haskell-friendly ways, including whitespace function application and
+single character lambdas. Syntax is statically checked at compile
+time. JMacro expressions may contain antiquoted Haskell code. This
+code may generate further JMacro code, or it may generate any of a
+range of standard Haskell types, which are able to be marshalled into
+JMacro through typeclass methods.
+</p><p>Jmacro is available from hackage: <a rel="nofollow" class="external free" href="http://hackage.haskell.org/package/jmacro">http://hackage.haskell.org/package/jmacro</a>
+</p><p>A source repository is available from patch-tag: <a rel="nofollow" class="external free" href="http://patch-tag.com/r/gershomb/jmacro">http://patch-tag.com/r/gershomb/jmacro</a>
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Key_Features"><span class="tocnumber">1</span> <span class="toctext">Key Features</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Syntax_Checking"><span class="tocnumber">1.1</span> <span class="toctext">Syntax Checking</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Functional_Syntax"><span class="tocnumber">1.2</span> <span class="toctext">Functional Syntax</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Hygienic_Names.2C_Proper_Scoping"><span class="tocnumber">1.3</span> <span class="toctext">Hygienic Names, Proper Scoping</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Antiquotation.2C_Marshalling_and_Unmarshalling.2C_Shared_Scope"><span class="tocnumber">1.4</span> <span class="toctext">Antiquotation, Marshalling and Unmarshalling, Shared Scope</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="#Usage"><span class="tocnumber">2</span> <span class="toctext">Usage</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Additional_Syntax_Extensions"><span class="tocnumber">3</span> <span class="toctext">Additional Syntax Extensions</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="#Infix_Application"><span class="tocnumber">3.1</span> <span class="toctext">Infix Application</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Destructuring_Bind"><span class="tocnumber">3.2</span> <span class="toctext">Destructuring Bind</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+<h2> <span class="mw-headline" id="Key_Features">1  Key Features </span></h2>
+<h3> <span class="mw-headline" id="Syntax_Checking">1.1  Syntax Checking </span></h3>
+<p>JMacro provides compile-time guarantees of syntactic correctness. Any jmacro code which compiles will necessarily produce syntactically correct Javascript. JMacro supports Javascript's literal regexes, and regex literals are checked statically at compile time as well.
+</p><p>Note that jmacro itself is untyped, which means that the generated javascript may not be typesafe. This is a feature, as a great deal of useful javascript code is either hard to type, or simply not statically typeable. Take, for example, the commonly used jQuery library. Depending on the string argument to the $ function, the returned value can vary over a range of types.
+</p>
+<h3> <span class="mw-headline" id="Functional_Syntax">1.2  Functional Syntax </span></h3>
+<p>Jmacro provides a mixed-functional syntax. Nearly all valid javascript code is also valid jmacro code. Code from the documentation of an existing library can be copied and pasted directly into Haskell as a jmacro block. However, jmacro also provides a great deal of syntactic sugar that allows code to be written in a considerably more functional style, akin to Haskell or ML. Notably, anonymous functions may be introduced with a single backslash, and function application may be denoted by simple whitespace. Hence, this is valid jmacro describing a function which doubles a number:
+</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr"><div class="haskell source-haskell" style="font-family:monospace;"><pre class="de1">\x <span class="sy0">-&gt;</span> x <span class="sy0">+</span> x</pre></div></div>
+<h3> <span class="mw-headline" id="Hygienic_Names.2C_Proper_Scoping">1.3  Hygienic Names, Proper Scoping </span></h3>
+<p>It is common, when generating Javascript, to want to compose blocks of code which operate on different parts of a page. These blocks of code may find it necessary to introduce top-level variables for sharing state. Typically, this is resolved by placing these blocks of code within an anonymous function to provide namespacing. When two blocks of jmacro code are composed, however, variable declarations within each will *automatically* be named in the generated code so as not to overlap. This additionally allows jmacro to provide proper block-level scoping, which does not exist in standard Javascript.
+</p><p>Thus, in the following example, the two declarations of `var x` produce *different* identifiers in the generated javascript:
+</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr"><div class="haskell source-haskell" style="font-family:monospace;"><pre class="de1"><span class="sy0">&gt;</span> renderJs <span class="sy0">$</span> <span class="br0">&#91;</span><span class="sy0">$</span>jmacro<span class="sy0">|</span>var x;<span class="br0">&#93;</span> `mappend` <span class="br0">&#91;</span><span class="sy0">$</span>jmacro<span class="sy0">|</span>var x;<span class="br0">&#93;</span>
+var jmId<span class="sy0">_</span>0;
+var jmId<span class="sy0">_</span>1;</pre></div></div>
+<h3> <span class="mw-headline" id="Antiquotation.2C_Marshalling_and_Unmarshalling.2C_Shared_Scope">1.4  Antiquotation, Marshalling and Unmarshalling, Shared Scope </span></h3>
+<p>The ability to provide hygienic names becomes particularly useful when coupled with antiquotation. Within a Haskell program, quoted jmacro code blocks may contain antiquotations, which themselves contain Haskell code. The antiquoted Haskell code may either produce a jmacro expression or statement itself, or it may produce a Haskell value which can be marshalled to jmacro (i.e., is an instance of the ToJExpr class).
+</p><p>Marshalling a number:
+</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr"><div class="haskell source-haskell" style="font-family:monospace;"><pre class="de1"><span class="sy0">&gt;</span> <span class="kw1">let</span> foo <span class="sy0">=</span> 5 <span class="kw1">in</span> renderJs <span class="br0">&#91;</span><span class="sy0">$</span>jmacro<span class="sy0">|</span>var x <span class="sy0">=</span> `<span class="br0">&#40;</span>foo<span class="br0">&#41;</span>`;<span class="sy0">|</span><span class="br0">&#93;</span>
+var jmId<span class="sy0">_</span>0;
+jmId<span class="sy0">_</span>0 <span class="sy0">=</span> <span class="nu0">5</span>;</pre></div></div>
+<p>Marshalling a string:
+</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr"><div class="haskell source-haskell" style="font-family:monospace;"><pre class="de1"><span class="sy0">&gt;</span> <span class="kw1">let</span> foo <span class="sy0">=</span> <span class="st0">&quot;hello&quot;</span> <span class="kw1">in</span> renderJs <span class="br0">&#91;</span><span class="sy0">$</span>jmacro<span class="sy0">|</span>var x <span class="sy0">=</span> `<span class="br0">&#40;</span>foo<span class="br0">&#41;</span>`;<span class="sy0">|</span><span class="br0">&#93;</span>
+var jmId<span class="sy0">_</span>0;
+jmId<span class="sy0">_</span>0 <span class="sy0">=</span> <span class="st0">&quot;hello&quot;</span>;</pre></div></div>
+<p>Passing in another expression:
+</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr"><div class="haskell source-haskell" style="font-family:monospace;"><pre class="de1"><span class="sy0">&gt;</span> <span class="kw1">let</span> foo <span class="sy0">=</span> <span class="br0">&#91;</span><span class="sy0">$</span>jmacroE<span class="sy0">|</span>alert <span class="st0">&quot;yo&quot;</span><span class="sy0">|</span><span class="br0">&#93;</span> <span class="kw1">in</span> renderJs <span class="br0">&#91;</span><span class="sy0">$</span>jmacro<span class="sy0">|</span>var x <span class="sy0">=</span> `<span class="br0">&#40;</span>foo<span class="br0">&#41;</span>`;<span class="sy0">|</span><span class="br0">&#93;</span>
+var jmId<span class="sy0">_</span>0;
+jmId<span class="sy0">_</span>0 <span class="sy0">=</span> alert<span class="br0">&#40;</span><span class="st0">&quot;yo&quot;</span><span class="br0">&#41;</span>;</pre></div></div>
+<p>Antiquoted Haskell code has full access to all identifiers in scope within the enclosing jmacro block. This allows for the construction of macros:
+</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr"><div class="haskell source-haskell" style="font-family:monospace;"><pre class="de1"><span class="sy0">&gt;</span> <span class="kw1">let</span> foo <span class="sy0">=</span> \str <span class="sy0">-&gt;</span> <span class="br0">&#91;</span><span class="sy0">$</span>jmacroE<span class="sy0">|</span>alert `<span class="br0">&#40;</span>str<span class="br0">&#41;</span>`<span class="sy0">|</span><span class="br0">&#93;</span> <span class="kw1">in</span> renderJs <span class="br0">&#91;</span><span class="sy0">$</span>jmacro<span class="sy0">|</span>var x <span class="sy0">=</span> <span class="st0">&quot;hello&quot;</span>; var y <span class="sy0">=</span> `<span class="br0">&#40;</span>foo x<span class="br0">&#41;</span>`;<span class="sy0">|</span><span class="br0">&#93;</span>
+var jmId<span class="sy0">_</span>0;
+jmId<span class="sy0">_</span>0 <span class="sy0">=</span> <span class="st0">&quot;hello&quot;</span>;
+var jmId<span class="sy0">_</span>1;
+jmId<span class="sy0">_</span>1 <span class="sy0">=</span> alert<span class="br0">&#40;</span>jmId<span class="sy0">_</span>0<span class="br0">&#41;</span>;</pre></div></div>
+<h2> <span class="mw-headline" id="Usage">2  Usage </span></h2>
+<div dir="ltr" class="mw-geshi mw-content-ltr"><div class="haskell source-haskell" style="font-family:monospace;"><pre class="de1"><span class="coMULTI">{-# LANGUAGE QuasiQuotes #-}</span>
+<span class="kw1">import</span> Language<span class="sy0">.</span>Javascript<span class="sy0">.</span>JMacro
+<span class="kw1">import</span> Data<span class="sy0">.</span>Monoid
+&#160;
+<span class="co1">-- The jmacro quasiquoter produces a statement or block of statements</span>
+<span class="co1">-- (i.e., things which may be executed -- something of type JStat).</span>
+&#160;
+test <span class="sy0">::</span> JStat
+test <span class="sy0">=</span> <span class="br0">&#91;</span><span class="sy0">$</span>jmacro<span class="sy0">|</span>
+&#160;
+           <span class="sy0">//</span> function declarations produce absolute <span class="br0">&#40;</span><span class="kw3">not</span> hygienic<span class="br0">&#41;</span> names
+&#160;
+           <span class="sy0">//</span> functional style declarations <span class="kw3">return</span> the value <span class="kw1">of</span> an expression
+           <span class="sy0">//</span> note that this is <span class="kw3">not</span> curried<span class="sy0">,</span> <span class="kw3">and</span> thus cannot be partially applied<span class="sy0">.</span>
+           fun add x y <span class="sy0">-&gt;</span> x <span class="sy0">+</span> y;
+&#160;
+           <span class="sy0">//</span> this function is explicitly curried<span class="sy0">,</span> <span class="kw3">and</span> can<span class="sy0">/</span>must be partially applied
+           fun addTwo x <span class="sy0">-&gt;</span> \y <span class="sy0">-&gt;</span> x <span class="sy0">+</span> y;
+&#160;
+           <span class="sy0">//</span> imperative style declarations execute a block <span class="kw1">of</span> statements
+           fun mult x y <span class="br0">&#123;</span>
+                     var tmpAns <span class="sy0">=</span> x <span class="sy0">*</span> y;
+                     <span class="kw3">return</span> tmpAns;
+                   <span class="br0">&#125;</span>;
+&#160;
+           <span class="sy0">//</span> variable declarations produce hygienic names
+           var x <span class="sy0">=</span> <span class="st0">&quot;this will be renamed&quot;</span>;
+&#160;
+           <span class="sy0">//</span> we may <span class="st0">&quot;escape&quot;</span> hygiene by using bangs
+           var <span class="sy0">!</span>y <span class="sy0">=</span> <span class="st0">&quot;this will really be named y&quot;</span>;
+&#160;
+           <span class="sy0">//</span> functions can be declared using anonymous lambda syntax
+           <span class="sy0">//</span> <span class="kw3">and</span> <span class="kw1">then</span> assigned hygienic names
+           var anonAdd <span class="sy0">=</span> \x y <span class="sy0">-&gt;</span> x <span class="sy0">+</span> y;
+&#160;
+           <span class="sy0">//</span> anonymous functions can also be written <span class="kw1">in</span> imperative style
+           var anonMult <span class="sy0">=</span> \x y <span class="br0">&#123;</span><span class="kw3">return</span> <span class="br0">&#40;</span>x <span class="sy0">*</span> y<span class="br0">&#41;</span>;<span class="br0">&#125;</span>;
+&#160;
+           <span class="sy0">//</span> functions may be invoked with parenthesis
+           var addThenMult <span class="sy0">=</span> mult<span class="br0">&#40;</span>2<span class="sy0">,</span>add<span class="br0">&#40;</span>2<span class="sy0">,</span>3<span class="br0">&#41;</span><span class="br0">&#41;</span>;
+&#160;
+           <span class="sy0">//</span> functions may also be invoked with juxtaposition<span class="sy0">,</span> <span class="kw1">as</span> <span class="kw1">in</span> Haskell
+           var multThenAdd <span class="sy0">=</span> add 2 <span class="br0">&#40;</span>mult 2 3<span class="br0">&#41;</span>;
+&#160;
+         <span class="sy0">|</span><span class="br0">&#93;</span>
+&#160;
+<span class="co1">-- The jmacroE quasiquoter produces expressions (i.e. things which</span>
+<span class="co1">-- have *values*, something of type JExpr).</span>
+testE <span class="sy0">=</span> <span class="br0">&#91;</span><span class="sy0">$</span>jmacroE<span class="sy0">|</span>addThenMult <span class="sy0">+</span> multThenAdd<span class="sy0">|</span><span class="br0">&#93;</span>
+&#160;
+<span class="co1">-- Antiquotations in an expression position can contain JExprs (but not JStats)</span>
+testAQ <span class="sy0">=</span> <span class="br0">&#91;</span><span class="sy0">$</span>jmacro<span class="sy0">|</span>var x <span class="sy0">=</span> `<span class="br0">&#40;</span>testE<span class="br0">&#41;</span>`;<span class="sy0">|</span><span class="br0">&#93;</span>
+&#160;
+<span class="co1">-- Antiquotations in a statement position can contain either</span>
+<span class="co1">-- (but JExprs which are not function invocation will be discarded)</span>
+testAQ2 <span class="sy0">=</span> <span class="br0">&#91;</span><span class="sy0">$</span>jmacro<span class="sy0">|</span>`<span class="br0">&#40;</span>test<span class="br0">&#41;</span>`; `<span class="br0">&#40;</span>testE<span class="br0">&#41;</span>`;<span class="sy0">|</span><span class="br0">&#93;</span>
+&#160;
+<span class="co1">-- Statements may be composed as monoids. (Expressions may not be).</span>
+testCompose <span class="sy0">=</span> test `mappend` test
+&#160;
+<span class="co1">-- JMacro blocks are rendered to Text.PrettyPrint.HughesPJ Docs.</span>
+<span class="co1">-- These Docs can be formatted more carefully, or simply</span>
+<span class="co1">-- converted to Strings via Show.</span>
+renderedJavascript <span class="sy0">::</span> <span class="kw4">String</span>
+renderedJavascript <span class="sy0">=</span> <span class="kw3">show</span> <span class="sy0">$</span> renderJs test
+&#160;
+<span class="co1">-- See the Language.Javascript.JMacro.Prelude module for further examples.</span></pre></div></div>
+<h2> <span class="mw-headline" id="Additional_Syntax_Extensions">3  Additional Syntax Extensions </span></h2>
+<p>JMacro now has a few extra syntax extensions. 
+</p>
+<h3> <span class="mw-headline" id="Infix_Application">3.1  Infix Application </span></h3>
+JMacro has an infix application operator, and a reversed infix application operator. <div class="inline-code"><div dir="ltr" class="mw-geshi mw-content-ltr"><div class="haskell source-haskell" style="font-family:monospace;">foo <span class="sy0">&lt;|</span> bar <span class="sy0">&lt;|</span> baz</div></div></div> desugars to <div class="inline-code"><div dir="ltr" class="mw-geshi mw-content-ltr"><div class="haskell source-haskell" style="font-family:monospace;">foo<span class="br0">&#40;</span>bar<span class="br0">&#40;</span>baz<span class="br0">&#41;</span><span class="br0">&#41;</span></div></div></div>. Meanwhile, <div class="inline-code"><div dir="ltr" class="mw-geshi mw-content-ltr"><div class="haskell source-haskell" style="font-family:monospace;">foo <span class="sy0">|&gt;</span> bar <span class="sy0">|&gt;</span> baz</div></div></div> desugars to to <div class="inline-code"><div dir="ltr" class="mw-geshi mw-content-ltr"><div class="haskell source-haskell" style="font-family:monospace;">baz<span class="br0">&#40;</span>bar<span class="br0">&#40;</span>foo<span class="br0">&#41;</span><span class="br0">&#41;</span></div></div></div>. Since Javascript functions are not curried by convention, these functions are slightly less useful than one might hope. However, an explicit Javascript curry function is easy enough to write.
+<h3> <span class="mw-headline" id="Destructuring_Bind">3.2  Destructuring Bind </span></h3>
+JMacro features an enhanced destructuring bind, in function and variable declarations, as well as lambda abstractions. The syntax handles lists, maps, and "@" patterns. Maps are denoted with oxford braces ( <div class="inline-code"><div dir="ltr" class="mw-geshi mw-content-ltr"><div class="haskell source-haskell" style="font-family:monospace;"><span class="br0">&#123;</span><span class="sy0">|</span> <span class="sy0">...</span> <span class="sy0">|</span><span class="br0">&#125;</span></div></div></div> ) for syntactic clarity. An infix cons (as&#160;:|) is also available in both the left and right hand sides of expressions. 
+<p><br />
+</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr"><div class="haskell source-haskell" style="font-family:monospace;"><pre class="de1">fun foo <span class="br0">&#91;</span>x<span class="sy0">,</span>y<span class="br0">&#93;</span> <span class="sy0">-&gt;</span> x <span class="sy0">+</span> y;
+&#160;
+fun someMap<span class="sy0">@</span>foo<span class="br0">&#123;</span><span class="sy0">|</span> lbl:val<span class="sy0">,</span> someotherlbl: anotherVal <span class="sy0">|</span><span class="br0">&#125;</span> <span class="br0">&#123;</span><span class="kw3">return</span> <span class="br0">&#91;</span>someMap<span class="sy0">,</span> val<span class="br0">&#93;</span><span class="br0">&#125;</span>
+&#160;
+var x <span class="sy0">=</span> \<span class="br0">&#91;</span>a<span class="sy0">,</span>b<span class="br0">&#93;</span> <span class="sy0">-&gt;</span> a;
+&#160;
+var <span class="br0">&#91;</span>x<span class="sy0">,</span>y<span class="br0">&#93;</span> <span class="sy0">=</span> foo<span class="br0">&#40;</span>bar<span class="br0">&#41;</span>;
+&#160;
+var <span class="br0">&#40;</span>x:<span class="sy0">|</span>xs<span class="br0">&#41;</span> <span class="sy0">=</span> 1&#160;: 2&#160;: 3&#160;: <span class="br0">&#91;</span><span class="br0">&#93;</span>;</pre></div></div>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 140/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wikidb:pcache:idhash:5651-0!*!*!1!en!*!* and timestamp 20140819212116 -->
+</div><div class="printfooter">
+Retrieved from "<a href="http://www.haskell.org/haskellwiki/index.php?title=Jmacro&amp;oldid=41363">http://www.haskell.org/haskellwiki/index.php?title=Jmacro&amp;oldid=41363</a>"</div>
+			<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/haskellwiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/haskellwiki/Category:Web" title="Category:Web">Web</a></li><li><a href="/haskellwiki/Category:Tutorials" title="Category:Tutorials">Tutorials</a></li></ul></div></div>			<!-- end content -->
+						<div class="visualClear"></div>
+		</div>
+	</div>
+		</div></div>
+		<div id="column-one">
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/haskellwiki/Haskell">Haskell</a></li>
+				<li id="n-portal"><a href="/haskellwiki/HaskellWiki:Community">Wiki community</a></li>
+				<li id="n-recentchanges"><a href="/haskellwiki/Special:RecentChanges">Recent changes</a></li>
+				<li id="n-randompage"><a href="/haskellwiki/Special:Random">Random page</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/haskellwiki/Special:WhatLinksHere/Jmacro">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/haskellwiki/Special:RecentChangesLinked/Jmacro">Related changes</a></li>
+<li id="t-specialpages"><a href="/haskellwiki/Special:SpecialPages">Special pages</a></li>
+				<li id="t-print"><a href="/haskellwiki/index.php?title=Jmacro&amp;printable=yes" rel="alternate">Printable version</a></li>				<li id="t-permalink"><a href="/haskellwiki/index.php?title=Jmacro&amp;oldid=41363">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+			<div id="footer">
+				<div id="f-poweredbyico"><a href="//www.mediawiki.org/"><img src="/wikistatic/skins//common/images/poweredby_mediawiki_88x31.png" height="31" width="88" alt="Powered by MediaWiki" /></a></div>
+			<ul id="f-list">
+					<li id="lastmod"> This page was last modified on 29 July 2011, at 23:52.</li>
+					<li id="viewcount">This page has been accessed 14,278 times.</li>
+					<li id="copyright">Recent content is available under <a href="/haskellwiki/HaskellWiki:Copyrights" title="HaskellWiki:Copyrights">a simple permissive license</a>.</li>
+					<li id="privacy"><a href="/haskellwiki/HaskellWiki:Privacy_policy" title="HaskellWiki:Privacy policy">Privacy policy</a></li>
+					<li id="about"><a href="/haskellwiki/HaskellWiki:About" title="HaskellWiki:About">About HaskellWiki</a></li>
+					<li id="disclaimer"><a href="/haskellwiki/HaskellWiki:General_disclaimer" title="HaskellWiki:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+</div>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.user","mediawiki.page.ready"], null, true);
+}</script>
+<script src="http://www.haskell.org/haskellwiki/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=scripts&amp;skin=hawiki&amp;*"></script>
+<!-- Served in 0.152 secs. --><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15375175-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body></html>

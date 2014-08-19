@@ -220,6 +220,8 @@ test n p p' f x = do
 	putStr $ unlines $ ls
 	when (l a /= 1 || l ls /=1) $ fail (show (l a)++","++show (l ls)++" results!")
 
+jsGen :: Expr -> String
+
 main = do
 	nCheck<-getArgs
 	let _t = test (head $ map read nCheck++[1]) snippet snippet $ putStrLn.groom

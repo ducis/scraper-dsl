@@ -1,0 +1,89 @@
+* HJScript
+    Synopsis: HJScript is a Haskell EDSL for writing JavaScript programs.
+--
+
+* HJavaScript
+    Synopsis: HJavaScript is an abstract syntax for a typed subset of
+              JavaScript.
+--
+-- * ghcjs-codemirror
+    Synopsis: Installs CodeMirror JavaScript files
+--
+-- FAILED * hplayground
+    Synopsis: a client-side haskell framework that compiles to javascript with
+--
+* jmacro
+    Synopsis: QuasiQuotation library for programmatic generation of Javascript
+--
+-- * jose
+    Synopsis: Javascript Object Signing and Encryption and JSON Web Token
+--
+* js-good-parts
+    Synopsis: Javascript: The Good Parts -- AST & Pretty Printer
+--
+-- * jsaddle
+    Synopsis: High level interface for webkit-javascriptcore
+--
+-- * jsc
+    Synopsis: High level interface for webkit-javascriptcore
+--
+-- * jsmw
+    Synopsis: Javascript Monadic Writer base package.
+--
+* kansas-comet
+    Synopsis: A JavaScript push mechanism based on the comet idiom
+--
+* language-ecmascript
+    Synopsis: JavaScript parser and pretty-printer library
+--
+* language-javascript
+    Synopsis: Parser for JavaScript
+--
+-- * sunroof-compiler
+    Synopsis: Monadic Javascript Compiler
+--
+-- * sunroof-server
+    Synopsis: Monadic Javascript Compiler - Server Utilities
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	-- TOO OLD * hjs
+		 Synopsis: JavaScript Parser
+		--
+		* hjsmin
+			 Synopsis: Haskell implementation of a javascript minifier
+
+
+Resolving dependencies...
+All the requested packages are already installed:
+HJScript-0.7.0
+HJavaScript-0.4.7
+jmacro-0.6.9
+js-good-parts-0.0.7
+kansas-comet-0.3.0
+language-ecmascript-0.16.2
+language-javascript-0.5.13
+Use --reinstall if you want to reinstall anyway.
+
+
+jmacro-0.6.9
+js-good-parts-0.0.7
+language-ecmascript-0.16.2
