@@ -32,16 +32,18 @@ import DSL.Scrapoo.CodegenQQAbbr
 --			return $(x).attr(id);
 --		});
 
+data JGenContext = C { 
 
+   }
 
-jsGen :: GenContext -> Expr -> JStat
+jsGen :: JGenContext -> Expr -> JStat
 jsGen = \case 
 	ExNamed Expr Name
 	_ -> [j|var x = 1; foo(x,y);|]
 	where 
 	s = jsGen
 
-jx :: GenContext -> Expr -> JExpr
+jx :: JGenContext -> Expr -> JExpr
 jx = \case
 	ExSelector _ String
 	ExRef String
