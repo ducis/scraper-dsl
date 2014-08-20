@@ -32,4 +32,6 @@ data LeftRecRest
 		--		Or should it be done at typing? Like coercing 'leftmost' string literal to element set
 	deriving (Eq,Read,Show,Ord)
 
-
+data AST
+   = ASelector String
+   | ARef String

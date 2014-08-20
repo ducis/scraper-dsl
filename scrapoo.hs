@@ -23,6 +23,7 @@ import DSL.Scrapoo.CodegenQQAbbr
 --TODO: code generation		CURRENT
 --		SUB-TODO: operator table
 --		SUB-TODO: assertion(x.length == 1);
+--      SUB-TODO: tree transformation
 --		/a/{`aid}@zzz 
 --		translates to 
 --		output.zzz = $('a').map(function(x){
@@ -31,23 +32,27 @@ import DSL.Scrapoo.CodegenQQAbbr
 --			return $(x).attr(id);
 --		});
 
-jsGen :: Expr -> JStat
+
+
+jsGen :: GenContext -> Expr -> JStat
 jsGen = \case 
+	ExNamed Expr Name
 	_ -> [j|var x = 1; foo(x,y);|]
 	where 
 	s = jsGen
 
-jx :: Expr -> JExpr
+jx :: GenContext -> Expr -> JExpr
 jx = \case
 	ExSelector _ String
-	| ExRef String
-	| ExSlot
-	| ExBlock Char Char [Expr]
-	| ExLeftRec Expr LeftRecRest
-	| ExCurriedLeft Operator [Name] [Expr]
-	| ExPrefix Operator [Name] [Expr]
-	| ExNamed Expr Name
-
+	ExRef String
+	ExSlot
+	ExBlock Char Char [Expr]
+	ExLeftRec lm rest -> case rest of 
+      LrrInfix Operator [Name] [Expr]
+      LrrPostfix [Expr] Operator [Name]
+      LrrGrouping [Name]
+	ExCurriedLeft Operator [Name] [Expr]
+	ExPrefix Operator [Name] [Expr]
 	_->[jE|1|]
 
 codegenTest ast = do
