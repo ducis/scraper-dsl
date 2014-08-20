@@ -1,0 +1,852 @@
+=========================================
+$ - $
+$-$
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$`-``$$
+$`-``$$
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$`-``[$`-``$$][$`-``$$]
+$`-``[$`-``$$][$`-``$$]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$a`-`` $b`-``$c$d $e`-``$f$g
+$a`-``$b`-``$c$d$e`-``$f$g
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$`-`` $ $`-``$$
+$`-``$$`-``$$
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$`-`` $`-``$$ $
+$`-``$`-``$$$
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$ $ $ ```-
+$$$```-
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+-``` $ $ $
+-```$$$
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+//@
+//@
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+//@a_b
+//@a_b
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+//@a_
+//@a_
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+//@_b
+//@_b
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$abcf@kkk+++/.whatever//.kkk/@abc@def+++○div○@123@1@1
+$abcf@kkk+++/.whatever//.kkk/@abc@def+++○div○@123@1@1
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$@+++/.whatever//.kkk/@@+++○div○@@@
+$@+++/.whatever//.kkk/@@+++○div○@@@
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$aaa@kkk-_
+$aaa@kkk-_
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+--`$abcf
+--`$abcf
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+--``/.ww/@1$1
+--``/.ww/@1$1
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$a$b``+$1``+
+$a$b``+$1``+
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$1`+@5
+$1`+@5
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
++`$1@5
++`$1@5
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$1--$2@3
+$1--$2@3
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$1--$2@3$4@5$5@6```x
+$1--$2@3$4@5$5@6```x
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$1--$2@3$4@5$5@6```x/a/@1``y
+$1--$2@3$4@5$5@6```x/a/@1``y
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z
+$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z-/fff/@5
+$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z-/fff/@5
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$--$@$@$@```x/a/@``y/b/@``z-/fff/@
+$--$@$@$@```x/a/@``y/b/@``z-/fff/@
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
++``$1$2
++``$1$2
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$2$3``-
+$2$3``-
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+[+``$1$2]$3``-
+[+``$1$2]$3``-
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
++``$1[$2$3``-]
++``$1[$2$3``-]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
++``$1$2$3``-
++``$1$2$3``-
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
++``@x$1@a$2@b$3@c$4@d```-@z
++``@x$1@a$2@b$3@c$4@d```-@z
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$`a`$
+$`a`$
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$a$``a
+$a$``a
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$`[_`a]
+ExLeftRec (ExRef "")
+  (LrrPostfix []
+     (OpComposed '[' ','
+        [ExLeftRec ExSlot (LrrPostfix [] (OpAlphabetic "a") [])])
+     [])
+$`[_`a]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$ $ ``+
+ExLeftRec (ExRef "") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
+$$``+
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$a $ ``+
+ExLeftRec (ExRef "a") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
+$a$``+
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$ $b ``+
+ExLeftRec (ExRef "") (LrrPostfix [ExRef "b"] (OpSymbolic "+") [])
+$$b``+
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$a $b ``+
+ExLeftRec (ExRef "a") (LrrPostfix [ExRef "b"] (OpSymbolic "+") [])
+$a$b``+
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$ $``+
+ExLeftRec (ExRef "") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
+$$``+
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$$ ``+
+ExLeftRec (ExRef "") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
+$$``+
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$ `+
+ExLeftRec (ExRef "") (LrrPostfix [] (OpSymbolic "+") [])
+$`+
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+[ /a/ ]
+ExBlock '[' ',' [ExSelector '/' "a"]
+[/a/]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+[/a/ ]
+ExBlock '[' ',' [ExSelector '/' "a"]
+[/a/]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+[ /a/]
+ExBlock '[' ',' [ExSelector '/' "a"]
+[/a/]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+[ ]
+ExBlock '[' ';' []
+[]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+-``[-``$$][-``$$]
+-``[-``$$][-``$$]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+-`` [-``$$] -``$$
+-``[-``$$]-``$$
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+-`` -``$$ [-``$$]
+-``-``$$[-``$$]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+-``-``$$ [-``$$]
+-``-``$$[-``$$]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+-`` -``$$ -``$$
+-``-``$$-``$$
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+-``-``$$ -``$$
+-``-``$$-``$$
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+[$$``-][$$``-]``-
+[$$``-][$$``-]``-
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$$``- [$$``-] ``-
+$$``-[$$``-]``-
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+[$$``-] $$``- ``-
+[$$``-]$$``-``-
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+[$$``-] $$``-``-
+[$$``-]$$``-``-
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$$``- $$``- ``-
+$$``-$$``-``-
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$$``- $$``-``-
+$$``-$$``-``-
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$-$-$`children
+ExLeftRec
+  (ExLeftRec
+     (ExLeftRec (ExRef "") (LrrInfix (OpSymbolic "-") [] [ExRef ""]))
+     (LrrInfix (OpSymbolic "-") [] [ExRef ""]))
+  (LrrPostfix [] (OpAlphabetic "children") [])
+$-$-$`children
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$1-$2-$3
+ExLeftRec
+  (ExLeftRec (ExRef "1") (LrrInfix (OpSymbolic "-") [] [ExRef "2"]))
+  (LrrInfix (OpSymbolic "-") [] [ExRef "3"])
+$1-$2-$3
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$1-$2$3``-
+ExLeftRec
+  (ExLeftRec (ExRef "1") (LrrInfix (OpSymbolic "-") [] [ExRef "2"]))
+  (LrrPostfix [ExRef "3"] (OpSymbolic "-") [])
+$1-$2$3``-
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$1-$2`-
+ExLeftRec
+  (ExLeftRec (ExRef "1") (LrrInfix (OpSymbolic "-") [] [ExRef "2"]))
+  (LrrPostfix [] (OpSymbolic "-") [])
+$1-$2`-
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$`[_-$a@x,_+$b@y,_`find`$c@z,_+$+//@+//@]
+ExLeftRec (ExRef "")
+  (LrrPostfix []
+     (OpComposed '[' ','
+        [ExLeftRec ExSlot
+           (LrrInfix (OpSymbolic "-") []
+              [ExNamed (ExRef "a") (Name '@' Nothing "x" Nothing)]),
+         ExLeftRec ExSlot
+           (LrrInfix (OpSymbolic "+") []
+              [ExNamed (ExRef "b") (Name '@' Nothing "y" Nothing)]),
+         ExLeftRec ExSlot
+           (LrrInfix (OpAlphabetic "find") []
+              [ExNamed (ExRef "c") (Name '@' Nothing "z" Nothing)]),
+         ExLeftRec
+           (ExLeftRec
+              (ExLeftRec ExSlot (LrrInfix (OpSymbolic "+") [] [ExRef ""]))
+              (LrrInfix (OpSymbolic "+") []
+                 [ExNamed (ExSelector '/' "") (Name '@' Nothing "" Nothing)]))
+           (LrrInfix (OpSymbolic "+") []
+              [ExNamed (ExSelector '/' "") (Name '@' Nothing "" Nothing)])])
+     [])
+$`[_-$a@x,_+$b@y,_`find`$c@z,_+$+//@+//@]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+$
+
+ExRef ""
+$
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+/div.menucardproduct/-[
+						/form/@formid ;
+						/.menucardproductname/@name ;
+						/.menucardproductdescription/@desc ;
+						/.productextradescription/@desc1 ;
+						/input[name=product]/@id_product ;
+						/input[name=menucat]/@id_menucat ;
+						/input[name=rest]/@id_rest ;
+						/div.menucardproductprice>a/@price ;
+						/div.menucardproductprice>a/@price_a_id ;
+]
+
+ExLeftRec (ExSelector '/' "div.menucardproduct")
+  (LrrInfix (OpSymbolic "-") []
+     [ExBlock '[' ';'
+        [ExNamed (ExSelector '/' "form")
+           (Name '@' Nothing "formid" Nothing),
+         ExNamed (ExSelector '/' ".menucardproductname")
+           (Name '@' Nothing "name" Nothing),
+         ExNamed (ExSelector '/' ".menucardproductdescription")
+           (Name '@' Nothing "desc" Nothing),
+         ExNamed (ExSelector '/' ".productextradescription")
+           (Name '@' Nothing "desc1" Nothing),
+         ExNamed (ExSelector '/' "input[name=product]")
+           (Name '@' Nothing "id_product" Nothing),
+         ExNamed (ExSelector '/' "input[name=menucat]")
+           (Name '@' Nothing "id_menucat" Nothing),
+         ExNamed (ExSelector '/' "input[name=rest]")
+           (Name '@' Nothing "id_rest" Nothing),
+         ExNamed (ExSelector '/' "div.menucardproductprice>a")
+           (Name '@' Nothing "price" Nothing),
+         ExNamed (ExSelector '/' "div.menucardproductprice>a")
+           (Name '@' Nothing "price_a_id" Nothing)]])
+/div.menucardproduct/-[/form/@formid;/.menucardproductname/@name;/.menucardproductdescription/@desc;/.productextradescription/@desc1;/input[name=product]/@id_product;/input[name=menucat]/@id_menucat;/input[name=rest]/@id_rest;/div.menucardproductprice>a/@price;/div.menucardproductprice>a/@price_a_id;]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+    _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id-/.menucardcategoryheader/!@cat
+
+ExLeftRec
+  (ExLeftRec
+     (ExLeftRec
+        (ExLeftRec ExSlot
+           (LrrInfix (OpAlphabetic "closest") []
+              [ExSelector '/' "#imenucard>.menucardproducts.menucardproducts"]))
+        (LrrPostfix [] (OpAlphabetic "prev")
+           [Name '@' Nothing "cat_id" Nothing]))
+     (LrrInfix (OpSymbolic "-") []
+        [ExSelector '/' ".menucardcategoryheader"]))
+  (LrrGrouping [Name '@' Nothing "cat" Nothing])
+_`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id-/.menucardcategoryheader/!@cat
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+    _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id!-@cat/.menucardcategoryheader/!
+
+ExLeftRec
+  (ExLeftRec
+     (ExLeftRec
+        (ExLeftRec
+           (ExLeftRec ExSlot
+              (LrrInfix (OpAlphabetic "closest") []
+                 [ExSelector '/' "#imenucard>.menucardproducts.menucardproducts"]))
+           (LrrPostfix [] (OpAlphabetic "prev")
+              [Name '@' Nothing "cat_id" Nothing]))
+        (LrrGrouping []))
+     (LrrInfix (OpSymbolic "-") [Name '@' Nothing "cat" Nothing]
+        [ExSelector '/' ".menucardcategoryheader"]))
+  (LrrGrouping [])
+_`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id!-@cat/.menucardcategoryheader/!
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+[
+    _`closest`//`prev@cat_id-//@cat
+]
+
+ExBlock '[' ','
+  [ExLeftRec
+     (ExLeftRec
+        (ExLeftRec ExSlot
+           (LrrInfix (OpAlphabetic "closest") [] [ExSelector '/' ""]))
+        (LrrPostfix [] (OpAlphabetic "prev")
+           [Name '@' Nothing "cat_id" Nothing]))
+     (LrrInfix (OpSymbolic "-") []
+        [ExNamed (ExSelector '/' "") (Name '@' Nothing "cat" Nothing)])]
+[_`closest`//`prev@cat_id-//@cat]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+/div.menucardproduct/`[
+    _`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,
+    _-[
+						/form/@formid ;
+						/.menucardproductname/@name ;
+						/.menucardproductdescription/@desc ;
+						/.productextradescription/@desc1 ;
+						/input[name=product]/@id_product ;
+						/input[name=menucat]/@id_menucat ;
+						/input[name=rest]/@id_rest ;
+						/div.menucardproductprice>a/@price ;
+						/div.menucardproductprice>a/@price_a_id ;
+    ]
+]
+
+ExLeftRec (ExSelector '/' "div.menucardproduct")
+  (LrrPostfix []
+     (OpComposed '[' ','
+        [ExLeftRec
+           (ExLeftRec
+              (ExLeftRec
+                 (ExLeftRec ExSlot
+                    (LrrInfix (OpAlphabetic "closest")
+                       [Name '@' Nothing "cat_prev" Nothing]
+                       [ExNamed
+                          (ExSelector '/' "#imenucard>.menucardproducts.menucardproducts")
+                          (Name '@' Nothing "wtf" Nothing)]))
+                 (LrrPostfix [] (OpAlphabetic "prev")
+                    [Name '@' Nothing "cat_id" Nothing]))
+              (LrrInfix (OpSymbolic "-") []
+                 [ExSelector '/' ".menucardcategoryheader"]))
+           (LrrGrouping [Name '@' Nothing "cat" Nothing]),
+         ExLeftRec ExSlot
+           (LrrInfix (OpSymbolic "-") []
+              [ExBlock '[' ';'
+                 [ExNamed (ExSelector '/' "form")
+                    (Name '@' Nothing "formid" Nothing),
+                  ExNamed (ExSelector '/' ".menucardproductname")
+                    (Name '@' Nothing "name" Nothing),
+                  ExNamed (ExSelector '/' ".menucardproductdescription")
+                    (Name '@' Nothing "desc" Nothing),
+                  ExNamed (ExSelector '/' ".productextradescription")
+                    (Name '@' Nothing "desc1" Nothing),
+                  ExNamed (ExSelector '/' "input[name=product]")
+                    (Name '@' Nothing "id_product" Nothing),
+                  ExNamed (ExSelector '/' "input[name=menucat]")
+                    (Name '@' Nothing "id_menucat" Nothing),
+                  ExNamed (ExSelector '/' "input[name=rest]")
+                    (Name '@' Nothing "id_rest" Nothing),
+                  ExNamed (ExSelector '/' "div.menucardproductprice>a")
+                    (Name '@' Nothing "price" Nothing),
+                  ExNamed (ExSelector '/' "div.menucardproductprice>a")
+                    (Name '@' Nothing "price_a_id" Nothing)]])])
+     [])
+/div.menucardproduct/`[_`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,_-[/form/@formid;/.menucardproductname/@name;/.menucardproductdescription/@desc;/.productextradescription/@desc1;/input[name=product]/@id_product;/input[name=menucat]/@id_menucat;/input[name=rest]/@id_rest;/div.menucardproductprice>a/@price;/div.menucardproductprice>a/@price_a_id;]]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+						/input/-[
+							_-/[name=product]/!@id_product ;
+							_-/[name=menucat]/!@id_menucat ;
+							_-/[name=rest]/!@id_rest ;
+						]
+
+ExLeftRec (ExSelector '/' "input")
+  (LrrInfix (OpSymbolic "-") []
+     [ExBlock '[' ';'
+        [ExLeftRec
+           (ExLeftRec ExSlot
+              (LrrInfix (OpSymbolic "-") [] [ExSelector '/' "[name=product]"]))
+           (LrrGrouping [Name '@' Nothing "id_product" Nothing]),
+         ExLeftRec
+           (ExLeftRec ExSlot
+              (LrrInfix (OpSymbolic "-") [] [ExSelector '/' "[name=menucat]"]))
+           (LrrGrouping [Name '@' Nothing "id_menucat" Nothing]),
+         ExLeftRec
+           (ExLeftRec ExSlot
+              (LrrInfix (OpSymbolic "-") [] [ExSelector '/' "[name=rest]"]))
+           (LrrGrouping [Name '@' Nothing "id_rest" Nothing])]])
+/input/-[_-/[name=product]/!@id_product;_-/[name=menucat]/!@id_menucat;_-/[name=rest]/!@id_rest;]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+						/input/-[
+							/[name=product]/#id_product ;
+							/[name=menucat]/#id_menucat ;
+							/[name=rest]/#id_rest ;
+						]
+
+ExLeftRec (ExSelector '/' "input")
+  (LrrInfix (OpSymbolic "-") []
+     [ExBlock '[' ';'
+        [ExNamed (ExSelector '/' "[name=product]")
+           (Name '#' Nothing "id_product" Nothing),
+         ExNamed (ExSelector '/' "[name=menucat]")
+           (Name '#' Nothing "id_menucat" Nothing),
+         ExNamed (ExSelector '/' "[name=rest]")
+           (Name '#' Nothing "id_rest" Nothing)]])
+/input/-[/[name=product]/#id_product;/[name=menucat]/#id_menucat;/[name=rest]/#id_rest;]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+						/input/-[
+							/[name=product]/!@id_product ;
+							/[name=menucat]/!@id_menucat ;
+							/[name=rest]/!@id_rest ;
+						]
+
+ExLeftRec (ExSelector '/' "input")
+  (LrrInfix (OpSymbolic "-") []
+     [ExBlock '[' ';'
+        [ExLeftRec (ExSelector '/' "[name=product]")
+           (LrrGrouping [Name '@' Nothing "id_product" Nothing]),
+         ExLeftRec (ExSelector '/' "[name=menucat]")
+           (LrrGrouping [Name '@' Nothing "id_menucat" Nothing]),
+         ExLeftRec (ExSelector '/' "[name=rest]")
+           (LrrGrouping [Name '@' Nothing "id_rest" Nothing])]])
+/input/-[/[name=product]/!@id_product;/[name=menucat]/!@id_menucat;/[name=rest]/!@id_rest;]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+/div.menucardproduct/ `map` [_`[
+    _`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,
+    _-[
+						/form/#formid ;
+						/.menucardproductname/#name ;
+						/.menucardproductdescription/#desc ;
+						/.productextradescription/#desc1 ;
+						/input/!-[
+							/[name=product]/!@id_product ;
+							/[name=menucat]/!@id_menucat ;
+							/[name=rest]/!@id_rest ;
+						];
+						/div.menucardproductprice>a/#price#price_a_id ;
+    ]
+]]
+
+ExLeftRec (ExSelector '/' "div.menucardproduct")
+  (LrrInfix (OpAlphabetic "map") []
+     [ExBlock '[' ','
+        [ExLeftRec ExSlot
+           (LrrPostfix []
+              (OpComposed '[' ','
+                 [ExLeftRec
+                    (ExLeftRec
+                       (ExLeftRec
+                          (ExLeftRec ExSlot
+                             (LrrInfix (OpAlphabetic "closest")
+                                [Name '@' Nothing "cat_prev" Nothing]
+                                [ExNamed
+                                   (ExSelector '/' "#imenucard>.menucardproducts.menucardproducts")
+                                   (Name '@' Nothing "wtf" Nothing)]))
+                          (LrrPostfix [] (OpAlphabetic "prev")
+                             [Name '@' Nothing "cat_id" Nothing]))
+                       (LrrInfix (OpSymbolic "-") []
+                          [ExSelector '/' ".menucardcategoryheader"]))
+                    (LrrGrouping [Name '@' Nothing "cat" Nothing]),
+                  ExLeftRec ExSlot
+                    (LrrInfix (OpSymbolic "-") []
+                       [ExBlock '[' ';'
+                          [ExNamed (ExSelector '/' "form")
+                             (Name '#' Nothing "formid" Nothing),
+                           ExNamed (ExSelector '/' ".menucardproductname")
+                             (Name '#' Nothing "name" Nothing),
+                           ExNamed (ExSelector '/' ".menucardproductdescription")
+                             (Name '#' Nothing "desc" Nothing),
+                           ExNamed (ExSelector '/' ".productextradescription")
+                             (Name '#' Nothing "desc1" Nothing),
+                           ExLeftRec (ExLeftRec (ExSelector '/' "input") (LrrGrouping []))
+                             (LrrInfix (OpSymbolic "-") []
+                                [ExBlock '[' ';'
+                                   [ExLeftRec (ExSelector '/' "[name=product]")
+                                      (LrrGrouping [Name '@' Nothing "id_product" Nothing]),
+                                    ExLeftRec (ExSelector '/' "[name=menucat]")
+                                      (LrrGrouping [Name '@' Nothing "id_menucat" Nothing]),
+                                    ExLeftRec (ExSelector '/' "[name=rest]")
+                                      (LrrGrouping [Name '@' Nothing "id_rest" Nothing])]]),
+                           ExNamed
+                             (ExNamed (ExSelector '/' "div.menucardproductprice>a")
+                                (Name '#' Nothing "price" Nothing))
+                             (Name '#' Nothing "price_a_id" Nothing)]])])
+              [])]])
+/div.menucardproduct/`map`[_`[_`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,_-[/form/#formid;/.menucardproductname/#name;/.menucardproductdescription/#desc;/.productextradescription/#desc1;/input/!-[/[name=product]/!@id_product;/[name=menucat]/!@id_menucat;/[name=rest]/!@id_rest;];/div.menucardproductprice>a/#price#price_a_id;]]]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+/div.menucardproductprice>a/`[ _`html#price, _`id#price_a_id ]
+
+ExLeftRec (ExSelector '/' "div.menucardproductprice>a")
+  (LrrPostfix []
+     (OpComposed '[' ','
+        [ExLeftRec ExSlot
+           (LrrPostfix [] (OpAlphabetic "html")
+              [Name '#' Nothing "price" Nothing]),
+         ExLeftRec ExSlot
+           (LrrPostfix [] (OpAlphabetic "id")
+              [Name '#' Nothing "price_a_id" Nothing])])
+     [])
+/div.menucardproductprice>a/`[_`html#price,_`id#price_a_id]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+/div.menucardproductprice>a/#price^html#price_a_id^id
+
+ExNamed
+  (ExNamed (ExSelector '/' "div.menucardproductprice>a")
+     (Name '#' Nothing "price" (Just "html")))
+  (Name '#' Nothing "price_a_id" (Just "id"))
+/div.menucardproductprice>a/#price^html#price_a_id^id
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+/div.menucardproductprice>a/#html:price#id:price_a_id
+
+ExNamed
+  (ExNamed (ExSelector '/' "div.menucardproductprice>a")
+     (Name '#' (Just "html") "price" Nothing))
+  (Name '#' (Just "id") "price_a_id" Nothing)
+/div.menucardproductprice>a/#html:price#id:price_a_id
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+/div.menucardproductprice>a/[ `html#price, `id#price_a_id ]
+
+ExLeftRec (ExSelector '/' "div.menucardproductprice>a")
+  (LrrPostfix []
+     (OpComposed '[' ','
+        [ExCurriedLeft (OpAlphabetic "html")
+           [Name '#' Nothing "price" Nothing]
+           [],
+         ExCurriedLeft (OpAlphabetic "id")
+           [Name '#' Nothing "price_a_id" Nothing]
+           []])
+     [])
+/div.menucardproductprice>a/[`html#price,`id#price_a_id]
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+/a/{`aid}@sss
+
+ExLeftRec (ExSelector '/' "a")
+  (LrrPostfix []
+     (OpComposed '{' ',' [ExCurriedLeft (OpAlphabetic "aid") [] []])
+     [Name '@' Nothing "sss" Nothing])
+/a/{`aid}@sss
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+=========================================
+/div.menucardproduct/ {
+    `closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,
+    -[
+						/form/#formid ;
+						/.menucardproductname/#name ;
+						/.menucardproductdescription/#desc ;
+						/.productextradescription/#desc1 ;
+						/input/!-[
+							/[name=product]/!@id_product ;
+							/[name=menucat]/!@id_menucat ;
+							/[name=rest]/!@id_rest ;
+						];
+						/div.menucardproductprice>a/#price#price_a_id ;
+    ]
+}
+
+ExLeftRec (ExSelector '/' "div.menucardproduct")
+  (LrrPostfix []
+     (OpComposed '{' ','
+        [ExLeftRec
+           (ExLeftRec
+              (ExLeftRec
+                 (ExCurriedLeft (OpAlphabetic "closest")
+                    [Name '@' Nothing "cat_prev" Nothing]
+                    [ExNamed
+                       (ExSelector '/' "#imenucard>.menucardproducts.menucardproducts")
+                       (Name '@' Nothing "wtf" Nothing)])
+                 (LrrPostfix [] (OpAlphabetic "prev")
+                    [Name '@' Nothing "cat_id" Nothing]))
+              (LrrInfix (OpSymbolic "-") []
+                 [ExSelector '/' ".menucardcategoryheader"]))
+           (LrrGrouping [Name '@' Nothing "cat" Nothing]),
+         ExCurriedLeft (OpSymbolic "-") []
+           [ExBlock '[' ';'
+              [ExNamed (ExSelector '/' "form")
+                 (Name '#' Nothing "formid" Nothing),
+               ExNamed (ExSelector '/' ".menucardproductname")
+                 (Name '#' Nothing "name" Nothing),
+               ExNamed (ExSelector '/' ".menucardproductdescription")
+                 (Name '#' Nothing "desc" Nothing),
+               ExNamed (ExSelector '/' ".productextradescription")
+                 (Name '#' Nothing "desc1" Nothing),
+               ExLeftRec (ExLeftRec (ExSelector '/' "input") (LrrGrouping []))
+                 (LrrInfix (OpSymbolic "-") []
+                    [ExBlock '[' ';'
+                       [ExLeftRec (ExSelector '/' "[name=product]")
+                          (LrrGrouping [Name '@' Nothing "id_product" Nothing]),
+                        ExLeftRec (ExSelector '/' "[name=menucat]")
+                          (LrrGrouping [Name '@' Nothing "id_menucat" Nothing]),
+                        ExLeftRec (ExSelector '/' "[name=rest]")
+                          (LrrGrouping [Name '@' Nothing "id_rest" Nothing])]]),
+               ExNamed
+                 (ExNamed (ExSelector '/' "div.menucardproductprice>a")
+                    (Name '#' Nothing "price" Nothing))
+                 (Name '#' Nothing "price_a_id" Nothing)]]])
+     [])
+/div.menucardproduct/{`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,-[/form/#formid;/.menucardproductname/#name;/.menucardproductdescription/#desc;/.productextradescription/#desc1;/input/!-[/[name=product]/!@id_product;/[name=menucat]/!@id_menucat;/[name=rest]/!@id_rest;];/div.menucardproductprice>a/#price#price_a_id;]}
+var jmId_0;
+jmId_0 = 1;
+foo(jmId_0, y);
+*******
+DONE!!!
+*******
