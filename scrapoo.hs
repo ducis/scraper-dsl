@@ -33,7 +33,7 @@ import DSL.Scrapoo.CodegenQQAbbr
 --		});
 
 data JGenContext = C { 
-
+		
    }
 
 jsGen :: JGenContext -> Expr -> JStat
@@ -45,9 +45,9 @@ jsGen = \case
 
 jx :: JGenContext -> Expr -> JExpr
 jx = \case
-	ExSelector _ String
-	ExRef String
-	ExSlot
+	ExSelector _ s -> 
+	ExRef s -> 
+	ExSlot -> fail "slot"
 	ExBlock Char Char [Expr]
 	ExLeftRec lm rest -> case rest of 
       LrrInfix Operator [Name] [Expr]
