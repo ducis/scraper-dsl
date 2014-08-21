@@ -25,11 +25,6 @@ data LeftRecRest
 	= LrrInfix Operator [Name] [Expr]
 	| LrrPostfix [Expr] Operator [Name]
 	| LrrGrouping [Name] --essentially a unary postfix operator without arity mark 
-		--TODO: when applied to the leftmost 'atom', breaks current block.
-		--		$a-[$b!-$c,$d!-$e]
-		--		becomes
-		--		[$a-$b-$c,$a-$d-$e]
-		--		Or should it be done at typing? Like coercing 'leftmost' string literal to element set
 	deriving (Eq,Read,Show,Ord)
 
 

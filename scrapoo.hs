@@ -1,7 +1,8 @@
 #!/usr/bin/runghc
 {-# Language TemplateHaskell, QuasiQuotes, FlexibleContexts, 
 	TypeOperators, TupleSections, LambdaCase, OverloadedStrings,
-	NoMonomorphismRestriction, RelaxedPolyRec, ScopedTypeVariables #-}
+	NoMonomorphismRestriction, RelaxedPolyRec, ScopedTypeVariables,
+	RecordWildCards #-}
 
 import DSL.Scrapoo.ParseTree
 import DSL.Scrapoo.Syntax
@@ -11,9 +12,10 @@ import Language.Javascript.JMacro
 import Data.Monoid
 import Text.PrettyPrint.Leijen.Text (Doc)
 import DSL.Scrapoo.CodegenQQAbbr
+import qualified Data.StringMap as SM
 
 --	TODO: XPath
---	TODO Stanford tregex / TGrep2
+--	TODO Stanford tregex / TGrep2 / cabal package regexp-tries('vertical' pattern)
 --TODO: Indentation after pretty-printing
 --TODO: Parallelize tests
 --TODO: Type checker
@@ -31,20 +33,30 @@ import DSL.Scrapoo.CodegenQQAbbr
 --			assert(set.length == 1);
 --			return $(x).attr(id);
 --		});
+--		SUB-TODO: when applied to the leftmost 'atom', breaks current block.
+--				$a-[$b!-$c,$d!-$e]
+--				becomes
+--				[$a-$b-$c,$a-$d-$e]
+--				Or should it be done at typing? Like coercing 'leftmost' string literal to element set
+--TODO: referring to names defined later in the source. Needs initialization functions.
 
+type SymbolTable = SM.Map 
 data JGenContext = C { 
-		
+		cSymbols::SymbolTable
    }
 
 jsGen :: JGenContext -> Expr -> JStat
-jsGen = \case 
-	ExNamed Expr Name
+jsGen C{..} = \case 
 	_ -> [j|var x = 1; foo(x,y);|]
 	where 
 	s = jsGen
 
+jsx :: JGenContext -> Expr -> ([JStat],Expr)
+jsx C{..} = \case
+	ExNamed x n -> naming x n
+
 jx :: JGenContext -> Expr -> JExpr
-jx = \case
+jx C{..} = \case
 	ExSelector _ s -> 
 	ExRef s -> 
 	ExSlot -> fail "slot"
@@ -56,15 +68,20 @@ jx = \case
       LrrGrouping ns --use context
 	ExCurriedLeft op ns xs -> namedApp (ExSlot:xs) op ns
 	ExPrefix op ns xs
-	| ExNamed Expr Name
 	_->[jE|1|]
 
+-- Do not build explicit AST for now. 
+-- use functions below to simulate the structure of ASTs
+
+namedApp::[Expr]->Operator->[Name]->([JStat], SymbolTable, JExpr)
 namedApp xs op ns = foldl (application xs op) naming ns
 
+application::[Expr]->Operator->([JStat], SymbolTable, JExpr)
 application xs = \case
-	= OpSymbolic String 
-	| OpAlphabetic String --Including abbreviation
-	| OpComposed Char Char [Expr]
+	OpSymbolic s
+	OpAlphabetic s
+	OpComposed '{' _ xs 
+	OpComposed '[' _ xs
 
 codegenTest ast = do
 	print $ renderJs $ jsGen ast
