@@ -1,0 +1,29 @@
+-- * guarded-rewriting
+    Synopsis: Datatype-generic rewriting with preconditions
+--
+-- * hburg
+    Synopsis: Haskell Bottom Up Rewrite Generator
+--
+-- * maude
+    Synopsis: An interface to the Maude rewriting system.
+--
+-- * multisetrewrite
+    Synopsis: Multi-set rewrite rules with guards and a parallel execution
+--
+-- * pointless-rewrite
+    Synopsis: Pointless Rewrite library
+--
+-- * term-rewriting
+    Synopsis: Term Rewriting Library
+--
+-- * tpdb
+    Synopsis: Data Type for Rewriting Systems
+--
+--
+-- * rewriting
+    Synopsis: Generic rewriting library for regular datatypes.
+-- * regular
+
+
+
+* multirec

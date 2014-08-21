@@ -2,7 +2,7 @@
 {-# Language TemplateHaskell, QuasiQuotes, FlexibleContexts, 
 	TypeOperators, TupleSections, LambdaCase, OverloadedStrings,
 	NoMonomorphismRestriction, RelaxedPolyRec, ScopedTypeVariables,
-	RecordWildCards, ViewPatterns,PatternSynomnons #-}
+	RecordWildCards, ViewPatterns,PatternSynonyms,DeriveDataTypeable #-}
 
 import DSL.Scrapoo.ParseTree
 import DSL.Scrapoo.Syntax
@@ -71,9 +71,40 @@ jx C{..} = \case
 	ExPrefix op ns xs
 	_->[jE|1|]
 
+--delete later
+data Name = Name Char (Maybe String) String (Maybe String)
+	deriving (Eq,Read,Show,Ord)
+data Operator 
+	= OpSymbolic String 
+	| OpAlphabetic String --Including abbreviation
+	| OpComposed Char Char [Expr]
+	deriving (Eq,Read,Show,Ord)
+data Expr 
+	= ExSelector Char String
+	| ExRef String
+	| ExSlot
+	| ExBlock Char Char [Expr]
+	| ExLeftRec Expr LeftRecRest
+	| ExCurriedLeft Operator [Name] [Expr]
+	| ExPrefix Operator [Name] [Expr]
+	| ExNamed Expr Name
+	deriving (Eq,Read,Show,Ord)
+
+data LeftRecRest
+	= LrrInfix Operator [Name] [Expr]
+	| LrrPostfix [Expr] Operator [Name]
+	| LrrGrouping [Name] --essentially a unary postfix operator without arity mark 
+	deriving (Eq,Read,Show,Ord)
+
 data AST
-   = 
-   deriving (Data,Typeable)
+   = ALiteral String
+	| AApplication [AST] AST
+	| ARef String
+	| ABind [AST] String
+	| ALateBind [AST] String
+	| AExtract [AST] String
+	| ASlot [AST] String
+   deriving (Eq,Read,Show,Ord,Typeable,Data)
 -- Do not build explicit AST for now. 
 -- use functions below to simulate the structure of ASTs
 
