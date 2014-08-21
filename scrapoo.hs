@@ -2,7 +2,7 @@
 {-# Language TemplateHaskell, QuasiQuotes, FlexibleContexts, 
 	TypeOperators, TupleSections, LambdaCase, OverloadedStrings,
 	NoMonomorphismRestriction, RelaxedPolyRec, ScopedTypeVariables,
-	RecordWildCards #-}
+	RecordWildCards, ViewPatterns,PatternSynomnons #-}
 
 import DSL.Scrapoo.ParseTree
 import DSL.Scrapoo.Syntax
@@ -39,10 +39,11 @@ import qualified Data.StringMap as SM
 --				[$a-$b-$c,$a-$d-$e]
 --				Or should it be done at typing? Like coercing 'leftmost' string literal to element set
 --TODO: referring to names defined later in the source. Needs initialization functions.
+--       returns a unary lambda taking possibly a function
 
-type SymbolTable = SM.Map 
+type SymbolTable = SM.Map JExpr
 data JGenContext = C { 
-		cSymbols::SymbolTable
+		cNames::SymbolTable
    }
 
 jsGen :: JGenContext -> Expr -> JStat
@@ -57,8 +58,8 @@ jsx C{..} = \case
 
 jx :: JGenContext -> Expr -> JExpr
 jx C{..} = \case
-	ExSelector _ s -> 
-	ExRef s -> 
+	ExSelector _ s ->fail"selector" 
+	ExRef ((`SM.lookup` cNames)->Just x) -> 
 	ExSlot -> fail "slot"
 	ExBlock '[' _ xs -> fail "block["
 	ExBlock '{' _ xs -> fail "block{"
@@ -70,6 +71,9 @@ jx C{..} = \case
 	ExPrefix op ns xs
 	_->[jE|1|]
 
+data AST
+   = 
+   deriving (Data,Typeable)
 -- Do not build explicit AST for now. 
 -- use functions below to simulate the structure of ASTs
 
@@ -82,6 +86,8 @@ application xs = \case
 	OpAlphabetic s
 	OpComposed '{' _ xs 
 	OpComposed '[' _ xs
+
+-------------------------------------------------------------
 
 codegenTest ast = do
 	print $ renderJs $ jsGen ast
