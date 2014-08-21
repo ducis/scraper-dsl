@@ -48,14 +48,23 @@ jx = \case
 	ExSelector _ s -> 
 	ExRef s -> 
 	ExSlot -> fail "slot"
-	ExBlock Char Char [Expr]
+	ExBlock '[' _ xs -> fail "block["
+	ExBlock '{' _ xs -> fail "block{"
 	ExLeftRec lm rest -> case rest of 
-      LrrInfix Operator [Name] [Expr]
-      LrrPostfix [Expr] Operator [Name]
-      LrrGrouping [Name]
-	ExCurriedLeft Operator [Name] [Expr]
-	ExPrefix Operator [Name] [Expr]
+      LrrInfix op ns xs -> namedApp (lm:xs) op ns
+      LrrPostfix xs op ns -> namedApp (lm:xs) op ns
+      LrrGrouping ns --use context
+	ExCurriedLeft op ns xs -> namedApp (ExSlot:xs) op ns
+	ExPrefix op ns xs
+	| ExNamed Expr Name
 	_->[jE|1|]
+
+namedApp xs op ns = foldl (application xs op) naming ns
+
+application xs = \case
+	= OpSymbolic String 
+	| OpAlphabetic String --Including abbreviation
+	| OpComposed Char Char [Expr]
 
 codegenTest ast = do
 	print $ renderJs $ jsGen ast
