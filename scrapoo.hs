@@ -2,7 +2,7 @@
 {-# Language TemplateHaskell, QuasiQuotes, FlexibleContexts, 
 	TypeOperators, TupleSections, LambdaCase, OverloadedStrings,
 	NoMonomorphismRestriction, RelaxedPolyRec, ScopedTypeVariables,
-	RecordWildCards, ViewPatterns, DeriveDataTypeable #-}
+	RecordWildCards, ViewPatterns, DeriveDataTypeable, LiberalTypeSynonyms #-}
 
 import DSL.Scrapoo.ParseTree
 import DSL.Scrapoo.Syntax
@@ -78,7 +78,8 @@ jx C{..} = \case
 	_->[jE|1|]
 -}
 
-parseTreeToAST::Expr -> AST
+type AST0 = AST (Int->Int)
+parseTreeToAST::Expr -> AST0
 parseTreeToAST = \case
 	ExSelector _ s -> ALiteral s
 	ExRef s -> ARef s
@@ -101,7 +102,7 @@ parseTreeToAST = \case
 		[f1,f2] = map (maybe id (\f a->AExtract a f n)) [l,r]
 			
 	fNmdApp xs op ns = fNs ns $ AApplication (selfs xs) (fOp op)
-	fNs::[Name]->AST->AST
+	fNs::[Name]->AST0->AST0
 	fNs ns ast = foldl fName ast ns
 	self = parseTreeToAST
 	selfs = map self
@@ -122,25 +123,26 @@ nAA = AA {}
 -- TODO: parameterize
 -- type AST = (AST',ASTAttachment)
 -- data AST'
-data AST
+type AST f = ASTExpr f
+data ASTExpr f
 	= ALiteral String
-	| AApplication [AST] ASTOp
-	| ALeftGrouping AST
+	| AApplication [AST f] (ASTOp f)
+	| ALeftGrouping (AST f)
 	| ARef String
-	| ABind AST String
-	| ALateBind AST String
-	| AExtract AST String String
+	| ABind (AST f) String
+	| ALateBind (AST f) String
+	| AExtract (AST f) String String
 	| ASlot
-	| AMany ASTMany
+	| AMany (ASTMany f)
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
-data ASTOp	
+data ASTOp f
 	= AOSym String
 	| AOAlpha String
-	| AOMany ASTMany
+	| AOMany (ASTMany f)
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
-data ASTMany
-	= AMSimple [AST]
-	| AMAggeregate [AST]
+data ASTMany f
+	= AMSimple [AST f]
+	| AMAggeregate [AST f]
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
 
 -----------------------------------------------------------------
