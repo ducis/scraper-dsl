@@ -1,5 +1,5 @@
 #!/usr/bin/runghc
-{-# Language TemplateHaskell, QuasiQuotes, FlexibleContexts, 
+{-# Language TemplateHaskell, QuasiQuotes, FlexibleContexts, FlexibleInstances, 
 	TypeOperators, TupleSections, LambdaCase, OverloadedStrings,
 	NoMonomorphismRestriction, RelaxedPolyRec, ScopedTypeVariables,
 	RecordWildCards, ViewPatterns, DeriveDataTypeable, LiberalTypeSynonyms,
@@ -55,29 +55,8 @@ data JGenContext = C {
 	}
 {-
 jsGen :: JGenContext -> Expr -> JStat
-jsGen C{..} = \case 
-	_ -> [j|var x = 1; foo(x,y);|]
-	where 
-	s = jsGen
-
 jsx :: JGenContext -> Expr -> ([JStat],Expr)
-jsx C{..} = \case
-	ExNamed x n -> naming x n
-
 jx :: JGenContext -> Expr -> JExpr
-jx C{..} = \case
-	ExSelector _ s ->fail"selector" 
-	ExRef ((`SM.lookup` cNames)->Just x) -> 
-	ExSlot -> fail "slot"
-	ExBlock '[' _ xs -> fail "block["
-	ExBlock '{' _ xs -> fail "block{"
-	ExLeftRec lm rest -> case rest of 
-		LrrInfix op ns xs -> namedApp (lm:xs) op ns
-		LrrPostfix xs op ns -> namedApp (lm:xs) op ns
-		LrrGrouping ns --use context
-	ExCurriedLeft op ns xs -> namedApp (ExSlot:xs) op ns
-	ExPrefix op ns xs
-	_->[jE|1|]
 -}
 
 type AST0 = AST ()
@@ -118,17 +97,36 @@ parseTreeToAST = \case
 
 -- Pattern Match only on the AST type
 -- Build AST as simply as possible first then do transformation on it.
+type AA = ASTAttachment
 data ASTAttachment
 	= AA {}
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
 nAA = AA {}
--- TODO: parameterize
--- type AST = (AST',ASTAttachment)
--- data AST'
---type AST a = ASTExpr ()
+
 type family AST a :: *
 type instance AST () = ASTExpr ()
---type instance AST a = (a, ASTExpr a)
+type instance AST ASTAttachment = (AA, ASTExpr AA)
+-- type instance AST a = (a, ASTExpr a)
+-- TODO:: generate derivings below with TH
+deriving instance Show (ASTMany ())
+deriving instance Show (ASTOp ())
+deriving instance Show (ASTExpr ())
+deriving instance Read (ASTMany ())
+deriving instance Read (ASTOp ())
+deriving instance Read (ASTExpr ())
+deriving instance Eq (ASTMany ())
+deriving instance Eq (ASTOp ())
+deriving instance Eq (ASTExpr ())
+deriving instance Ord (ASTMany ())
+deriving instance Ord (ASTOp ())
+deriving instance Ord (ASTExpr ())
+deriving instance Typeable ASTMany
+deriving instance Typeable ASTOp
+deriving instance Typeable ASTExpr
+deriving instance Data (ASTMany ())
+deriving instance Data (ASTOp ())
+deriving instance Data (ASTExpr ())
+-- deriving instance Show (AST ())
 data ASTExpr f
 	= ALiteral String
 	| AApplication [AST f] (ASTOp f)
@@ -139,33 +137,22 @@ data ASTExpr f
 	| AExtract (AST f) String String
 	| ASlot
 	| AMany (ASTMany f)
-	deriving (Eq,Read,Show,Ord,Typeable,Data)
+--	deriving (Eq,Read,Show,Ord,Typeable,Data)
 data ASTOp f
 	= AOSym String
 	| AOAlpha String
 	| AOMany (ASTMany f)
-	deriving (Eq,Read,Show,Ord,Typeable,Data)
+--	deriving (Eq,Read,Show,Ord,Typeable,Data)
 data ASTMany f
 	= AMSimple [AST f]
 	| AMAggeregate [AST f]
-	deriving (Eq,Read,Show,Ord,Typeable,Data)
-
--- either GADT+7.5.2. Stand-alone deriving declarations
--- or type families
+--	deriving (Eq,Read,Show,Ord,Typeable,Data)
 
 -----------------------------------------------------------------
--- Do not build explicit AST for now. 
--- use functions below to simulate the structure of ASTs
 {-
 namedApp::[Expr]->Operator->[Name]->([JStat], SymbolTable, JExpr)
-namedApp xs op ns = foldl (application xs op) naming ns
 
 application::[Expr]->Operator->([JStat], SymbolTable, JExpr)
-application xs = \case
-	OpSymbolic s
-	OpAlphabetic s
-	OpComposed '{' _ xs 
-	OpComposed '[' _ xs
 -}
 -------------------------------------------------------------
 
