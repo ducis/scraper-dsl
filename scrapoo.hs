@@ -7,12 +7,15 @@
 import DSL.Scrapoo.ParseTree
 import DSL.Scrapoo.Syntax
 import System.Environment
+import Text.Groom
 
 import Language.Javascript.JMacro
 import Data.Monoid
 import Text.PrettyPrint.Leijen.Text (Doc)
 import DSL.Scrapoo.CodegenQQAbbr
 import qualified Data.StringMap as SM
+
+proom = putStrLn.proom
 
 --	TODO: XPath
 --	TODO Stanford tregex / TGrep2 / cabal package regexp-tries('vertical' pattern)
@@ -45,7 +48,7 @@ type SymbolTable = SM.Map JExpr
 data JGenContext = C { 
 		cNames::SymbolTable
    }
-
+{-
 jsGen :: JGenContext -> Expr -> JStat
 jsGen C{..} = \case 
 	_ -> [j|var x = 1; foo(x,y);|]
@@ -70,47 +73,25 @@ jx C{..} = \case
 	ExCurriedLeft op ns xs -> namedApp (ExSlot:xs) op ns
 	ExPrefix op ns xs
 	_->[jE|1|]
-
---delete later
-data Name = Name Char (Maybe String) String (Maybe String)
-	deriving (Eq,Read,Show,Ord)
-data Operator 
-	= OpSymbolic String 
-	| OpAlphabetic String --Including abbreviation
-	| OpComposed Char Char [Expr]
-	deriving (Eq,Read,Show,Ord)
-data Expr 
-	= ExSelector Char String
-	| ExRef String
-	| ExSlot
-	| ExBlock Char Char [Expr]
-	| ExLeftRec Expr LeftRecRest
-	| ExCurriedLeft Operator [Name] [Expr]
-	| ExPrefix Operator [Name] [Expr]
-	| ExNamed Expr Name
-	deriving (Eq,Read,Show,Ord)
-
-data LeftRecRest
-	= LrrInfix Operator [Name] [Expr]
-	| LrrPostfix [Expr] Operator [Name]
-	| LrrGrouping [Name] --essentially a unary postfix operator without arity mark 
-	deriving (Eq,Read,Show,Ord)
-
+-}
 parseTreeToAST::Expr -> AST
-parseTreeToAST = \case
+parseTreeToAST = (,nAA).\case
 	ExSelector _ s -> ALiteral s
 	ExRef s -> ARef s
 	ExSlot -> ASlot
-	ExBlock k _ xs -> fMany k $ map self xs
+	ExBlock k _ xs -> fMany k $ selfs xs
 	ExLeftRec x lrr -> case lrr of
-      LrrInfix Operator [Name] [Expr]
-      LrrPostfix [Expr] Operator [Name]
-      LrrGrouping [Name] 
-	ExCurriedLeft op ns xs
-	ExPrefix op ns xs ->
-	ExNamed x n
+      LrrInfix op ns xs -> fNmdApp (x:xs) op ns
+      LrrPostfix xs op ns -> fNmdApp (x:xs) op ns
+      LrrGrouping ns -> fNs ns $ self x
+	ExCurriedLeft op ns xs -> fNmdApp (ExSlot:xs) op ns
+	ExPrefix op ns xs -> fNmdApp xs op ns
+	ExNamed x n -> ABind (self x) n
    where
+   fNmdApp xs op ns = fNs ns $ AApplication (selfs xs) (fOp op)
+   fNs ns ast = foldl ast ABind ns
    self = parseTreeToAST
+   selfs = map self
    fMany = \case
       '[' -> AMSimple
       '{' -> AMAggeregate
@@ -121,11 +102,12 @@ data ASTAttachment
    = AA {}
    deriving (Eq,Read,Show,Ord,Typeable,Data)
 nAA = AA {}
+-- TODO: parameterize
 type AST = (AST',ASTAttachment)
 data AST'
    = ALiteral String
 	| AApplication [AST] ASTOp
-   | ALeftGrouped AST
+   | ALeftGrouping AST
 	| ARef String
 	| ABind AST String
 	| ALateBind AST String
@@ -142,9 +124,11 @@ data ASTMany
    = AMSimple [AST]
    | AMAggeregate [AST]
    deriving (Eq,Read,Show,Ord,Typeable,Data)
+
+-----------------------------------------------------------------
 -- Do not build explicit AST for now. 
 -- use functions below to simulate the structure of ASTs
-
+{-
 namedApp::[Expr]->Operator->[Name]->([JStat], SymbolTable, JExpr)
 namedApp xs op ns = foldl (application xs op) naming ns
 
@@ -154,14 +138,17 @@ application xs = \case
 	OpAlphabetic s
 	OpComposed '{' _ xs 
 	OpComposed '[' _ xs
-
+-}
 -------------------------------------------------------------
 
-codegenTest ast = do
-	print $ renderJs $ jsGen ast
+{- codegenTest ast = do
+	print $ renderJs $ jsGen ast -}
+
+astTest expr = do
+   proom $ parseTreeToAST Expr
 
 main = do
 	nCheck<-getArgs
 	runSyntaxTests 
-		(\n p p' f x -> syntaxTest n p p' f x>>=codegenTest.head) 
+		(\n p p' f x -> syntaxTest n p p' f x>>=astTest.head) 
 		(head $ map read nCheck++[1])
