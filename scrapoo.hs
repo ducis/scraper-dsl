@@ -2,7 +2,9 @@
 {-# Language TemplateHaskell, QuasiQuotes, FlexibleContexts, 
 	TypeOperators, TupleSections, LambdaCase, OverloadedStrings,
 	NoMonomorphismRestriction, RelaxedPolyRec, ScopedTypeVariables,
-	RecordWildCards, ViewPatterns, DeriveDataTypeable, LiberalTypeSynonyms #-}
+	RecordWildCards, ViewPatterns, DeriveDataTypeable, LiberalTypeSynonyms,
+	StandaloneDeriving, GADTSyntax, GADTs, TypeFamilies, DeriveDataTypeable,
+	TypeSynonymInstances #-}
 
 import DSL.Scrapoo.ParseTree
 import DSL.Scrapoo.Syntax
@@ -78,7 +80,7 @@ jx C{..} = \case
 	_->[jE|1|]
 -}
 
-type AST0 = AST (Int->Int)
+type AST0 = AST ()
 parseTreeToAST::Expr -> AST0
 parseTreeToAST = \case
 	ExSelector _ s -> ALiteral s
@@ -123,7 +125,10 @@ nAA = AA {}
 -- TODO: parameterize
 -- type AST = (AST',ASTAttachment)
 -- data AST'
-type AST f = ASTExpr f
+--type AST a = ASTExpr ()
+type family AST a :: *
+type instance AST () = ASTExpr ()
+--type instance AST a = (a, ASTExpr a)
 data ASTExpr f
 	= ALiteral String
 	| AApplication [AST f] (ASTOp f)
@@ -144,6 +149,9 @@ data ASTMany f
 	= AMSimple [AST f]
 	| AMAggeregate [AST f]
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
+
+-- either GADT+7.5.2. Stand-alone deriving declarations
+-- or type families
 
 -----------------------------------------------------------------
 -- Do not build explicit AST for now. 
