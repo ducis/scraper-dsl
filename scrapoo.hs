@@ -53,11 +53,16 @@ type SymbolTable = SM.StringMap JExpr
 data JGenContext = C { 
 		cNames::SymbolTable
 	}
-{-
-jsGen :: JGenContext -> Expr -> JStat
-jsx :: JGenContext -> Expr -> ([JStat],Expr)
-jx :: JGenContext -> Expr -> JExpr
--}
+
+-- TODO : eliminate left grouping
+-- TODO : eliminate left grouping
+
+simplify0::AST () -> AST ()
+simplify0 = 
+
+-- jsGen :: JGenContext -> Expr -> JStat
+-- jsx :: JGenContext -> Expr -> ([JStat],Expr)
+-- jx :: JGenContext -> Expr -> JExpr
 
 type AST0 = AST ()
 parseTreeToAST::Expr -> AST0
