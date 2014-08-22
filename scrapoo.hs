@@ -2,20 +2,22 @@
 {-# Language TemplateHaskell, QuasiQuotes, FlexibleContexts, 
 	TypeOperators, TupleSections, LambdaCase, OverloadedStrings,
 	NoMonomorphismRestriction, RelaxedPolyRec, ScopedTypeVariables,
-	RecordWildCards, ViewPatterns,PatternSynonyms,DeriveDataTypeable #-}
+	RecordWildCards, ViewPatterns, DeriveDataTypeable #-}
 
 import DSL.Scrapoo.ParseTree
 import DSL.Scrapoo.Syntax
 import System.Environment
 import Text.Groom
-
+import Data.Typeable
+import Data.Data
 import Language.Javascript.JMacro
 import Data.Monoid
 import Text.PrettyPrint.Leijen.Text (Doc)
 import DSL.Scrapoo.CodegenQQAbbr
 import qualified Data.StringMap as SM
+import Data.Maybe
 
-proom = putStrLn.proom
+proom = putStrLn.groom
 
 --	TODO: XPath
 --	TODO Stanford tregex / TGrep2 / cabal package regexp-tries('vertical' pattern)
@@ -28,7 +30,7 @@ proom = putStrLn.proom
 --TODO: code generation		CURRENT
 --		SUB-TODO: operator table
 --		SUB-TODO: assertion(x.length == 1);
---      SUB-TODO: tree transformation
+--		SUB-TODO: tree transformation
 --		/a/{`aid}@zzz 
 --		translates to 
 --		output.zzz = $('a').map(function(x){
@@ -42,12 +44,13 @@ proom = putStrLn.proom
 --				[$a-$b-$c,$a-$d-$e]
 --				Or should it be done at typing? Like coercing 'leftmost' string literal to element set
 --TODO: referring to names defined later in the source. Needs initialization functions.
---       returns a unary lambda taking possibly a function
+--		 returns a unary lambda taking possibly a function
+--TODO: use lens to create reversable mapping from parsetrees to ASTs and between ASTs before and after transformation.
 
-type SymbolTable = SM.Map JExpr
+type SymbolTable = SM.StringMap JExpr
 data JGenContext = C { 
 		cNames::SymbolTable
-   }
+	}
 {-
 jsGen :: JGenContext -> Expr -> JStat
 jsGen C{..} = \case 
@@ -67,63 +70,78 @@ jx C{..} = \case
 	ExBlock '[' _ xs -> fail "block["
 	ExBlock '{' _ xs -> fail "block{"
 	ExLeftRec lm rest -> case rest of 
-      LrrInfix op ns xs -> namedApp (lm:xs) op ns
-      LrrPostfix xs op ns -> namedApp (lm:xs) op ns
-      LrrGrouping ns --use context
+		LrrInfix op ns xs -> namedApp (lm:xs) op ns
+		LrrPostfix xs op ns -> namedApp (lm:xs) op ns
+		LrrGrouping ns --use context
 	ExCurriedLeft op ns xs -> namedApp (ExSlot:xs) op ns
 	ExPrefix op ns xs
 	_->[jE|1|]
 -}
+
 parseTreeToAST::Expr -> AST
-parseTreeToAST = (,nAA).\case
+parseTreeToAST = \case
 	ExSelector _ s -> ALiteral s
 	ExRef s -> ARef s
 	ExSlot -> ASlot
-	ExBlock k _ xs -> fMany k $ selfs xs
+	ExBlock k _ xs -> AMany $ fMany k $ selfs xs
 	ExLeftRec x lrr -> case lrr of
-      LrrInfix op ns xs -> fNmdApp (x:xs) op ns
-      LrrPostfix xs op ns -> fNmdApp (x:xs) op ns
-      LrrGrouping ns -> fNs ns $ self x
+		LrrInfix op ns xs -> fNmdApp (x:xs) op ns
+		LrrPostfix xs op ns -> fNmdApp (x:xs) op ns
+		LrrGrouping ns -> fNs ns $ self x
 	ExCurriedLeft op ns xs -> fNmdApp (ExSlot:xs) op ns
 	ExPrefix op ns xs -> fNmdApp xs op ns
-	ExNamed x n -> ABind (self x) n
-   where
-   fNmdApp xs op ns = fNs ns $ AApplication (selfs xs) (fOp op)
-   fNs ns ast = foldl ast ABind ns
-   self = parseTreeToAST
-   selfs = map self
-   fMany = \case
-      '[' -> AMSimple
-      '{' -> AMAggeregate
+	ExNamed x n -> fName (self x) n
+	where
+	-- aa = (,nAA)
+	fName ast (Name ch l n r) = f2 $ f1 (f0 ast n)
+		where
+		f0 = case ch of
+			'@' -> ABind
+			'#' -> ALateBind
+		[f1,f2] = map (maybe id (\f a->AExtract a f n)) [l,r]
+			
+	fNmdApp xs op ns = fNs ns $ AApplication (selfs xs) (fOp op)
+	fNs::[Name]->AST->AST
+	fNs ns ast = foldl fName ast ns
+	self = parseTreeToAST
+	selfs = map self
+	fMany = \case
+		'[' -> AMSimple
+		'{' -> AMAggeregate
+	fOp = \case
+		OpSymbolic s -> AOSym s 
+		OpAlphabetic s -> AOAlpha s
+		OpComposed k _ xs -> AOMany $ fMany k $ selfs xs
 
 -- Pattern Match only on the AST type
 -- Build AST as simply as possible first then do transformation on it.
 data ASTAttachment
-   = AA {}
-   deriving (Eq,Read,Show,Ord,Typeable,Data)
+	= AA {}
+	deriving (Eq,Read,Show,Ord,Typeable,Data)
 nAA = AA {}
 -- TODO: parameterize
-type AST = (AST',ASTAttachment)
-data AST'
-   = ALiteral String
+-- type AST = (AST',ASTAttachment)
+-- data AST'
+data AST
+	= ALiteral String
 	| AApplication [AST] ASTOp
-   | ALeftGrouping AST
+	| ALeftGrouping AST
 	| ARef String
 	| ABind AST String
 	| ALateBind AST String
-	| AExtract AST String
+	| AExtract AST String String
 	| ASlot
-   | AMany ASTMany
-   deriving (Eq,Read,Show,Ord,Typeable,Data)
-data ASTOp   
-   = AOSym String
-   | AOAlpha String
-   | AOMany ASTMany
-   deriving (Eq,Read,Show,Ord,Typeable,Data)
+	| AMany ASTMany
+	deriving (Eq,Read,Show,Ord,Typeable,Data)
+data ASTOp	
+	= AOSym String
+	| AOAlpha String
+	| AOMany ASTMany
+	deriving (Eq,Read,Show,Ord,Typeable,Data)
 data ASTMany
-   = AMSimple [AST]
-   | AMAggeregate [AST]
-   deriving (Eq,Read,Show,Ord,Typeable,Data)
+	= AMSimple [AST]
+	| AMAggeregate [AST]
+	deriving (Eq,Read,Show,Ord,Typeable,Data)
 
 -----------------------------------------------------------------
 -- Do not build explicit AST for now. 
@@ -145,7 +163,7 @@ application xs = \case
 	print $ renderJs $ jsGen ast -}
 
 astTest expr = do
-   proom $ parseTreeToAST Expr
+	proom $ parseTreeToAST expr
 
 main = do
 	nCheck<-getArgs
