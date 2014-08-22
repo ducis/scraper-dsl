@@ -96,14 +96,51 @@ data LeftRecRest
 	| LrrGrouping [Name] --essentially a unary postfix operator without arity mark 
 	deriving (Eq,Read,Show,Ord)
 
-data AST
+parseTreeToAST::Expr -> AST
+parseTreeToAST = \case
+	ExSelector _ s -> ALiteral s
+	ExRef s -> ARef s
+	ExSlot -> ASlot
+	ExBlock k _ xs -> fMany k $ map self xs
+	ExLeftRec x lrr -> case lrr of
+      LrrInfix Operator [Name] [Expr]
+      LrrPostfix [Expr] Operator [Name]
+      LrrGrouping [Name] 
+	ExCurriedLeft op ns xs
+	ExPrefix op ns xs ->
+	ExNamed x n
+   where
+   self = parseTreeToAST
+   fMany = \case
+      '[' -> AMSimple
+      '{' -> AMAggeregate
+
+-- Pattern Match only on the AST type
+-- Build AST as simply as possible first then do transformation on it.
+data ASTAttachment
+   = AA {}
+   deriving (Eq,Read,Show,Ord,Typeable,Data)
+nAA = AA {}
+type AST = (AST',ASTAttachment)
+data AST'
    = ALiteral String
-	| AApplication [AST] AST
+	| AApplication [AST] ASTOp
+   | ALeftGrouped AST
 	| ARef String
-	| ABind [AST] String
-	| ALateBind [AST] String
-	| AExtract [AST] String
-	| ASlot [AST] String
+	| ABind AST String
+	| ALateBind AST String
+	| AExtract AST String
+	| ASlot
+   | AMany ASTMany
+   deriving (Eq,Read,Show,Ord,Typeable,Data)
+data ASTOp   
+   = AOSym String
+   | AOAlpha String
+   | AOMany ASTMany
+   deriving (Eq,Read,Show,Ord,Typeable,Data)
+data ASTMany
+   = AMSimple [AST]
+   | AMAggeregate [AST]
    deriving (Eq,Read,Show,Ord,Typeable,Data)
 -- Do not build explicit AST for now. 
 -- use functions below to simulate the structure of ASTs
