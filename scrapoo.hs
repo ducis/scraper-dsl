@@ -119,13 +119,14 @@ parseTreeToAST = \case
 	ExNamed x n -> fName (self x) n
 	where
 	-- aa = (,nAA)
+	fName::AST0 -> Name -> AST0
 	fName ast (Name ch l n r) = f2 $ f1 (T0 $ f0 ast n)
 		where
 		f0 = case ch of
 			'@' -> ABind
 			'#' -> ALateBind
 		[f1,f2] = map (maybe id (\f a->T0 $ AExtract a f n)) [l,r]
-			
+	fNmdApp::[Expr] -> Operator -> [Name] -> AST0
 	fNmdApp xs op ns = fNs ns $ T0 $ AApplication (selfs xs) (fOp op)
 	fNs::[Name]->AST0->AST0
 	fNs ns ast = foldl fName ast ns
