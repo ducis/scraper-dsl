@@ -1,0 +1,1318 @@
+=========================================
+$ - $
+$-$
+T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))
+=========================================
+$`-``$$
+$`-``$$
+T0
+  (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
+     (AOSym "-"))
+=========================================
+$`-``[$`-``$$][$`-``$$]
+$`-``[$`-``$$][$`-``$$]
+T0
+  (AApplication
+     [T0 (ARef ""),
+      T0
+        (AMany
+           (AMSimple
+              [T0
+                 (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
+                    (AOSym "-"))])),
+      T0
+        (AMany
+           (AMSimple
+              [T0
+                 (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
+                    (AOSym "-"))]))]
+     (AOSym "-"))
+=========================================
+$a`-`` $b`-``$c$d $e`-``$f$g
+$a`-``$b`-``$c$d$e`-``$f$g
+T0
+  (AApplication
+     [T0
+        (AApplication
+           [T0 (ARef "a"),
+            T0
+              (AApplication [T0 (ARef "b"), T0 (ARef "c"), T0 (ARef "d")]
+                 (AOSym "-")),
+            T0 (ARef "e")]
+           (AOSym "-")),
+      T0 (ARef "f"), T0 (ARef "g")]
+     (AOSym "-"))
+=========================================
+$`-`` $ $`-``$$
+$`-``$$`-``$$
+T0
+  (AApplication
+     [T0
+        (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
+           (AOSym "-")),
+      T0 (ARef ""), T0 (ARef "")]
+     (AOSym "-"))
+=========================================
+$`-`` $`-``$$ $
+$`-``$`-``$$$
+T0
+  (AApplication
+     [T0 (ARef ""),
+      T0
+        (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
+           (AOSym "-")),
+      T0 (ARef "")]
+     (AOSym "-"))
+=========================================
+$ $ $ ```-
+$$$```-
+T0
+  (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
+     (AOSym "-"))
+=========================================
+-``` $ $ $
+-```$$$
+T0
+  (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
+     (AOSym "-"))
+=========================================
+//@
+//@
+T0 (ABind (T0 (ALiteral "")) "")
+=========================================
+//@a_b
+//@a_b
+T0 (ABind (T0 (ALiteral "")) "a_b")
+=========================================
+//@a_
+//@a_
+T0 (ABind (T0 (ALiteral "")) "a_")
+=========================================
+//@_b
+//@_b
+T0 (ABind (T0 (ALiteral "")) "_b")
+=========================================
+$abcf@kkk+++/.whatever//.kkk/@abc@def+++○div○@123@1@1
+$abcf@kkk+++/.whatever//.kkk/@abc@def+++○div○@123@1@1
+T0
+  (AApplication
+     [T0
+        (AApplication
+           [T0 (ABind (T0 (ARef "abcf")) "kkk"),
+            T0
+              (ABind (T0 (ABind (T0 (ALiteral ".whatever/.kkk")) "abc")) "def")]
+           (AOSym "+++")),
+      T0
+        (ABind (T0 (ABind (T0 (ABind (T0 (ALiteral "div")) "123")) "1"))
+           "1")]
+     (AOSym "+++"))
+=========================================
+$@+++/.whatever//.kkk/@@+++○div○@@@
+$@+++/.whatever//.kkk/@@+++○div○@@@
+T0
+  (AApplication
+     [T0
+        (AApplication
+           [T0 (ABind (T0 (ARef "")) ""),
+            T0 (ABind (T0 (ABind (T0 (ALiteral ".whatever/.kkk")) "")) "")]
+           (AOSym "+++")),
+      T0
+        (ABind (T0 (ABind (T0 (ABind (T0 (ALiteral "div")) "")) "")) "")]
+     (AOSym "+++"))
+=========================================
+$aaa@kkk-_
+$aaa@kkk-_
+T0
+  (AApplication [T0 (ABind (T0 (ARef "aaa")) "kkk"), T0 ASlot]
+     (AOSym "-"))
+=========================================
+--`$abcf
+--`$abcf
+T0 (AApplication [T0 (ARef "abcf")] (AOSym "--"))
+=========================================
+--``/.ww/@1$1
+--``/.ww/@1$1
+T0
+  (AApplication [T0 (ABind (T0 (ALiteral ".ww")) "1"), T0 (ARef "1")]
+     (AOSym "--"))
+=========================================
+$a$b``+$1``+
+$a$b``+$1``+
+T0
+  (AApplication
+     [T0 (AApplication [T0 (ARef "a"), T0 (ARef "b")] (AOSym "+")),
+      T0 (ARef "1")]
+     (AOSym "+"))
+=========================================
+$1`+@5
+$1`+@5
+T0 (ABind (T0 (AApplication [T0 (ARef "1")] (AOSym "+"))) "5")
+=========================================
++`$1@5
++`$1@5
+T0 (AApplication [T0 (ABind (T0 (ARef "1")) "5")] (AOSym "+"))
+=========================================
+$1--$2@3
+$1--$2@3
+T0
+  (AApplication [T0 (ARef "1"), T0 (ABind (T0 (ARef "2")) "3")]
+     (AOSym "--"))
+=========================================
+$1--$2@3$4@5$5@6```x
+$1--$2@3$4@5$5@6```x
+T0
+  (AApplication
+     [T0
+        (AApplication [T0 (ARef "1"), T0 (ABind (T0 (ARef "2")) "3")]
+           (AOSym "--")),
+      T0 (ABind (T0 (ARef "4")) "5"), T0 (ABind (T0 (ARef "5")) "6")]
+     (AOAlpha "x"))
+=========================================
+$1--$2@3$4@5$5@6```x/a/@1``y
+$1--$2@3$4@5$5@6```x/a/@1``y
+T0
+  (AApplication
+     [T0
+        (AApplication
+           [T0
+              (AApplication [T0 (ARef "1"), T0 (ABind (T0 (ARef "2")) "3")]
+                 (AOSym "--")),
+            T0 (ABind (T0 (ARef "4")) "5"), T0 (ABind (T0 (ARef "5")) "6")]
+           (AOAlpha "x")),
+      T0 (ABind (T0 (ALiteral "a")) "1")]
+     (AOAlpha "y"))
+=========================================
+$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z
+$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z
+T0
+  (AApplication
+     [T0
+        (AApplication
+           [T0
+              (AApplication
+                 [T0
+                    (AApplication [T0 (ARef "1"), T0 (ABind (T0 (ARef "2")) "3")]
+                       (AOSym "--")),
+                  T0 (ABind (T0 (ARef "4")) "5"), T0 (ABind (T0 (ARef "5")) "6")]
+                 (AOAlpha "x")),
+            T0 (ABind (T0 (ALiteral "a")) "1")]
+           (AOAlpha "y")),
+      T0 (ABind (T0 (ALiteral "b")) "2")]
+     (AOAlpha "z"))
+=========================================
+$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z-/fff/@5
+$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z-/fff/@5
+T0
+  (AApplication
+     [T0
+        (AApplication
+           [T0
+              (AApplication
+                 [T0
+                    (AApplication
+                       [T0
+                          (AApplication [T0 (ARef "1"), T0 (ABind (T0 (ARef "2")) "3")]
+                             (AOSym "--")),
+                        T0 (ABind (T0 (ARef "4")) "5"), T0 (ABind (T0 (ARef "5")) "6")]
+                       (AOAlpha "x")),
+                  T0 (ABind (T0 (ALiteral "a")) "1")]
+                 (AOAlpha "y")),
+            T0 (ABind (T0 (ALiteral "b")) "2")]
+           (AOAlpha "z")),
+      T0 (ABind (T0 (ALiteral "fff")) "5")]
+     (AOSym "-"))
+=========================================
+$--$@$@$@```x/a/@``y/b/@``z-/fff/@
+$--$@$@$@```x/a/@``y/b/@``z-/fff/@
+T0
+  (AApplication
+     [T0
+        (AApplication
+           [T0
+              (AApplication
+                 [T0
+                    (AApplication
+                       [T0
+                          (AApplication [T0 (ARef ""), T0 (ABind (T0 (ARef "")) "")]
+                             (AOSym "--")),
+                        T0 (ABind (T0 (ARef "")) ""), T0 (ABind (T0 (ARef "")) "")]
+                       (AOAlpha "x")),
+                  T0 (ABind (T0 (ALiteral "a")) "")]
+                 (AOAlpha "y")),
+            T0 (ABind (T0 (ALiteral "b")) "")]
+           (AOAlpha "z")),
+      T0 (ABind (T0 (ALiteral "fff")) "")]
+     (AOSym "-"))
+=========================================
++``$1$2
++``$1$2
+T0 (AApplication [T0 (ARef "1"), T0 (ARef "2")] (AOSym "+"))
+=========================================
+$2$3``-
+$2$3``-
+T0 (AApplication [T0 (ARef "2"), T0 (ARef "3")] (AOSym "-"))
+=========================================
+[+``$1$2]$3``-
+[+``$1$2]$3``-
+T0
+  (AApplication
+     [T0
+        (AMany
+           (AMSimple
+              [T0 (AApplication [T0 (ARef "1"), T0 (ARef "2")] (AOSym "+"))])),
+      T0 (ARef "3")]
+     (AOSym "-"))
+=========================================
++``$1[$2$3``-]
++``$1[$2$3``-]
+T0
+  (AApplication
+     [T0 (ARef "1"),
+      T0
+        (AMany
+           (AMSimple
+              [T0 (AApplication [T0 (ARef "2"), T0 (ARef "3")] (AOSym "-"))]))]
+     (AOSym "+"))
+=========================================
++``$1$2$3``-
++``$1$2$3``-
+T0
+  (AApplication
+     [T0 (AApplication [T0 (ARef "1"), T0 (ARef "2")] (AOSym "+")),
+      T0 (ARef "3")]
+     (AOSym "-"))
+=========================================
++``@x$1@a$2@b$3@c$4@d```-@z
++``@x$1@a$2@b$3@c$4@d```-@z
+T0
+  (ABind
+     (T0
+        (AApplication
+           [T0
+              (ABind
+                 (T0
+                    (AApplication
+                       [T0 (ABind (T0 (ARef "1")) "a"), T0 (ABind (T0 (ARef "2")) "b")]
+                       (AOSym "+")))
+                 "x"),
+            T0 (ABind (T0 (ARef "3")) "c"), T0 (ABind (T0 (ARef "4")) "d")]
+           (AOSym "-")))
+     "z")
+=========================================
+$`a`$
+$`a`$
+T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOAlpha "a"))
+=========================================
+$a$``a
+$a$``a
+T0 (AApplication [T0 (ARef "a"), T0 (ARef "")] (AOAlpha "a"))
+=========================================
+$`[_`a]
+ExLeftRec (ExRef "")
+  (LrrPostfix []
+     (OpComposed '[' ','
+        [ExLeftRec ExSlot (LrrPostfix [] (OpAlphabetic "a") [])])
+     [])
+$`[_`a]
+T0
+  (AApplication [T0 (ARef "")]
+     (AOMany (AMSimple [T0 (AApplication [T0 ASlot] (AOAlpha "a"))])))
+=========================================
+$ $ ``+
+ExLeftRec (ExRef "") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
+$$``+
+T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "+"))
+=========================================
+$a $ ``+
+ExLeftRec (ExRef "a") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
+$a$``+
+T0 (AApplication [T0 (ARef "a"), T0 (ARef "")] (AOSym "+"))
+=========================================
+$ $b ``+
+ExLeftRec (ExRef "") (LrrPostfix [ExRef "b"] (OpSymbolic "+") [])
+$$b``+
+T0 (AApplication [T0 (ARef ""), T0 (ARef "b")] (AOSym "+"))
+=========================================
+$a $b ``+
+ExLeftRec (ExRef "a") (LrrPostfix [ExRef "b"] (OpSymbolic "+") [])
+$a$b``+
+T0 (AApplication [T0 (ARef "a"), T0 (ARef "b")] (AOSym "+"))
+=========================================
+$ $``+
+ExLeftRec (ExRef "") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
+$$``+
+T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "+"))
+=========================================
+$$ ``+
+ExLeftRec (ExRef "") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
+$$``+
+T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "+"))
+=========================================
+$ `+
+ExLeftRec (ExRef "") (LrrPostfix [] (OpSymbolic "+") [])
+$`+
+T0 (AApplication [T0 (ARef "")] (AOSym "+"))
+=========================================
+[ /a/ ]
+ExBlock '[' ',' [ExSelector '/' "a"]
+[/a/]
+T0 (AMany (AMSimple [T0 (ALiteral "a")]))
+=========================================
+[/a/ ]
+ExBlock '[' ',' [ExSelector '/' "a"]
+[/a/]
+T0 (AMany (AMSimple [T0 (ALiteral "a")]))
+=========================================
+[ /a/]
+ExBlock '[' ',' [ExSelector '/' "a"]
+[/a/]
+T0 (AMany (AMSimple [T0 (ALiteral "a")]))
+=========================================
+[ ]
+ExBlock '[' ';' []
+[]
+T0 (AMany (AMSimple []))
+=========================================
+-``[-``$$][-``$$]
+-``[-``$$][-``$$]
+T0
+  (AApplication
+     [T0
+        (AMany
+           (AMSimple
+              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))])),
+      T0
+        (AMany
+           (AMSimple
+              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]))]
+     (AOSym "-"))
+=========================================
+-`` [-``$$] -``$$
+-``[-``$$]-``$$
+T0
+  (AApplication
+     [T0
+        (AMany
+           (AMSimple
+              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))])),
+      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+     (AOSym "-"))
+=========================================
+-`` -``$$ [-``$$]
+-``-``$$[-``$$]
+T0
+  (AApplication
+     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
+      T0
+        (AMany
+           (AMSimple
+              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]))]
+     (AOSym "-"))
+=========================================
+-``-``$$ [-``$$]
+-``-``$$[-``$$]
+T0
+  (AApplication
+     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
+      T0
+        (AMany
+           (AMSimple
+              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]))]
+     (AOSym "-"))
+=========================================
+-`` -``$$ -``$$
+-``-``$$-``$$
+T0
+  (AApplication
+     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
+      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+     (AOSym "-"))
+=========================================
+-``-``$$ -``$$
+-``-``$$-``$$
+T0
+  (AApplication
+     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
+      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+     (AOSym "-"))
+=========================================
+[$$``-][$$``-]``-
+[$$``-][$$``-]``-
+T0
+  (AApplication
+     [T0
+        (AMany
+           (AMSimple
+              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))])),
+      T0
+        (AMany
+           (AMSimple
+              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]))]
+     (AOSym "-"))
+=========================================
+$$``- [$$``-] ``-
+$$``-[$$``-]``-
+T0
+  (AApplication
+     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
+      T0
+        (AMany
+           (AMSimple
+              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]))]
+     (AOSym "-"))
+=========================================
+[$$``-] $$``- ``-
+[$$``-]$$``-``-
+T0
+  (AApplication
+     [T0
+        (AMany
+           (AMSimple
+              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))])),
+      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+     (AOSym "-"))
+=========================================
+[$$``-] $$``-``-
+[$$``-]$$``-``-
+T0
+  (AApplication
+     [T0
+        (AMany
+           (AMSimple
+              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))])),
+      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+     (AOSym "-"))
+=========================================
+$$``- $$``- ``-
+$$``-$$``-``-
+T0
+  (AApplication
+     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
+      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+     (AOSym "-"))
+=========================================
+$$``- $$``-``-
+$$``-$$``-``-
+T0
+  (AApplication
+     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
+      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+     (AOSym "-"))
+=========================================
+$-$-$`children
+ExLeftRec
+  (ExLeftRec
+     (ExLeftRec (ExRef "") (LrrInfix (OpSymbolic "-") [] [ExRef ""]))
+     (LrrInfix (OpSymbolic "-") [] [ExRef ""]))
+  (LrrPostfix [] (OpAlphabetic "children") [])
+$-$-$`children
+T0
+  (AApplication
+     [T0
+        (AApplication
+           [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
+            T0 (ARef "")]
+           (AOSym "-"))]
+     (AOAlpha "children"))
+=========================================
+$1-$2-$3
+ExLeftRec
+  (ExLeftRec (ExRef "1") (LrrInfix (OpSymbolic "-") [] [ExRef "2"]))
+  (LrrInfix (OpSymbolic "-") [] [ExRef "3"])
+$1-$2-$3
+T0
+  (AApplication
+     [T0 (AApplication [T0 (ARef "1"), T0 (ARef "2")] (AOSym "-")),
+      T0 (ARef "3")]
+     (AOSym "-"))
+=========================================
+$1-$2$3``-
+ExLeftRec
+  (ExLeftRec (ExRef "1") (LrrInfix (OpSymbolic "-") [] [ExRef "2"]))
+  (LrrPostfix [ExRef "3"] (OpSymbolic "-") [])
+$1-$2$3``-
+T0
+  (AApplication
+     [T0 (AApplication [T0 (ARef "1"), T0 (ARef "2")] (AOSym "-")),
+      T0 (ARef "3")]
+     (AOSym "-"))
+=========================================
+$1-$2`-
+ExLeftRec
+  (ExLeftRec (ExRef "1") (LrrInfix (OpSymbolic "-") [] [ExRef "2"]))
+  (LrrPostfix [] (OpSymbolic "-") [])
+$1-$2`-
+T0
+  (AApplication
+     [T0 (AApplication [T0 (ARef "1"), T0 (ARef "2")] (AOSym "-"))]
+     (AOSym "-"))
+=========================================
+$`[_-$a@x,_+$b@y,_`find`$c@z,_+$+//@+//@]
+ExLeftRec (ExRef "")
+  (LrrPostfix []
+     (OpComposed '[' ','
+        [ExLeftRec ExSlot
+           (LrrInfix (OpSymbolic "-") []
+              [ExNamed (ExRef "a") (Name '@' Nothing "x" Nothing)]),
+         ExLeftRec ExSlot
+           (LrrInfix (OpSymbolic "+") []
+              [ExNamed (ExRef "b") (Name '@' Nothing "y" Nothing)]),
+         ExLeftRec ExSlot
+           (LrrInfix (OpAlphabetic "find") []
+              [ExNamed (ExRef "c") (Name '@' Nothing "z" Nothing)]),
+         ExLeftRec
+           (ExLeftRec
+              (ExLeftRec ExSlot (LrrInfix (OpSymbolic "+") [] [ExRef ""]))
+              (LrrInfix (OpSymbolic "+") []
+                 [ExNamed (ExSelector '/' "") (Name '@' Nothing "" Nothing)]))
+           (LrrInfix (OpSymbolic "+") []
+              [ExNamed (ExSelector '/' "") (Name '@' Nothing "" Nothing)])])
+     [])
+$`[_-$a@x,_+$b@y,_`find`$c@z,_+$+//@+//@]
+T0
+  (AApplication [T0 (ARef "")]
+     (AOMany
+        (AMSimple
+           [T0
+              (AApplication [T0 ASlot, T0 (ABind (T0 (ARef "a")) "x")]
+                 (AOSym "-")),
+            T0
+              (AApplication [T0 ASlot, T0 (ABind (T0 (ARef "b")) "y")]
+                 (AOSym "+")),
+            T0
+              (AApplication [T0 ASlot, T0 (ABind (T0 (ARef "c")) "z")]
+                 (AOAlpha "find")),
+            T0
+              (AApplication
+                 [T0
+                    (AApplication
+                       [T0 (AApplication [T0 ASlot, T0 (ARef "")] (AOSym "+")),
+                        T0 (ABind (T0 (ALiteral "")) "")]
+                       (AOSym "+")),
+                  T0 (ABind (T0 (ALiteral "")) "")]
+                 (AOSym "+"))])))
+=========================================
+$
+
+ExRef ""
+$
+T0 (ARef "")
+=========================================
+/div.menucardproduct/-[
+						/form/@formid ;
+						/.menucardproductname/@name ;
+						/.menucardproductdescription/@desc ;
+						/.productextradescription/@desc1 ;
+						/input[name=product]/@id_product ;
+						/input[name=menucat]/@id_menucat ;
+						/input[name=rest]/@id_rest ;
+						/div.menucardproductprice>a/@price ;
+						/div.menucardproductprice>a/@price_a_id ;
+]
+
+ExLeftRec (ExSelector '/' "div.menucardproduct")
+  (LrrInfix (OpSymbolic "-") []
+     [ExBlock '[' ';'
+        [ExNamed (ExSelector '/' "form")
+           (Name '@' Nothing "formid" Nothing),
+         ExNamed (ExSelector '/' ".menucardproductname")
+           (Name '@' Nothing "name" Nothing),
+         ExNamed (ExSelector '/' ".menucardproductdescription")
+           (Name '@' Nothing "desc" Nothing),
+         ExNamed (ExSelector '/' ".productextradescription")
+           (Name '@' Nothing "desc1" Nothing),
+         ExNamed (ExSelector '/' "input[name=product]")
+           (Name '@' Nothing "id_product" Nothing),
+         ExNamed (ExSelector '/' "input[name=menucat]")
+           (Name '@' Nothing "id_menucat" Nothing),
+         ExNamed (ExSelector '/' "input[name=rest]")
+           (Name '@' Nothing "id_rest" Nothing),
+         ExNamed (ExSelector '/' "div.menucardproductprice>a")
+           (Name '@' Nothing "price" Nothing),
+         ExNamed (ExSelector '/' "div.menucardproductprice>a")
+           (Name '@' Nothing "price_a_id" Nothing)]])
+/div.menucardproduct/-[/form/@formid;/.menucardproductname/@name;/.menucardproductdescription/@desc;/.productextradescription/@desc1;/input[name=product]/@id_product;/input[name=menucat]/@id_menucat;/input[name=rest]/@id_rest;/div.menucardproductprice>a/@price;/div.menucardproductprice>a/@price_a_id;]
+T0
+  (AApplication
+     [T0 (ALiteral "div.menucardproduct"),
+      T0
+        (AMany
+           (AMSimple
+              [T0 (ABind (T0 (ALiteral "form")) "formid"),
+               T0 (ABind (T0 (ALiteral ".menucardproductname")) "name"),
+               T0 (ABind (T0 (ALiteral ".menucardproductdescription")) "desc"),
+               T0 (ABind (T0 (ALiteral ".productextradescription")) "desc1"),
+               T0 (ABind (T0 (ALiteral "input[name=product]")) "id_product"),
+               T0 (ABind (T0 (ALiteral "input[name=menucat]")) "id_menucat"),
+               T0 (ABind (T0 (ALiteral "input[name=rest]")) "id_rest"),
+               T0 (ABind (T0 (ALiteral "div.menucardproductprice>a")) "price"),
+               T0
+                 (ABind (T0 (ALiteral "div.menucardproductprice>a"))
+                    "price_a_id")]))]
+     (AOSym "-"))
+=========================================
+    _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id-/.menucardcategoryheader/!@cat
+
+ExLeftRec
+  (ExLeftRec
+     (ExLeftRec
+        (ExLeftRec ExSlot
+           (LrrInfix (OpAlphabetic "closest") []
+              [ExSelector '/' "#imenucard>.menucardproducts.menucardproducts"]))
+        (LrrPostfix [] (OpAlphabetic "prev")
+           [Name '@' Nothing "cat_id" Nothing]))
+     (LrrInfix (OpSymbolic "-") []
+        [ExSelector '/' ".menucardcategoryheader"]))
+  (LrrGrouping [Name '@' Nothing "cat" Nothing])
+_`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id-/.menucardcategoryheader/!@cat
+T0
+  (ABind
+     (T0
+        (AApplication
+           [T0
+              (ABind
+                 (T0
+                    (AApplication
+                       [T0
+                          (AApplication
+                             [T0 ASlot,
+                              T0 (ALiteral "#imenucard>.menucardproducts.menucardproducts")]
+                             (AOAlpha "closest"))]
+                       (AOAlpha "prev")))
+                 "cat_id"),
+            T0 (ALiteral ".menucardcategoryheader")]
+           (AOSym "-")))
+     "cat")
+=========================================
+    _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id!-@cat/.menucardcategoryheader/!
+
+ExLeftRec
+  (ExLeftRec
+     (ExLeftRec
+        (ExLeftRec
+           (ExLeftRec ExSlot
+              (LrrInfix (OpAlphabetic "closest") []
+                 [ExSelector '/' "#imenucard>.menucardproducts.menucardproducts"]))
+           (LrrPostfix [] (OpAlphabetic "prev")
+              [Name '@' Nothing "cat_id" Nothing]))
+        (LrrGrouping []))
+     (LrrInfix (OpSymbolic "-") [Name '@' Nothing "cat" Nothing]
+        [ExSelector '/' ".menucardcategoryheader"]))
+  (LrrGrouping [])
+_`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id!-@cat/.menucardcategoryheader/!
+T0
+  (ABind
+     (T0
+        (AApplication
+           [T0
+              (ABind
+                 (T0
+                    (AApplication
+                       [T0
+                          (AApplication
+                             [T0 ASlot,
+                              T0 (ALiteral "#imenucard>.menucardproducts.menucardproducts")]
+                             (AOAlpha "closest"))]
+                       (AOAlpha "prev")))
+                 "cat_id"),
+            T0 (ALiteral ".menucardcategoryheader")]
+           (AOSym "-")))
+     "cat")
+=========================================
+[
+    _`closest`//`prev@cat_id-//@cat
+]
+
+ExBlock '[' ','
+  [ExLeftRec
+     (ExLeftRec
+        (ExLeftRec ExSlot
+           (LrrInfix (OpAlphabetic "closest") [] [ExSelector '/' ""]))
+        (LrrPostfix [] (OpAlphabetic "prev")
+           [Name '@' Nothing "cat_id" Nothing]))
+     (LrrInfix (OpSymbolic "-") []
+        [ExNamed (ExSelector '/' "") (Name '@' Nothing "cat" Nothing)])]
+[_`closest`//`prev@cat_id-//@cat]
+T0
+  (AMany
+     (AMSimple
+        [T0
+           (AApplication
+              [T0
+                 (ABind
+                    (T0
+                       (AApplication
+                          [T0
+                             (AApplication [T0 ASlot, T0 (ALiteral "")] (AOAlpha "closest"))]
+                          (AOAlpha "prev")))
+                    "cat_id"),
+               T0 (ABind (T0 (ALiteral "")) "cat")]
+              (AOSym "-"))]))
+=========================================
+/div.menucardproduct/`[
+    _`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,
+    _-[
+						/form/@formid ;
+						/.menucardproductname/@name ;
+						/.menucardproductdescription/@desc ;
+						/.productextradescription/@desc1 ;
+						/input[name=product]/@id_product ;
+						/input[name=menucat]/@id_menucat ;
+						/input[name=rest]/@id_rest ;
+						/div.menucardproductprice>a/@price ;
+						/div.menucardproductprice>a/@price_a_id ;
+    ]
+]
+
+ExLeftRec (ExSelector '/' "div.menucardproduct")
+  (LrrPostfix []
+     (OpComposed '[' ','
+        [ExLeftRec
+           (ExLeftRec
+              (ExLeftRec
+                 (ExLeftRec ExSlot
+                    (LrrInfix (OpAlphabetic "closest")
+                       [Name '@' Nothing "cat_prev" Nothing]
+                       [ExNamed
+                          (ExSelector '/' "#imenucard>.menucardproducts.menucardproducts")
+                          (Name '@' Nothing "wtf" Nothing)]))
+                 (LrrPostfix [] (OpAlphabetic "prev")
+                    [Name '@' Nothing "cat_id" Nothing]))
+              (LrrInfix (OpSymbolic "-") []
+                 [ExSelector '/' ".menucardcategoryheader"]))
+           (LrrGrouping [Name '@' Nothing "cat" Nothing]),
+         ExLeftRec ExSlot
+           (LrrInfix (OpSymbolic "-") []
+              [ExBlock '[' ';'
+                 [ExNamed (ExSelector '/' "form")
+                    (Name '@' Nothing "formid" Nothing),
+                  ExNamed (ExSelector '/' ".menucardproductname")
+                    (Name '@' Nothing "name" Nothing),
+                  ExNamed (ExSelector '/' ".menucardproductdescription")
+                    (Name '@' Nothing "desc" Nothing),
+                  ExNamed (ExSelector '/' ".productextradescription")
+                    (Name '@' Nothing "desc1" Nothing),
+                  ExNamed (ExSelector '/' "input[name=product]")
+                    (Name '@' Nothing "id_product" Nothing),
+                  ExNamed (ExSelector '/' "input[name=menucat]")
+                    (Name '@' Nothing "id_menucat" Nothing),
+                  ExNamed (ExSelector '/' "input[name=rest]")
+                    (Name '@' Nothing "id_rest" Nothing),
+                  ExNamed (ExSelector '/' "div.menucardproductprice>a")
+                    (Name '@' Nothing "price" Nothing),
+                  ExNamed (ExSelector '/' "div.menucardproductprice>a")
+                    (Name '@' Nothing "price_a_id" Nothing)]])])
+     [])
+/div.menucardproduct/`[_`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,_-[/form/@formid;/.menucardproductname/@name;/.menucardproductdescription/@desc;/.productextradescription/@desc1;/input[name=product]/@id_product;/input[name=menucat]/@id_menucat;/input[name=rest]/@id_rest;/div.menucardproductprice>a/@price;/div.menucardproductprice>a/@price_a_id;]]
+T0
+  (AApplication [T0 (ALiteral "div.menucardproduct")]
+     (AOMany
+        (AMSimple
+           [T0
+              (ABind
+                 (T0
+                    (AApplication
+                       [T0
+                          (ABind
+                             (T0
+                                (AApplication
+                                   [T0
+                                      (ABind
+                                         (T0
+                                            (AApplication
+                                               [T0 ASlot,
+                                                T0
+                                                  (ABind
+                                                     (T0
+                                                        (ALiteral
+                                                           "#imenucard>.menucardproducts.menucardproducts"))
+                                                     "wtf")]
+                                               (AOAlpha "closest")))
+                                         "cat_prev")]
+                                   (AOAlpha "prev")))
+                             "cat_id"),
+                        T0 (ALiteral ".menucardcategoryheader")]
+                       (AOSym "-")))
+                 "cat"),
+            T0
+              (AApplication
+                 [T0 ASlot,
+                  T0
+                    (AMany
+                       (AMSimple
+                          [T0 (ABind (T0 (ALiteral "form")) "formid"),
+                           T0 (ABind (T0 (ALiteral ".menucardproductname")) "name"),
+                           T0 (ABind (T0 (ALiteral ".menucardproductdescription")) "desc"),
+                           T0 (ABind (T0 (ALiteral ".productextradescription")) "desc1"),
+                           T0 (ABind (T0 (ALiteral "input[name=product]")) "id_product"),
+                           T0 (ABind (T0 (ALiteral "input[name=menucat]")) "id_menucat"),
+                           T0 (ABind (T0 (ALiteral "input[name=rest]")) "id_rest"),
+                           T0 (ABind (T0 (ALiteral "div.menucardproductprice>a")) "price"),
+                           T0
+                             (ABind (T0 (ALiteral "div.menucardproductprice>a"))
+                                "price_a_id")]))]
+                 (AOSym "-"))])))
+=========================================
+						/input/-[
+							_-/[name=product]/!@id_product ;
+							_-/[name=menucat]/!@id_menucat ;
+							_-/[name=rest]/!@id_rest ;
+						]
+
+ExLeftRec (ExSelector '/' "input")
+  (LrrInfix (OpSymbolic "-") []
+     [ExBlock '[' ';'
+        [ExLeftRec
+           (ExLeftRec ExSlot
+              (LrrInfix (OpSymbolic "-") [] [ExSelector '/' "[name=product]"]))
+           (LrrGrouping [Name '@' Nothing "id_product" Nothing]),
+         ExLeftRec
+           (ExLeftRec ExSlot
+              (LrrInfix (OpSymbolic "-") [] [ExSelector '/' "[name=menucat]"]))
+           (LrrGrouping [Name '@' Nothing "id_menucat" Nothing]),
+         ExLeftRec
+           (ExLeftRec ExSlot
+              (LrrInfix (OpSymbolic "-") [] [ExSelector '/' "[name=rest]"]))
+           (LrrGrouping [Name '@' Nothing "id_rest" Nothing])]])
+/input/-[_-/[name=product]/!@id_product;_-/[name=menucat]/!@id_menucat;_-/[name=rest]/!@id_rest;]
+T0
+  (AApplication
+     [T0 (ALiteral "input"),
+      T0
+        (AMany
+           (AMSimple
+              [T0
+                 (ABind
+                    (T0
+                       (AApplication [T0 ASlot, T0 (ALiteral "[name=product]")]
+                          (AOSym "-")))
+                    "id_product"),
+               T0
+                 (ABind
+                    (T0
+                       (AApplication [T0 ASlot, T0 (ALiteral "[name=menucat]")]
+                          (AOSym "-")))
+                    "id_menucat"),
+               T0
+                 (ABind
+                    (T0
+                       (AApplication [T0 ASlot, T0 (ALiteral "[name=rest]")] (AOSym "-")))
+                    "id_rest")]))]
+     (AOSym "-"))
+=========================================
+						/input/-[
+							/[name=product]/#id_product ;
+							/[name=menucat]/#id_menucat ;
+							/[name=rest]/#id_rest ;
+						]
+
+ExLeftRec (ExSelector '/' "input")
+  (LrrInfix (OpSymbolic "-") []
+     [ExBlock '[' ';'
+        [ExNamed (ExSelector '/' "[name=product]")
+           (Name '#' Nothing "id_product" Nothing),
+         ExNamed (ExSelector '/' "[name=menucat]")
+           (Name '#' Nothing "id_menucat" Nothing),
+         ExNamed (ExSelector '/' "[name=rest]")
+           (Name '#' Nothing "id_rest" Nothing)]])
+/input/-[/[name=product]/#id_product;/[name=menucat]/#id_menucat;/[name=rest]/#id_rest;]
+T0
+  (AApplication
+     [T0 (ALiteral "input"),
+      T0
+        (AMany
+           (AMSimple
+              [T0 (ALateBind (T0 (ALiteral "[name=product]")) "id_product"),
+               T0 (ALateBind (T0 (ALiteral "[name=menucat]")) "id_menucat"),
+               T0 (ALateBind (T0 (ALiteral "[name=rest]")) "id_rest")]))]
+     (AOSym "-"))
+=========================================
+						/input/-[
+							/[name=product]/!@id_product ;
+							/[name=menucat]/!@id_menucat ;
+							/[name=rest]/!@id_rest ;
+						]
+
+ExLeftRec (ExSelector '/' "input")
+  (LrrInfix (OpSymbolic "-") []
+     [ExBlock '[' ';'
+        [ExLeftRec (ExSelector '/' "[name=product]")
+           (LrrGrouping [Name '@' Nothing "id_product" Nothing]),
+         ExLeftRec (ExSelector '/' "[name=menucat]")
+           (LrrGrouping [Name '@' Nothing "id_menucat" Nothing]),
+         ExLeftRec (ExSelector '/' "[name=rest]")
+           (LrrGrouping [Name '@' Nothing "id_rest" Nothing])]])
+/input/-[/[name=product]/!@id_product;/[name=menucat]/!@id_menucat;/[name=rest]/!@id_rest;]
+T0
+  (AApplication
+     [T0 (ALiteral "input"),
+      T0
+        (AMany
+           (AMSimple
+              [T0 (ABind (T0 (ALiteral "[name=product]")) "id_product"),
+               T0 (ABind (T0 (ALiteral "[name=menucat]")) "id_menucat"),
+               T0 (ABind (T0 (ALiteral "[name=rest]")) "id_rest")]))]
+     (AOSym "-"))
+=========================================
+/div.menucardproduct/ `map` [_`[
+    _`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,
+    _-[
+						/form/#formid ;
+						/.menucardproductname/#name ;
+						/.menucardproductdescription/#desc ;
+						/.productextradescription/#desc1 ;
+						/input/!-[
+							/[name=product]/!@id_product ;
+							/[name=menucat]/!@id_menucat ;
+							/[name=rest]/!@id_rest ;
+						];
+						/div.menucardproductprice>a/#price#price_a_id ;
+    ]
+]]
+
+ExLeftRec (ExSelector '/' "div.menucardproduct")
+  (LrrInfix (OpAlphabetic "map") []
+     [ExBlock '[' ','
+        [ExLeftRec ExSlot
+           (LrrPostfix []
+              (OpComposed '[' ','
+                 [ExLeftRec
+                    (ExLeftRec
+                       (ExLeftRec
+                          (ExLeftRec ExSlot
+                             (LrrInfix (OpAlphabetic "closest")
+                                [Name '@' Nothing "cat_prev" Nothing]
+                                [ExNamed
+                                   (ExSelector '/' "#imenucard>.menucardproducts.menucardproducts")
+                                   (Name '@' Nothing "wtf" Nothing)]))
+                          (LrrPostfix [] (OpAlphabetic "prev")
+                             [Name '@' Nothing "cat_id" Nothing]))
+                       (LrrInfix (OpSymbolic "-") []
+                          [ExSelector '/' ".menucardcategoryheader"]))
+                    (LrrGrouping [Name '@' Nothing "cat" Nothing]),
+                  ExLeftRec ExSlot
+                    (LrrInfix (OpSymbolic "-") []
+                       [ExBlock '[' ';'
+                          [ExNamed (ExSelector '/' "form")
+                             (Name '#' Nothing "formid" Nothing),
+                           ExNamed (ExSelector '/' ".menucardproductname")
+                             (Name '#' Nothing "name" Nothing),
+                           ExNamed (ExSelector '/' ".menucardproductdescription")
+                             (Name '#' Nothing "desc" Nothing),
+                           ExNamed (ExSelector '/' ".productextradescription")
+                             (Name '#' Nothing "desc1" Nothing),
+                           ExLeftRec (ExLeftRec (ExSelector '/' "input") (LrrGrouping []))
+                             (LrrInfix (OpSymbolic "-") []
+                                [ExBlock '[' ';'
+                                   [ExLeftRec (ExSelector '/' "[name=product]")
+                                      (LrrGrouping [Name '@' Nothing "id_product" Nothing]),
+                                    ExLeftRec (ExSelector '/' "[name=menucat]")
+                                      (LrrGrouping [Name '@' Nothing "id_menucat" Nothing]),
+                                    ExLeftRec (ExSelector '/' "[name=rest]")
+                                      (LrrGrouping [Name '@' Nothing "id_rest" Nothing])]]),
+                           ExNamed
+                             (ExNamed (ExSelector '/' "div.menucardproductprice>a")
+                                (Name '#' Nothing "price" Nothing))
+                             (Name '#' Nothing "price_a_id" Nothing)]])])
+              [])]])
+/div.menucardproduct/`map`[_`[_`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,_-[/form/#formid;/.menucardproductname/#name;/.menucardproductdescription/#desc;/.productextradescription/#desc1;/input/!-[/[name=product]/!@id_product;/[name=menucat]/!@id_menucat;/[name=rest]/!@id_rest;];/div.menucardproductprice>a/#price#price_a_id;]]]
+T0
+  (AApplication
+     [T0 (ALiteral "div.menucardproduct"),
+      T0
+        (AMany
+           (AMSimple
+              [T0
+                 (AApplication [T0 ASlot]
+                    (AOMany
+                       (AMSimple
+                          [T0
+                             (ABind
+                                (T0
+                                   (AApplication
+                                      [T0
+                                         (ABind
+                                            (T0
+                                               (AApplication
+                                                  [T0
+                                                     (ABind
+                                                        (T0
+                                                           (AApplication
+                                                              [T0 ASlot,
+                                                               T0
+                                                                 (ABind
+                                                                    (T0
+                                                                       (ALiteral
+                                                                          "#imenucard>.menucardproducts.menucardproducts"))
+                                                                    "wtf")]
+                                                              (AOAlpha "closest")))
+                                                        "cat_prev")]
+                                                  (AOAlpha "prev")))
+                                            "cat_id"),
+                                       T0 (ALiteral ".menucardcategoryheader")]
+                                      (AOSym "-")))
+                                "cat"),
+                           T0
+                             (AApplication
+                                [T0 ASlot,
+                                 T0
+                                   (AMany
+                                      (AMSimple
+                                         [T0 (ALateBind (T0 (ALiteral "form")) "formid"),
+                                          T0
+                                            (ALateBind (T0 (ALiteral ".menucardproductname"))
+                                               "name"),
+                                          T0
+                                            (ALateBind (T0 (ALiteral ".menucardproductdescription"))
+                                               "desc"),
+                                          T0
+                                            (ALateBind (T0 (ALiteral ".productextradescription"))
+                                               "desc1"),
+                                          T0
+                                            (AApplication
+                                               [T0 (ALiteral "input"),
+                                                T0
+                                                  (AMany
+                                                     (AMSimple
+                                                        [T0
+                                                           (ABind (T0 (ALiteral "[name=product]"))
+                                                              "id_product"),
+                                                         T0
+                                                           (ABind (T0 (ALiteral "[name=menucat]"))
+                                                              "id_menucat"),
+                                                         T0
+                                                           (ABind (T0 (ALiteral "[name=rest]"))
+                                                              "id_rest")]))]
+                                               (AOSym "-")),
+                                          T0
+                                            (ALateBind
+                                               (T0
+                                                  (ALateBind
+                                                     (T0 (ALiteral "div.menucardproductprice>a"))
+                                                     "price"))
+                                               "price_a_id")]))]
+                                (AOSym "-"))])))]))]
+     (AOAlpha "map"))
+=========================================
+/div.menucardproductprice>a/`[ _`html#price, _`id#price_a_id ]
+
+ExLeftRec (ExSelector '/' "div.menucardproductprice>a")
+  (LrrPostfix []
+     (OpComposed '[' ','
+        [ExLeftRec ExSlot
+           (LrrPostfix [] (OpAlphabetic "html")
+              [Name '#' Nothing "price" Nothing]),
+         ExLeftRec ExSlot
+           (LrrPostfix [] (OpAlphabetic "id")
+              [Name '#' Nothing "price_a_id" Nothing])])
+     [])
+/div.menucardproductprice>a/`[_`html#price,_`id#price_a_id]
+T0
+  (AApplication [T0 (ALiteral "div.menucardproductprice>a")]
+     (AOMany
+        (AMSimple
+           [T0
+              (ALateBind (T0 (AApplication [T0 ASlot] (AOAlpha "html")))
+                 "price"),
+            T0
+              (ALateBind (T0 (AApplication [T0 ASlot] (AOAlpha "id")))
+                 "price_a_id")])))
+=========================================
+/div.menucardproductprice>a/#price^html#price_a_id^id
+
+ExNamed
+  (ExNamed (ExSelector '/' "div.menucardproductprice>a")
+     (Name '#' Nothing "price" (Just "html")))
+  (Name '#' Nothing "price_a_id" (Just "id"))
+/div.menucardproductprice>a/#price^html#price_a_id^id
+T0
+  (AExtract
+     (T0
+        (ALateBind
+           (T0
+              (AExtract
+                 (T0
+                    (ALateBind (T0 (ALiteral "div.menucardproductprice>a")) "price"))
+                 "html"
+                 "price"))
+           "price_a_id"))
+     "id"
+     "price_a_id")
+=========================================
+/div.menucardproductprice>a/#html:price#id:price_a_id
+
+ExNamed
+  (ExNamed (ExSelector '/' "div.menucardproductprice>a")
+     (Name '#' (Just "html") "price" Nothing))
+  (Name '#' (Just "id") "price_a_id" Nothing)
+/div.menucardproductprice>a/#html:price#id:price_a_id
+T0
+  (AExtract
+     (T0
+        (ALateBind
+           (T0
+              (AExtract
+                 (T0
+                    (ALateBind (T0 (ALiteral "div.menucardproductprice>a")) "price"))
+                 "html"
+                 "price"))
+           "price_a_id"))
+     "id"
+     "price_a_id")
+=========================================
+/div.menucardproductprice>a/[ `html#price, `id#price_a_id ]
+
+ExLeftRec (ExSelector '/' "div.menucardproductprice>a")
+  (LrrPostfix []
+     (OpComposed '[' ','
+        [ExCurriedLeft (OpAlphabetic "html")
+           [Name '#' Nothing "price" Nothing]
+           [],
+         ExCurriedLeft (OpAlphabetic "id")
+           [Name '#' Nothing "price_a_id" Nothing]
+           []])
+     [])
+/div.menucardproductprice>a/[`html#price,`id#price_a_id]
+T0
+  (AApplication [T0 (ALiteral "div.menucardproductprice>a")]
+     (AOMany
+        (AMSimple
+           [T0
+              (ALateBind (T0 (AApplication [T0 ASlot] (AOAlpha "html")))
+                 "price"),
+            T0
+              (ALateBind (T0 (AApplication [T0 ASlot] (AOAlpha "id")))
+                 "price_a_id")])))
+=========================================
+/a/{`aid}@sss
+
+ExLeftRec (ExSelector '/' "a")
+  (LrrPostfix []
+     (OpComposed '{' ',' [ExCurriedLeft (OpAlphabetic "aid") [] []])
+     [Name '@' Nothing "sss" Nothing])
+/a/{`aid}@sss
+T0
+  (ABind
+     (T0
+        (AApplication [T0 (ALiteral "a")]
+           (AOMany
+              (AMAggeregate [T0 (AApplication [T0 ASlot] (AOAlpha "aid"))]))))
+     "sss")
+=========================================
+/div.menucardproduct/ {
+    `closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,
+    -[
+						/form/#formid ;
+						/.menucardproductname/#name ;
+						/.menucardproductdescription/#desc ;
+						/.productextradescription/#desc1 ;
+						/input/!-[
+							/[name=product]/!@id_product ;
+							/[name=menucat]/!@id_menucat ;
+							/[name=rest]/!@id_rest ;
+						];
+						/div.menucardproductprice>a/#price#price_a_id ;
+    ]
+}
+
+ExLeftRec (ExSelector '/' "div.menucardproduct")
+  (LrrPostfix []
+     (OpComposed '{' ','
+        [ExLeftRec
+           (ExLeftRec
+              (ExLeftRec
+                 (ExCurriedLeft (OpAlphabetic "closest")
+                    [Name '@' Nothing "cat_prev" Nothing]
+                    [ExNamed
+                       (ExSelector '/' "#imenucard>.menucardproducts.menucardproducts")
+                       (Name '@' Nothing "wtf" Nothing)])
+                 (LrrPostfix [] (OpAlphabetic "prev")
+                    [Name '@' Nothing "cat_id" Nothing]))
+              (LrrInfix (OpSymbolic "-") []
+                 [ExSelector '/' ".menucardcategoryheader"]))
+           (LrrGrouping [Name '@' Nothing "cat" Nothing]),
+         ExCurriedLeft (OpSymbolic "-") []
+           [ExBlock '[' ';'
+              [ExNamed (ExSelector '/' "form")
+                 (Name '#' Nothing "formid" Nothing),
+               ExNamed (ExSelector '/' ".menucardproductname")
+                 (Name '#' Nothing "name" Nothing),
+               ExNamed (ExSelector '/' ".menucardproductdescription")
+                 (Name '#' Nothing "desc" Nothing),
+               ExNamed (ExSelector '/' ".productextradescription")
+                 (Name '#' Nothing "desc1" Nothing),
+               ExLeftRec (ExLeftRec (ExSelector '/' "input") (LrrGrouping []))
+                 (LrrInfix (OpSymbolic "-") []
+                    [ExBlock '[' ';'
+                       [ExLeftRec (ExSelector '/' "[name=product]")
+                          (LrrGrouping [Name '@' Nothing "id_product" Nothing]),
+                        ExLeftRec (ExSelector '/' "[name=menucat]")
+                          (LrrGrouping [Name '@' Nothing "id_menucat" Nothing]),
+                        ExLeftRec (ExSelector '/' "[name=rest]")
+                          (LrrGrouping [Name '@' Nothing "id_rest" Nothing])]]),
+               ExNamed
+                 (ExNamed (ExSelector '/' "div.menucardproductprice>a")
+                    (Name '#' Nothing "price" Nothing))
+                 (Name '#' Nothing "price_a_id" Nothing)]]])
+     [])
+/div.menucardproduct/{`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,-[/form/#formid;/.menucardproductname/#name;/.menucardproductdescription/#desc;/.productextradescription/#desc1;/input/!-[/[name=product]/!@id_product;/[name=menucat]/!@id_menucat;/[name=rest]/!@id_rest;];/div.menucardproductprice>a/#price#price_a_id;]}
+T0
+  (AApplication [T0 (ALiteral "div.menucardproduct")]
+     (AOMany
+        (AMAggeregate
+           [T0
+              (ABind
+                 (T0
+                    (AApplication
+                       [T0
+                          (ABind
+                             (T0
+                                (AApplication
+                                   [T0
+                                      (ABind
+                                         (T0
+                                            (AApplication
+                                               [T0 ASlot,
+                                                T0
+                                                  (ABind
+                                                     (T0
+                                                        (ALiteral
+                                                           "#imenucard>.menucardproducts.menucardproducts"))
+                                                     "wtf")]
+                                               (AOAlpha "closest")))
+                                         "cat_prev")]
+                                   (AOAlpha "prev")))
+                             "cat_id"),
+                        T0 (ALiteral ".menucardcategoryheader")]
+                       (AOSym "-")))
+                 "cat"),
+            T0
+              (AApplication
+                 [T0 ASlot,
+                  T0
+                    (AMany
+                       (AMSimple
+                          [T0 (ALateBind (T0 (ALiteral "form")) "formid"),
+                           T0 (ALateBind (T0 (ALiteral ".menucardproductname")) "name"),
+                           T0
+                             (ALateBind (T0 (ALiteral ".menucardproductdescription")) "desc"),
+                           T0 (ALateBind (T0 (ALiteral ".productextradescription")) "desc1"),
+                           T0
+                             (AApplication
+                                [T0 (ALiteral "input"),
+                                 T0
+                                   (AMany
+                                      (AMSimple
+                                         [T0 (ABind (T0 (ALiteral "[name=product]")) "id_product"),
+                                          T0 (ABind (T0 (ALiteral "[name=menucat]")) "id_menucat"),
+                                          T0 (ABind (T0 (ALiteral "[name=rest]")) "id_rest")]))]
+                                (AOSym "-")),
+                           T0
+                             (ALateBind
+                                (T0
+                                   (ALateBind (T0 (ALiteral "div.menucardproductprice>a")) "price"))
+                                "price_a_id")]))]
+                 (AOSym "-"))])))
+*******
+DONE!!!
+*******

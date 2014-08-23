@@ -61,10 +61,10 @@ data ASTAttachment
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
 nAA = AA {}
 
-class (Typeable a, Data a) => ASTd a
-instance ASTd ()
-instance ASTd AA
-type family ASTd a => AST a :: *
+data Taggable t a = T0 a | T1 t a
+	deriving (Eq,Read,Show,Ord,Typeable,Data)
+
+type AST f = Taggable AA (ASTExpr f)
 
 data ASTExpr f
 	= ALiteral String
@@ -76,13 +76,16 @@ data ASTExpr f
 	| AExtract (AST f) String String
 	| ASlot
 	| AMany (ASTMany f)
+	deriving (Eq,Read,Show,Ord,Typeable,Data)
 data ASTOp f
 	= AOSym String
 	| AOAlpha String
 	| AOMany (ASTMany f)
+	deriving (Eq,Read,Show,Ord,Typeable,Data)
 data ASTMany f
 	= AMSimple [AST f]
 	| AMAggeregate [AST f]
+	deriving (Eq,Read,Show,Ord,Typeable,Data)
 
 -- TODO : Type check
 -- TODO : eliminate left grouping
@@ -100,13 +103,13 @@ simplify0 = everywhere' $ mkT $ \case
 -- jsx :: JGenContext -> Expr -> ([JStat],Expr)
 -- jx :: JGenContext -> Expr -> JExpr
 
-type AST0 = AST ()
+type AST0 = AST AA
 parseTreeToAST::Expr -> AST0
 parseTreeToAST = \case
-	ExSelector _ s -> ALiteral s
-	ExRef s -> ARef s
-	ExSlot -> ASlot
-	ExBlock k _ xs -> AMany $ fMany k $ selfs xs
+	ExSelector _ s -> T0 $ ALiteral s
+	ExRef s -> T0 $ ARef s
+	ExSlot -> T0 $ ASlot
+	ExBlock k _ xs -> T0 $ AMany $ fMany k $ selfs xs
 	ExLeftRec x lrr -> case lrr of
 		LrrInfix op ns xs -> fNmdApp (x:xs) op ns
 		LrrPostfix xs op ns -> fNmdApp (x:xs) op ns
@@ -116,14 +119,14 @@ parseTreeToAST = \case
 	ExNamed x n -> fName (self x) n
 	where
 	-- aa = (,nAA)
-	fName ast (Name ch l n r) = f2 $ f1 (f0 ast n)
+	fName ast (Name ch l n r) = f2 $ f1 (T0 $ f0 ast n)
 		where
 		f0 = case ch of
 			'@' -> ABind
 			'#' -> ALateBind
-		[f1,f2] = map (maybe id (\f a->AExtract a f n)) [l,r]
+		[f1,f2] = map (maybe id (\f a->T0 $ AExtract a f n)) [l,r]
 			
-	fNmdApp xs op ns = fNs ns $ AApplication (selfs xs) (fOp op)
+	fNmdApp xs op ns = fNs ns $ T0 $ AApplication (selfs xs) (fOp op)
 	fNs::[Name]->AST0->AST0
 	fNs ns ast = foldl fName ast ns
 	self = parseTreeToAST
@@ -138,48 +141,6 @@ parseTreeToAST = \case
 
 -- Pattern Match only on the AST type
 -- Build AST as simply as possible first then do transformation on it.
-
-type instance AST () = ASTExpr ()
-type instance AST AA = (AA, ASTExpr AA)
--- type instance AST a = (a, ASTExpr a)
--- TODO:: rewrite with codeDup quasiquoter
-deriving instance Show (ASTMany ())
-deriving instance Show (ASTOp ())
-deriving instance Show (ASTExpr ())
-deriving instance Read (ASTMany ())
-deriving instance Read (ASTOp ())
-deriving instance Read (ASTExpr ())
-deriving instance Eq (ASTMany ())
-deriving instance Eq (ASTOp ())
-deriving instance Eq (ASTExpr ())
-deriving instance Ord (ASTMany ())
-deriving instance Ord (ASTOp ())
-deriving instance Ord (ASTExpr ())
-deriving instance Show (ASTMany AA)
-deriving instance Show (ASTOp AA)
-deriving instance Show (ASTExpr AA)
-deriving instance Read (ASTMany AA)
-deriving instance Read (ASTOp AA)
-deriving instance Read (ASTExpr AA)
-deriving instance Eq (ASTMany AA)
-deriving instance Eq (ASTOp AA)
-deriving instance Eq (ASTExpr AA)
-deriving instance Ord (ASTMany AA)
-deriving instance Ord (ASTOp AA)
-deriving instance Ord (ASTExpr AA)
-
-deriving instance Typeable ASTMany
-deriving instance Typeable ASTOp
-deriving instance Typeable ASTExpr
-deriving instance (ASTd a) => Data (ASTMany a)
-deriving instance (ASTd a) => Data (ASTOp a)
-deriving instance (ASTd a) => Data (ASTExpr a)
--- deriving instance Data (ASTMany ())
--- deriving instance Data (ASTOp ())
--- deriving instance Data (ASTExpr ())
--- deriving instance Data (ASTMany AA)
--- deriving instance Data (ASTOp AA)
--- deriving instance Data (ASTExpr AA)
 
 -----------------------------------------------------------------
 {-
