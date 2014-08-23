@@ -11,7 +11,8 @@ import DSL.Scrapoo.Syntax
 import System.Environment
 import Text.Groom
 import Data.Typeable
-import Data.Data
+-- import Data.Data
+import Data.Generics
 import Language.Javascript.JMacro
 import Data.Monoid
 import Text.PrettyPrint.Leijen.Text (Doc)
@@ -54,11 +55,46 @@ data JGenContext = C {
 		cNames::SymbolTable
 	}
 
+type AA = ASTAttachment
+data ASTAttachment
+	= AA {}
+	deriving (Eq,Read,Show,Ord,Typeable,Data)
+nAA = AA {}
+
+class (Typeable a, Data a) => ASTd a
+instance ASTd ()
+instance ASTd AA
+type family ASTd a => AST a :: *
+
+data ASTExpr f
+	= ALiteral String
+	| AApplication [AST f] (ASTOp f)
+	| ALeftGrouping (AST f)
+	| ARef String
+	| ABind (AST f) String
+	| ALateBind (AST f) String
+	| AExtract (AST f) String String
+	| ASlot
+	| AMany (ASTMany f)
+data ASTOp f
+	= AOSym String
+	| AOAlpha String
+	| AOMany (ASTMany f)
+data ASTMany f
+	= AMSimple [AST f]
+	| AMAggeregate [AST f]
+
+-- TODO : Type check
 -- TODO : eliminate left grouping
--- TODO : eliminate left grouping
+-- TODO : (?) eliminate {}
+-- TODO : (?) eliminate Bind and LateBind
+
+--typecheck::AST () -> AST AA
+--typecheck = every
 
 simplify0::AST () -> AST ()
-simplify0 = 
+simplify0 = everywhere' $ mkT $ \case
+	x -> x::AST ()
 
 -- jsGen :: JGenContext -> Expr -> JStat
 -- jsx :: JGenContext -> Expr -> ([JStat],Expr)
@@ -102,17 +138,11 @@ parseTreeToAST = \case
 
 -- Pattern Match only on the AST type
 -- Build AST as simply as possible first then do transformation on it.
-type AA = ASTAttachment
-data ASTAttachment
-	= AA {}
-	deriving (Eq,Read,Show,Ord,Typeable,Data)
-nAA = AA {}
 
-type family AST a :: *
 type instance AST () = ASTExpr ()
-type instance AST ASTAttachment = (AA, ASTExpr AA)
+type instance AST AA = (AA, ASTExpr AA)
 -- type instance AST a = (a, ASTExpr a)
--- TODO:: generate derivings below with TH
+-- TODO:: rewrite with codeDup quasiquoter
 deriving instance Show (ASTMany ())
 deriving instance Show (ASTOp ())
 deriving instance Show (ASTExpr ())
@@ -125,33 +155,31 @@ deriving instance Eq (ASTExpr ())
 deriving instance Ord (ASTMany ())
 deriving instance Ord (ASTOp ())
 deriving instance Ord (ASTExpr ())
+deriving instance Show (ASTMany AA)
+deriving instance Show (ASTOp AA)
+deriving instance Show (ASTExpr AA)
+deriving instance Read (ASTMany AA)
+deriving instance Read (ASTOp AA)
+deriving instance Read (ASTExpr AA)
+deriving instance Eq (ASTMany AA)
+deriving instance Eq (ASTOp AA)
+deriving instance Eq (ASTExpr AA)
+deriving instance Ord (ASTMany AA)
+deriving instance Ord (ASTOp AA)
+deriving instance Ord (ASTExpr AA)
+
 deriving instance Typeable ASTMany
 deriving instance Typeable ASTOp
 deriving instance Typeable ASTExpr
-deriving instance Data (ASTMany ())
-deriving instance Data (ASTOp ())
-deriving instance Data (ASTExpr ())
--- deriving instance Show (AST ())
-data ASTExpr f
-	= ALiteral String
-	| AApplication [AST f] (ASTOp f)
-	| ALeftGrouping (AST f)
-	| ARef String
-	| ABind (AST f) String
-	| ALateBind (AST f) String
-	| AExtract (AST f) String String
-	| ASlot
-	| AMany (ASTMany f)
---	deriving (Eq,Read,Show,Ord,Typeable,Data)
-data ASTOp f
-	= AOSym String
-	| AOAlpha String
-	| AOMany (ASTMany f)
---	deriving (Eq,Read,Show,Ord,Typeable,Data)
-data ASTMany f
-	= AMSimple [AST f]
-	| AMAggeregate [AST f]
---	deriving (Eq,Read,Show,Ord,Typeable,Data)
+deriving instance (ASTd a) => Data (ASTMany a)
+deriving instance (ASTd a) => Data (ASTOp a)
+deriving instance (ASTd a) => Data (ASTExpr a)
+-- deriving instance Data (ASTMany ())
+-- deriving instance Data (ASTOp ())
+-- deriving instance Data (ASTExpr ())
+-- deriving instance Data (ASTMany AA)
+-- deriving instance Data (ASTOp AA)
+-- deriving instance Data (ASTExpr AA)
 
 -----------------------------------------------------------------
 {-
