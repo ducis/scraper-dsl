@@ -97,7 +97,7 @@ data ASTExpr a
 data ASTOp a
 	= AOSym String
 	| AOAlpha String
-	| AOMany (ASTMany a)
+	| AOExpr (AST a) -- (ASTMany a)
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
 data ASTMany a
 	= AMSimple [AST a]
@@ -132,13 +132,16 @@ collectBindings = transform $ \self@(T1 aa x ) -> (`T1` x) $ (:aa) $
 		f = \case
 			AFBindings x -> x
 			_ -> []
-		collect added = AFBindings $ foldl merge added $ concat $ map (\(T1 aa _)->map f aa) $ children self
+		g = \case
+			T1 _ (AMany (AMAggeregate _)) -> []
+			T1 aa _->map f aa
+		collect added = AFBindings $ foldl merge added $ concat $ map g $ children self
 		--collect added = AFBindings $ foldl merge added $ map (\(T1 aa _)->[show $ length aa]) $ children self
 		--collect added = AFBindings [show $ length $ children self]
 	in case x of 
 		ABind x1 s -> collect [s]
-		AMany (AMAggeregate _) -> AFBindings []
-		AApplication _ (AOMany (AMAggeregate _)) -> AFBindings []
+		-- AMany (AMAggeregate _) -> AFBindings []
+		-- AApplication _ (AOExpr (AMAggeregate _)) -> AFBindings []
 		_ -> collect []
 
 markLeftmost = id -- transform $ \case (T1 a aa) -> case a of
@@ -164,7 +167,7 @@ parseTreeToAST = \case
 	ExSelector _ s -> T0 $ ASelector s
 	ExRef s -> T0 $ ARef s
 	ExSlot -> T0 $ ASlot
-	ExBlock k _ xs -> T0 $ AMany $ fMany k $ selfs xs
+	ExBlock k _ xs -> fMany k $ selfs xs
 	ExLeftRec x lrr -> case lrr of
 		LrrInfix op ns xs -> fNmdApp (x:xs) op ns
 		LrrPostfix xs op ns -> fNmdApp (x:xs) op ns
@@ -187,13 +190,13 @@ parseTreeToAST = \case
 	fNs ns ast = foldl fName ast ns
 	self = parseTreeToAST
 	selfs = map self
-	fMany = \case
+	fMany = ((T0 . AMany).). \case
 		'[' -> AMSimple
 		'{' -> AMAggeregate
 	fOp = \case
 		OpSymbolic s -> AOSym s 
 		OpAlphabetic s -> AOAlpha s
-		OpComposed k _ xs -> AOMany $ fMany k $ selfs xs
+		OpComposed k _ xs -> AOExpr $ fMany k $ selfs xs
 
 -- Pattern Match only on the AST type
 -- Build AST as simply as possible first then do transformation on it.

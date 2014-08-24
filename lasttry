@@ -423,10 +423,12 @@ ExLeftRec (ExRef "")
 $`[_`a]
 T1 [AFBindings []]
   (AApplication [T1 [AFBindings []] (ARef "")]
-     (AOMany
-        (AMSimple
-           [T1 [AFBindings []]
-              (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "a"))])))
+     (AOExpr
+        (T1 [AFBindings []]
+           (AMany
+              (AMSimple
+                 [T1 [AFBindings []]
+                    (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "a"))])))))
 =========================================
 $ $ ``+
 ExLeftRec (ExRef "") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
@@ -787,37 +789,39 @@ ExLeftRec (ExRef "")
 $`[_-$a@x,_+$b@y,_`find`$c@z,_+$+//@+//@]
 T1 [AFBindings ["", "", "x", "y", "z"]]
   (AApplication [T1 [AFBindings []] (ARef "")]
-     (AOMany
-        (AMSimple
-           [T1 [AFBindings ["x"]]
-              (AApplication
-                 [T1 [AFBindings []] ASlot,
-                  T1 [AFBindings ["x"]] (ABind (T1 [AFBindings []] (ARef "a")) "x")]
-                 (AOSym "-")),
-            T1 [AFBindings ["y"]]
-              (AApplication
-                 [T1 [AFBindings []] ASlot,
-                  T1 [AFBindings ["y"]] (ABind (T1 [AFBindings []] (ARef "b")) "y")]
-                 (AOSym "+")),
-            T1 [AFBindings ["z"]]
-              (AApplication
-                 [T1 [AFBindings []] ASlot,
-                  T1 [AFBindings ["z"]] (ABind (T1 [AFBindings []] (ARef "c")) "z")]
-                 (AOAlpha "find")),
-            T1 [AFBindings ["", ""]]
-              (AApplication
-                 [T1 [AFBindings [""]]
+     (AOExpr
+        (T1 [AFBindings ["", "", "x", "y", "z"]]
+           (AMany
+              (AMSimple
+                 [T1 [AFBindings ["x"]]
                     (AApplication
-                       [T1 [AFBindings []]
+                       [T1 [AFBindings []] ASlot,
+                        T1 [AFBindings ["x"]] (ABind (T1 [AFBindings []] (ARef "a")) "x")]
+                       (AOSym "-")),
+                  T1 [AFBindings ["y"]]
+                    (AApplication
+                       [T1 [AFBindings []] ASlot,
+                        T1 [AFBindings ["y"]] (ABind (T1 [AFBindings []] (ARef "b")) "y")]
+                       (AOSym "+")),
+                  T1 [AFBindings ["z"]]
+                    (AApplication
+                       [T1 [AFBindings []] ASlot,
+                        T1 [AFBindings ["z"]] (ABind (T1 [AFBindings []] (ARef "c")) "z")]
+                       (AOAlpha "find")),
+                  T1 [AFBindings ["", ""]]
+                    (AApplication
+                       [T1 [AFBindings [""]]
                           (AApplication
-                             [T1 [AFBindings []] ASlot, T1 [AFBindings []] (ARef "")]
+                             [T1 [AFBindings []]
+                                (AApplication
+                                   [T1 [AFBindings []] ASlot, T1 [AFBindings []] (ARef "")]
+                                   (AOSym "+")),
+                              T1 [AFBindings [""]]
+                                (ABind (T1 [AFBindings []] (ASelector "")) "")]
                              (AOSym "+")),
                         T1 [AFBindings [""]]
                           (ABind (T1 [AFBindings []] (ASelector "")) "")]
-                       (AOSym "+")),
-                  T1 [AFBindings [""]]
-                    (ABind (T1 [AFBindings []] (ASelector "")) "")]
-                 (AOSym "+"))])))
+                       (AOSym "+"))])))))
 =========================================
 $
 
@@ -1067,76 +1071,83 @@ T1
       "price_a_id", "wtf"]]
   (AApplication
      [T1 [AFBindings []] (ASelector "div.menucardproduct")]
-     (AOMany
-        (AMSimple
-           [T1 [AFBindings ["cat", "cat_id", "cat_prev", "wtf"]]
-              (ABind
-                 (T1 [AFBindings ["cat_id", "cat_prev", "wtf"]]
-                    (AApplication
-                       [T1 [AFBindings ["cat_id", "cat_prev", "wtf"]]
-                          (ABind
-                             (T1 [AFBindings ["cat_prev", "wtf"]]
-                                (AApplication
-                                   [T1 [AFBindings ["cat_prev", "wtf"]]
-                                      (ABind
-                                         (T1 [AFBindings ["wtf"]]
-                                            (AApplication
-                                               [T1 [AFBindings []] ASlot,
-                                                T1 [AFBindings ["wtf"]]
-                                                  (ABind
-                                                     (T1 [AFBindings []]
-                                                        (ASelector
-                                                           "#imenucard>.menucardproducts.menucardproducts"))
-                                                     "wtf")]
-                                               (AOAlpha "closest")))
-                                         "cat_prev")]
-                                   (AOAlpha "prev")))
-                             "cat_id"),
-                        T1 [AFBindings []] (ASelector ".menucardcategoryheader")]
-                       (AOSym "-")))
-                 "cat"),
-            T1
-              [AFBindings
-                 ["desc", "desc1", "formid", "id_menucat", "id_product", "id_rest",
-                  "name", "price", "price_a_id"]]
-              (AApplication
-                 [T1 [AFBindings []] ASlot,
+     (AOExpr
+        (T1
+           [AFBindings
+              ["cat", "cat_id", "cat_prev", "desc", "desc1", "formid",
+               "id_menucat", "id_product", "id_rest", "name", "price",
+               "price_a_id", "wtf"]]
+           (AMany
+              (AMSimple
+                 [T1 [AFBindings ["cat", "cat_id", "cat_prev", "wtf"]]
+                    (ABind
+                       (T1 [AFBindings ["cat_id", "cat_prev", "wtf"]]
+                          (AApplication
+                             [T1 [AFBindings ["cat_id", "cat_prev", "wtf"]]
+                                (ABind
+                                   (T1 [AFBindings ["cat_prev", "wtf"]]
+                                      (AApplication
+                                         [T1 [AFBindings ["cat_prev", "wtf"]]
+                                            (ABind
+                                               (T1 [AFBindings ["wtf"]]
+                                                  (AApplication
+                                                     [T1 [AFBindings []] ASlot,
+                                                      T1 [AFBindings ["wtf"]]
+                                                        (ABind
+                                                           (T1 [AFBindings []]
+                                                              (ASelector
+                                                                 "#imenucard>.menucardproducts.menucardproducts"))
+                                                           "wtf")]
+                                                     (AOAlpha "closest")))
+                                               "cat_prev")]
+                                         (AOAlpha "prev")))
+                                   "cat_id"),
+                              T1 [AFBindings []] (ASelector ".menucardcategoryheader")]
+                             (AOSym "-")))
+                       "cat"),
                   T1
                     [AFBindings
                        ["desc", "desc1", "formid", "id_menucat", "id_product", "id_rest",
                         "name", "price", "price_a_id"]]
-                    (AMany
-                       (AMSimple
-                          [T1 [AFBindings ["formid"]]
-                             (ABind (T1 [AFBindings []] (ASelector "form")) "formid"),
-                           T1 [AFBindings ["name"]]
-                             (ABind (T1 [AFBindings []] (ASelector ".menucardproductname"))
-                                "name"),
-                           T1 [AFBindings ["desc"]]
-                             (ABind
-                                (T1 [AFBindings []] (ASelector ".menucardproductdescription"))
-                                "desc"),
-                           T1 [AFBindings ["desc1"]]
-                             (ABind (T1 [AFBindings []] (ASelector ".productextradescription"))
-                                "desc1"),
-                           T1 [AFBindings ["id_product"]]
-                             (ABind (T1 [AFBindings []] (ASelector "input[name=product]"))
-                                "id_product"),
-                           T1 [AFBindings ["id_menucat"]]
-                             (ABind (T1 [AFBindings []] (ASelector "input[name=menucat]"))
-                                "id_menucat"),
-                           T1 [AFBindings ["id_rest"]]
-                             (ABind (T1 [AFBindings []] (ASelector "input[name=rest]"))
-                                "id_rest"),
-                           T1 [AFBindings ["price"]]
-                             (ABind
-                                (T1 [AFBindings []] (ASelector "div.menucardproductprice>a"))
-                                "price"),
-                           T1 [AFBindings ["price_a_id"]]
-                             (ABind
-                                (T1 [AFBindings []] (ASelector "div.menucardproductprice>a"))
-                                "price_a_id")]))]
-                 (AOSym "-"))])))
+                    (AApplication
+                       [T1 [AFBindings []] ASlot,
+                        T1
+                          [AFBindings
+                             ["desc", "desc1", "formid", "id_menucat", "id_product", "id_rest",
+                              "name", "price", "price_a_id"]]
+                          (AMany
+                             (AMSimple
+                                [T1 [AFBindings ["formid"]]
+                                   (ABind (T1 [AFBindings []] (ASelector "form")) "formid"),
+                                 T1 [AFBindings ["name"]]
+                                   (ABind (T1 [AFBindings []] (ASelector ".menucardproductname"))
+                                      "name"),
+                                 T1 [AFBindings ["desc"]]
+                                   (ABind
+                                      (T1 [AFBindings []] (ASelector ".menucardproductdescription"))
+                                      "desc"),
+                                 T1 [AFBindings ["desc1"]]
+                                   (ABind
+                                      (T1 [AFBindings []] (ASelector ".productextradescription"))
+                                      "desc1"),
+                                 T1 [AFBindings ["id_product"]]
+                                   (ABind (T1 [AFBindings []] (ASelector "input[name=product]"))
+                                      "id_product"),
+                                 T1 [AFBindings ["id_menucat"]]
+                                   (ABind (T1 [AFBindings []] (ASelector "input[name=menucat]"))
+                                      "id_menucat"),
+                                 T1 [AFBindings ["id_rest"]]
+                                   (ABind (T1 [AFBindings []] (ASelector "input[name=rest]"))
+                                      "id_rest"),
+                                 T1 [AFBindings ["price"]]
+                                   (ABind
+                                      (T1 [AFBindings []] (ASelector "div.menucardproductprice>a"))
+                                      "price"),
+                                 T1 [AFBindings ["price_a_id"]]
+                                   (ABind
+                                      (T1 [AFBindings []] (ASelector "div.menucardproductprice>a"))
+                                      "price_a_id")]))]
+                       (AOSym "-"))])))))
 =========================================
 						/input/-[
 							_-/[name=product]/!@id_product ;
@@ -1337,91 +1348,100 @@ T1
                     ["cat", "cat_id", "cat_prev", "id_menucat", "id_product",
                      "id_rest", "wtf"]]
                  (AApplication [T1 [AFBindings []] ASlot]
-                    (AOMany
-                       (AMSimple
-                          [T1 [AFBindings ["cat", "cat_id", "cat_prev", "wtf"]]
-                             (ABind
-                                (T1 [AFBindings ["cat_id", "cat_prev", "wtf"]]
-                                   (AApplication
-                                      [T1 [AFBindings ["cat_id", "cat_prev", "wtf"]]
-                                         (ABind
-                                            (T1 [AFBindings ["cat_prev", "wtf"]]
-                                               (AApplication
-                                                  [T1 [AFBindings ["cat_prev", "wtf"]]
-                                                     (ABind
-                                                        (T1 [AFBindings ["wtf"]]
-                                                           (AApplication
-                                                              [T1 [AFBindings []] ASlot,
-                                                               T1 [AFBindings ["wtf"]]
-                                                                 (ABind
-                                                                    (T1 [AFBindings []]
-                                                                       (ASelector
-                                                                          "#imenucard>.menucardproducts.menucardproducts"))
-                                                                    "wtf")]
-                                                              (AOAlpha "closest")))
-                                                        "cat_prev")]
-                                                  (AOAlpha "prev")))
-                                            "cat_id"),
-                                       T1 [AFBindings []] (ASelector ".menucardcategoryheader")]
-                                      (AOSym "-")))
-                                "cat"),
-                           T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
-                             (AApplication
-                                [T1 [AFBindings []] ASlot,
+                    (AOExpr
+                       (T1
+                          [AFBindings
+                             ["cat", "cat_id", "cat_prev", "id_menucat", "id_product",
+                              "id_rest", "wtf"]]
+                          (AMany
+                             (AMSimple
+                                [T1 [AFBindings ["cat", "cat_id", "cat_prev", "wtf"]]
+                                   (ABind
+                                      (T1 [AFBindings ["cat_id", "cat_prev", "wtf"]]
+                                         (AApplication
+                                            [T1 [AFBindings ["cat_id", "cat_prev", "wtf"]]
+                                               (ABind
+                                                  (T1 [AFBindings ["cat_prev", "wtf"]]
+                                                     (AApplication
+                                                        [T1 [AFBindings ["cat_prev", "wtf"]]
+                                                           (ABind
+                                                              (T1 [AFBindings ["wtf"]]
+                                                                 (AApplication
+                                                                    [T1 [AFBindings []] ASlot,
+                                                                     T1 [AFBindings ["wtf"]]
+                                                                       (ABind
+                                                                          (T1 [AFBindings []]
+                                                                             (ASelector
+                                                                                "#imenucard>.menucardproducts.menucardproducts"))
+                                                                          "wtf")]
+                                                                    (AOAlpha "closest")))
+                                                              "cat_prev")]
+                                                        (AOAlpha "prev")))
+                                                  "cat_id"),
+                                             T1 [AFBindings []]
+                                               (ASelector ".menucardcategoryheader")]
+                                            (AOSym "-")))
+                                      "cat"),
                                  T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
-                                   (AMany
-                                      (AMSimple
-                                         [T1 [AFBindings []]
-                                            (ALateBind (T1 [AFBindings []] (ASelector "form"))
-                                               "formid"),
-                                          T1 [AFBindings []]
-                                            (ALateBind
-                                               (T1 [AFBindings []]
-                                                  (ASelector ".menucardproductname"))
-                                               "name"),
-                                          T1 [AFBindings []]
-                                            (ALateBind
-                                               (T1 [AFBindings []]
-                                                  (ASelector ".menucardproductdescription"))
-                                               "desc"),
-                                          T1 [AFBindings []]
-                                            (ALateBind
-                                               (T1 [AFBindings []]
-                                                  (ASelector ".productextradescription"))
-                                               "desc1"),
-                                          T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
-                                            (AApplication
-                                               [T1 [AFBindings []] (ASelector "input"),
+                                   (AApplication
+                                      [T1 [AFBindings []] ASlot,
+                                       T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
+                                         (AMany
+                                            (AMSimple
+                                               [T1 [AFBindings []]
+                                                  (ALateBind (T1 [AFBindings []] (ASelector "form"))
+                                                     "formid"),
+                                                T1 [AFBindings []]
+                                                  (ALateBind
+                                                     (T1 [AFBindings []]
+                                                        (ASelector ".menucardproductname"))
+                                                     "name"),
+                                                T1 [AFBindings []]
+                                                  (ALateBind
+                                                     (T1 [AFBindings []]
+                                                        (ASelector ".menucardproductdescription"))
+                                                     "desc"),
+                                                T1 [AFBindings []]
+                                                  (ALateBind
+                                                     (T1 [AFBindings []]
+                                                        (ASelector ".productextradescription"))
+                                                     "desc1"),
                                                 T1
                                                   [AFBindings
                                                      ["id_menucat", "id_product", "id_rest"]]
-                                                  (AMany
-                                                     (AMSimple
-                                                        [T1 [AFBindings ["id_product"]]
-                                                           (ABind
-                                                              (T1 [AFBindings []]
-                                                                 (ASelector "[name=product]"))
-                                                              "id_product"),
-                                                         T1 [AFBindings ["id_menucat"]]
-                                                           (ABind
-                                                              (T1 [AFBindings []]
-                                                                 (ASelector "[name=menucat]"))
-                                                              "id_menucat"),
-                                                         T1 [AFBindings ["id_rest"]]
-                                                           (ABind
-                                                              (T1 [AFBindings []]
-                                                                 (ASelector "[name=rest]"))
-                                                              "id_rest")]))]
-                                               (AOSym "-")),
-                                          T1 [AFBindings []]
-                                            (ALateBind
-                                               (T1 [AFBindings []]
+                                                  (AApplication
+                                                     [T1 [AFBindings []] (ASelector "input"),
+                                                      T1
+                                                        [AFBindings
+                                                           ["id_menucat", "id_product", "id_rest"]]
+                                                        (AMany
+                                                           (AMSimple
+                                                              [T1 [AFBindings ["id_product"]]
+                                                                 (ABind
+                                                                    (T1 [AFBindings []]
+                                                                       (ASelector "[name=product]"))
+                                                                    "id_product"),
+                                                               T1 [AFBindings ["id_menucat"]]
+                                                                 (ABind
+                                                                    (T1 [AFBindings []]
+                                                                       (ASelector "[name=menucat]"))
+                                                                    "id_menucat"),
+                                                               T1 [AFBindings ["id_rest"]]
+                                                                 (ABind
+                                                                    (T1 [AFBindings []]
+                                                                       (ASelector "[name=rest]"))
+                                                                    "id_rest")]))]
+                                                     (AOSym "-")),
+                                                T1 [AFBindings []]
                                                   (ALateBind
                                                      (T1 [AFBindings []]
-                                                        (ASelector "div.menucardproductprice>a"))
-                                                     "price"))
-                                               "price_a_id")]))]
-                                (AOSym "-"))])))]))]
+                                                        (ALateBind
+                                                           (T1 [AFBindings []]
+                                                              (ASelector
+                                                                 "div.menucardproductprice>a"))
+                                                           "price"))
+                                                     "price_a_id")]))]
+                                      (AOSym "-"))])))))]))]
      (AOAlpha "map"))
 =========================================
 /div.menucardproductprice>a/`[ _`html#price, _`id#price_a_id ]
@@ -1440,18 +1460,20 @@ ExLeftRec (ExSelector '/' "div.menucardproductprice>a")
 T1 [AFBindings []]
   (AApplication
      [T1 [AFBindings []] (ASelector "div.menucardproductprice>a")]
-     (AOMany
-        (AMSimple
-           [T1 [AFBindings []]
-              (ALateBind
-                 (T1 [AFBindings []]
-                    (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "html")))
-                 "price"),
-            T1 [AFBindings []]
-              (ALateBind
-                 (T1 [AFBindings []]
-                    (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "id")))
-                 "price_a_id")])))
+     (AOExpr
+        (T1 [AFBindings []]
+           (AMany
+              (AMSimple
+                 [T1 [AFBindings []]
+                    (ALateBind
+                       (T1 [AFBindings []]
+                          (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "html")))
+                       "price"),
+                  T1 [AFBindings []]
+                    (ALateBind
+                       (T1 [AFBindings []]
+                          (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "id")))
+                       "price_a_id")])))))
 =========================================
 /div.menucardproductprice>a/#price^html#price_a_id^id
 
@@ -1515,18 +1537,20 @@ ExLeftRec (ExSelector '/' "div.menucardproductprice>a")
 T1 [AFBindings []]
   (AApplication
      [T1 [AFBindings []] (ASelector "div.menucardproductprice>a")]
-     (AOMany
-        (AMSimple
-           [T1 [AFBindings []]
-              (ALateBind
-                 (T1 [AFBindings []]
-                    (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "html")))
-                 "price"),
-            T1 [AFBindings []]
-              (ALateBind
-                 (T1 [AFBindings []]
-                    (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "id")))
-                 "price_a_id")])))
+     (AOExpr
+        (T1 [AFBindings []]
+           (AMany
+              (AMSimple
+                 [T1 [AFBindings []]
+                    (ALateBind
+                       (T1 [AFBindings []]
+                          (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "html")))
+                       "price"),
+                  T1 [AFBindings []]
+                    (ALateBind
+                       (T1 [AFBindings []]
+                          (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "id")))
+                       "price_a_id")])))))
 =========================================
 /a/{`aid}@sss
 
@@ -1539,10 +1563,12 @@ T1 [AFBindings ["sss"]]
   (ABind
      (T1 [AFBindings []]
         (AApplication [T1 [AFBindings []] (ASelector "a")]
-           (AOMany
-              (AMAggeregate
-                 [T1 [AFBindings []]
-                    (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "aid"))]))))
+           (AOExpr
+              (T1 [AFBindings []]
+                 (AMany
+                    (AMAggeregate
+                       [T1 [AFBindings []]
+                          (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "aid"))]))))))
      "sss")
 =========================================
 /div.menucardproduct/ {
@@ -1605,77 +1631,89 @@ ExLeftRec (ExSelector '/' "div.menucardproduct")
 T1 [AFBindings []]
   (AApplication
      [T1 [AFBindings []] (ASelector "div.menucardproduct")]
-     (AOMany
-        (AMAggeregate
-           [T1 [AFBindings ["cat", "cat_id", "cat_prev", "wtf"]]
-              (ABind
-                 (T1 [AFBindings ["cat_id", "cat_prev", "wtf"]]
+     (AOExpr
+        (T1
+           [AFBindings
+              ["cat", "cat_id", "cat_prev", "id_menucat", "id_product",
+               "id_rest", "wtf"]]
+           (AMany
+              (AMAggeregate
+                 [T1 [AFBindings ["cat", "cat_id", "cat_prev", "wtf"]]
+                    (ABind
+                       (T1 [AFBindings ["cat_id", "cat_prev", "wtf"]]
+                          (AApplication
+                             [T1 [AFBindings ["cat_id", "cat_prev", "wtf"]]
+                                (ABind
+                                   (T1 [AFBindings ["cat_prev", "wtf"]]
+                                      (AApplication
+                                         [T1 [AFBindings ["cat_prev", "wtf"]]
+                                            (ABind
+                                               (T1 [AFBindings ["wtf"]]
+                                                  (AApplication
+                                                     [T1 [AFBindings []] ASlot,
+                                                      T1 [AFBindings ["wtf"]]
+                                                        (ABind
+                                                           (T1 [AFBindings []]
+                                                              (ASelector
+                                                                 "#imenucard>.menucardproducts.menucardproducts"))
+                                                           "wtf")]
+                                                     (AOAlpha "closest")))
+                                               "cat_prev")]
+                                         (AOAlpha "prev")))
+                                   "cat_id"),
+                              T1 [AFBindings []] (ASelector ".menucardcategoryheader")]
+                             (AOSym "-")))
+                       "cat"),
+                  T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
                     (AApplication
-                       [T1 [AFBindings ["cat_id", "cat_prev", "wtf"]]
-                          (ABind
-                             (T1 [AFBindings ["cat_prev", "wtf"]]
-                                (AApplication
-                                   [T1 [AFBindings ["cat_prev", "wtf"]]
-                                      (ABind
-                                         (T1 [AFBindings ["wtf"]]
-                                            (AApplication
-                                               [T1 [AFBindings []] ASlot,
-                                                T1 [AFBindings ["wtf"]]
+                       [T1 [AFBindings []] ASlot,
+                        T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
+                          (AMany
+                             (AMSimple
+                                [T1 [AFBindings []]
+                                   (ALateBind (T1 [AFBindings []] (ASelector "form")) "formid"),
+                                 T1 [AFBindings []]
+                                   (ALateBind
+                                      (T1 [AFBindings []] (ASelector ".menucardproductname"))
+                                      "name"),
+                                 T1 [AFBindings []]
+                                   (ALateBind
+                                      (T1 [AFBindings []] (ASelector ".menucardproductdescription"))
+                                      "desc"),
+                                 T1 [AFBindings []]
+                                   (ALateBind
+                                      (T1 [AFBindings []] (ASelector ".productextradescription"))
+                                      "desc1"),
+                                 T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
+                                   (AApplication
+                                      [T1 [AFBindings []] (ASelector "input"),
+                                       T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
+                                         (AMany
+                                            (AMSimple
+                                               [T1 [AFBindings ["id_product"]]
                                                   (ABind
                                                      (T1 [AFBindings []]
-                                                        (ASelector
-                                                           "#imenucard>.menucardproducts.menucardproducts"))
-                                                     "wtf")]
-                                               (AOAlpha "closest")))
-                                         "cat_prev")]
-                                   (AOAlpha "prev")))
-                             "cat_id"),
-                        T1 [AFBindings []] (ASelector ".menucardcategoryheader")]
-                       (AOSym "-")))
-                 "cat"),
-            T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
-              (AApplication
-                 [T1 [AFBindings []] ASlot,
-                  T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
-                    (AMany
-                       (AMSimple
-                          [T1 [AFBindings []]
-                             (ALateBind (T1 [AFBindings []] (ASelector "form")) "formid"),
-                           T1 [AFBindings []]
-                             (ALateBind (T1 [AFBindings []] (ASelector ".menucardproductname"))
-                                "name"),
-                           T1 [AFBindings []]
-                             (ALateBind
-                                (T1 [AFBindings []] (ASelector ".menucardproductdescription"))
-                                "desc"),
-                           T1 [AFBindings []]
-                             (ALateBind
-                                (T1 [AFBindings []] (ASelector ".productextradescription"))
-                                "desc1"),
-                           T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
-                             (AApplication
-                                [T1 [AFBindings []] (ASelector "input"),
-                                 T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
-                                   (AMany
-                                      (AMSimple
-                                         [T1 [AFBindings ["id_product"]]
-                                            (ABind (T1 [AFBindings []] (ASelector "[name=product]"))
-                                               "id_product"),
-                                          T1 [AFBindings ["id_menucat"]]
-                                            (ABind (T1 [AFBindings []] (ASelector "[name=menucat]"))
-                                               "id_menucat"),
-                                          T1 [AFBindings ["id_rest"]]
-                                            (ABind (T1 [AFBindings []] (ASelector "[name=rest]"))
-                                               "id_rest")]))]
-                                (AOSym "-")),
-                           T1 [AFBindings []]
-                             (ALateBind
-                                (T1 [AFBindings []]
+                                                        (ASelector "[name=product]"))
+                                                     "id_product"),
+                                                T1 [AFBindings ["id_menucat"]]
+                                                  (ABind
+                                                     (T1 [AFBindings []]
+                                                        (ASelector "[name=menucat]"))
+                                                     "id_menucat"),
+                                                T1 [AFBindings ["id_rest"]]
+                                                  (ABind
+                                                     (T1 [AFBindings []] (ASelector "[name=rest]"))
+                                                     "id_rest")]))]
+                                      (AOSym "-")),
+                                 T1 [AFBindings []]
                                    (ALateBind
-                                      (T1 [AFBindings []] (ASelector "div.menucardproductprice>a"))
-                                      "price"))
-                                "price_a_id")]))]
-                 (AOSym "-"))])))
+                                      (T1 [AFBindings []]
+                                         (ALateBind
+                                            (T1 [AFBindings []]
+                                               (ASelector "div.menucardproductprice>a"))
+                                            "price"))
+                                      "price_a_id")]))]
+                       (AOSym "-"))])))))
 =========================================
 $@1
 ExNamed (ExRef "") (Name '@' Nothing "1" Nothing)
