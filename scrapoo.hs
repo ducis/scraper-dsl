@@ -78,7 +78,7 @@ data ASTFlag
 type AA = [ASTFlag]
 aa0 = []
 
-data Taggable t a = T0 a | T1 a t
+data Taggable t a = T0 a | T1 t a
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
 
 type AST a = Taggable AA (ASTExpr a)
@@ -115,7 +115,7 @@ data ASTMany a
 type Rewrite = AST AA -> AST AA
 
 tagAST::Rewrite
-tagAST = transform $ \(T0 a)-> T1 a aa0
+tagAST = transform $ \(T0 a)-> T1 aa0 a
 
 rewriteAST::Rewrite
 rewriteAST = foldl1 (.) $ reverse [
@@ -127,12 +127,19 @@ rewriteAST = foldl1 (.) $ reverse [
 -- para :: Uniplate on => (on -> [r] -> r) -> on -> r
 -- para op x = op x $ map (para op) $ children x
 
-collectBindings = transform $ \self@(T1 x aa) -> T1 x $ (:aa) $ 
+collectBindings = transform $ \self@(T1 aa x ) -> (`T1` x) $ (:aa) $ 
 	let
-		collect added = foldl merge added $ map (\_->["a"]) $ children self
+		f = \case
+			AFBindings x -> x
+			_ -> []
+		collect added = AFBindings $ foldl merge added $ concat $ map (\(T1 aa _)->map f aa) $ children self
+		--collect added = AFBindings $ foldl merge added $ map (\(T1 aa _)->[show $ length aa]) $ children self
+		--collect added = AFBindings [show $ length $ children self]
 	in case x of 
-		ABind x1 s -> AFBindings $ collect [s]
-		_ -> AFBindings []
+		ABind x1 s -> collect [s]
+		AMany (AMAggeregate _) -> AFBindings []
+		AApplication _ (AOMany (AMAggeregate _)) -> AFBindings []
+		_ -> collect []
 
 markLeftmost = id -- transform $ \case (T1 a aa) -> case a of
 

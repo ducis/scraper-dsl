@@ -293,6 +293,6 @@ runSyntaxTests test cap = do
 	-- tf "sampletests1"
 	
 	t' "$@1"
-	t' "/div/@1"
+	t' "/div/+[/div/@1]"
 
 	putStrLn "*******\nDONE!!!\n*******"
