@@ -4,7 +4,7 @@
 	NoMonomorphismRestriction, RelaxedPolyRec, ScopedTypeVariables,
 	RecordWildCards, ViewPatterns, DeriveDataTypeable, LiberalTypeSynonyms,
 	StandaloneDeriving, GADTSyntax, GADTs, TypeFamilies, DeriveDataTypeable,
-	TypeSynonymInstances #-}
+	TypeSynonymInstances, RankNTypes #-}
 
 import DSL.Scrapoo.ParseTree
 import DSL.Scrapoo.Syntax
@@ -19,6 +19,9 @@ import Text.PrettyPrint.Leijen.Text (Doc)
 import DSL.Scrapoo.CodegenQQAbbr
 import qualified Data.StringMap as SM
 import Data.Maybe
+import Data.Generics.Uniplate.Operations
+import Data.Generics.Uniplate.Data
+import Data.List.Utils
 
 proom = putStrLn.groom
 
@@ -50,50 +53,90 @@ proom = putStrLn.groom
 --		 returns a unary lambda taking possibly a function
 --TODO: use lens to create reversable mapping from parsetrees to ASTs and between ASTs before and after transformation.
 
-type SymbolTable = SM.StringMap JExpr
+type SymbolTable a = SM.StringMap a
 data JGenContext = C { 
-		cNames::SymbolTable
+		cNames::SymbolTable JExpr
 	}
 
-type AA = ASTAttachment
-data ASTAttachment
-	= AA {}
+data ASTResultType 
+	= RTSelector
+	| RTSelection
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
-nAA = AA {}
-
-data Taggable t a = T0 a | T1 t a
+data ASTFlag
+	= AFLeft
+	| AFRight
+	| AFTyped ASTResultType -- use SYB to query type from flags
+	| AFBindings [String] --keep sorted with merging
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
 
-type AST f = Taggable AA (ASTExpr f)
+--type AA = ASTAttachment
+--data ASTAttachment = AA {
+--	aaFlags::[ASTFlag]
+--	}
+--	deriving (Eq,Read,Show,Ord,Typeable,Data)
+-- aa0 = AA { aaFlags = [] }
+type AA = [ASTFlag]
+aa0 = []
 
-data ASTExpr f
-	= ALiteral String
-	| AApplication [AST f] (ASTOp f)
-	| ALeftGrouping (AST f)
+data Taggable t a = T0 a | T1 a t
+	deriving (Eq,Read,Show,Ord,Typeable,Data)
+
+type AST a = Taggable AA (ASTExpr a)
+
+data ASTExpr a
+	= ASelector String
+	| AApplication [AST a] (ASTOp a)
+	| ALeftGrouping (AST a)
 	| ARef String
-	| ABind (AST f) String
-	| ALateBind (AST f) String
-	| AExtract (AST f) String String
+	| ABind (AST a) String
+	| ALateBind (AST a) String
+	| AExtract (AST a) String String
 	| ASlot
-	| AMany (ASTMany f)
+	| AMany (ASTMany a)
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
-data ASTOp f
+data ASTOp a
 	= AOSym String
 	| AOAlpha String
-	| AOMany (ASTMany f)
+	| AOMany (ASTMany a)
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
-data ASTMany f
-	= AMSimple [AST f]
-	| AMAggeregate [AST f]
+data ASTMany a
+	= AMSimple [AST a]
+	| AMAggeregate [AST a]
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
 
 -- TODO : Type check
+-- TODO : break []
 -- TODO : eliminate left grouping
 -- TODO : (?) eliminate {}
 -- TODO : (?) eliminate Bind and LateBind
+-- TODO : Build local symbol table
+-- only {} affects scoping
 
---typecheck::AST () -> AST AA
---typecheck = every
+type Rewrite = AST AA -> AST AA
+
+tagAST::Rewrite
+tagAST = transform $ \(T0 a)-> T1 a aa0
+
+rewriteAST::Rewrite
+rewriteAST = foldl1 (.) $ reverse [
+	collectBindings,
+	markLeftmost,
+	id]
+	-- typing0]
+
+collectBindings = transform $ \(T1 x aa) -> T1 x $ (:aa) $ case x of 
+	ABind x1 s -> AFBindings $ merge [s] []
+	_ -> AFBindings []
+
+markLeftmost = id -- transform $ \case (T1 a aa) -> case a of
+		
+
+--typing0::Rewrite
+--typing0 = transform $ \(T1 x aa) -> T1 x $ (\z->aa{aaType=z}) $ case x of
+--	ASelector s -> RTSelector
+--	_ -> RTSelection
+
+
 
 simplify0::AST () -> AST ()
 simplify0 = everywhere' $ mkT $ \case
@@ -106,7 +149,7 @@ simplify0 = everywhere' $ mkT $ \case
 type AST0 = AST AA
 parseTreeToAST::Expr -> AST0
 parseTreeToAST = \case
-	ExSelector _ s -> T0 $ ALiteral s
+	ExSelector _ s -> T0 $ ASelector s
 	ExRef s -> T0 $ ARef s
 	ExSlot -> T0 $ ASlot
 	ExBlock k _ xs -> T0 $ AMany $ fMany k $ selfs xs
@@ -155,7 +198,7 @@ application::[Expr]->Operator->([JStat], SymbolTable, JExpr)
 	print $ renderJs $ jsGen ast -}
 
 astTest expr = do
-	proom $ parseTreeToAST expr
+	proom $ rewriteAST $ tagAST $ parseTreeToAST expr
 
 main = do
 	nCheck<-getArgs

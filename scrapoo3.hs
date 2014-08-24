@@ -4,7 +4,7 @@
 	NoMonomorphismRestriction, RelaxedPolyRec, ScopedTypeVariables,
 	RecordWildCards, ViewPatterns, DeriveDataTypeable, LiberalTypeSynonyms,
 	StandaloneDeriving, GADTSyntax, GADTs, TypeFamilies, DeriveDataTypeable,
-	TypeSynonymInstances #-}
+	TypeSynonymInstances, UndecidableInstances #-}
 
 import DSL.Scrapoo.ParseTree
 import DSL.Scrapoo.Syntax
@@ -19,6 +19,7 @@ import Text.PrettyPrint.Leijen.Text (Doc)
 import DSL.Scrapoo.CodegenQQAbbr
 import qualified Data.StringMap as SM
 import Data.Maybe
+import Fmap
 
 proom = putStrLn.groom
 
@@ -62,24 +63,26 @@ data ASTAttachment
 nAA = AA {}
 
 type family AST a :: *
+type instance AST () = ASTExpr ()
+type instance AST AA = (AA, ASTExpr AA)
 
-data ASTExpr f
+data ASTExpr a
 	= ALiteral String
-	| AApplication [AST f] (ASTOp f)
-	| ALeftGrouping (AST f)
+	| AApplication [AST a] (ASTOp a)
+	| ALeftGrouping (AST a)
 	| ARef String
-	| ABind (AST f) String
-	| ALateBind (AST f) String
-	| AExtract (AST f) String String
+	| ABind (AST a) String
+	| ALateBind (AST a) String
+	| AExtract (AST a) String String
 	| ASlot
-	| AMany (ASTMany f)
-data ASTOp f
+	| AMany (ASTMany a)
+data ASTOp a
 	= AOSym String
 	| AOAlpha String
-	| AOMany (ASTMany f)
-data ASTMany f
-	= AMSimple [AST f]
-	| AMAggeregate [AST f]
+	| AOMany (ASTMany a)
+data ASTMany a
+	= AMSimple [AST a]
+	| AMAggeregate [AST a]
 
 -- TODO : Type check
 -- TODO : eliminate left grouping
@@ -88,6 +91,12 @@ data ASTMany f
 
 --typecheck::AST () -> AST AA
 --typecheck = every
+
+tagAST::AST () -> AST AA
+tagAST = fmapData f
+	where 
+	f::ASTExpr () -> (AA, ASTExpr AA)
+	f x = (AA, x)
 
 simplify0::AST () -> AST ()
 simplify0 = everywhere' $ mkT $ \case
@@ -136,8 +145,6 @@ parseTreeToAST = \case
 -- Pattern Match only on the AST type
 -- Build AST as simply as possible first then do transformation on it.
 
-type instance AST () = ASTExpr ()
-type instance AST AA = (AA, ASTExpr AA)
 -- type instance AST a = (a, ASTExpr a)
 -- TODO:: rewrite with codeDup quasiquoter
 deriving instance Show (ASTMany ())
@@ -168,15 +175,10 @@ deriving instance Ord (ASTExpr AA)
 deriving instance Typeable ASTMany
 deriving instance Typeable ASTOp
 deriving instance Typeable ASTExpr
-deriving instance Data (ASTMany ())
-deriving instance Data (ASTOp ())
-deriving instance Data (ASTExpr ())
--- deriving instance Data (ASTMany ())
--- deriving instance Data (ASTOp ())
--- deriving instance Data (ASTExpr ())
--- deriving instance Data (ASTMany AA)
--- deriving instance Data (ASTOp AA)
--- deriving instance Data (ASTExpr AA)
+deriving instance (Data t, Data (AST t)) => Data (ASTMany t)
+deriving instance (Data t, Data (AST t)) => Data (ASTOp t)
+deriving instance (Data t, Data (AST t)) => Data (ASTExpr t)
+
 
 -----------------------------------------------------------------
 {-

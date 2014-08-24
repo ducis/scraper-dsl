@@ -1,311 +1,486 @@
 =========================================
 $ - $
 $-$
-T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))
-=========================================
-$`-``$$
-$`-``$$
-T0
-  (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
-     (AOSym "-"))
-=========================================
-$`-``[$`-``$$][$`-``$$]
-$`-``[$`-``$$][$`-``$$]
-T0
+T1
   (AApplication
-     [T0 (ARef ""),
-      T0
-        (AMany
-           (AMSimple
-              [T0
-                 (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
-                    (AOSym "-"))])),
-      T0
-        (AMany
-           (AMSimple
-              [T0
-                 (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
-                    (AOSym "-"))]))]
+     [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
+=========================================
+$`-``$$
+$`-``$$
+T1
+  (AApplication
+     [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []],
+      T1 (ARef "") [AFBindings []]]
+     (AOSym "-"))
+  [AFBindings []]
+=========================================
+$`-``[$`-``$$][$`-``$$]
+$`-``[$`-``$$][$`-``$$]
+T1
+  (AApplication
+     [T1 (ARef "") [AFBindings []],
+      T1
+        (AMany
+           (AMSimple
+              [T1
+                 (AApplication
+                    [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []],
+                     T1 (ARef "") [AFBindings []]]
+                    (AOSym "-"))
+                 [AFBindings []]]))
+        [AFBindings []],
+      T1
+        (AMany
+           (AMSimple
+              [T1
+                 (AApplication
+                    [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []],
+                     T1 (ARef "") [AFBindings []]]
+                    (AOSym "-"))
+                 [AFBindings []]]))
+        [AFBindings []]]
+     (AOSym "-"))
+  [AFBindings []]
 =========================================
 $a`-`` $b`-``$c$d $e`-``$f$g
 $a`-``$b`-``$c$d$e`-``$f$g
-T0
+T1
   (AApplication
-     [T0
+     [T1
         (AApplication
-           [T0 (ARef "a"),
-            T0
-              (AApplication [T0 (ARef "b"), T0 (ARef "c"), T0 (ARef "d")]
-                 (AOSym "-")),
-            T0 (ARef "e")]
-           (AOSym "-")),
-      T0 (ARef "f"), T0 (ARef "g")]
+           [T1 (ARef "a") [AFBindings []],
+            T1
+              (AApplication
+                 [T1 (ARef "b") [AFBindings []], T1 (ARef "c") [AFBindings []],
+                  T1 (ARef "d") [AFBindings []]]
+                 (AOSym "-"))
+              [AFBindings []],
+            T1 (ARef "e") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []],
+      T1 (ARef "f") [AFBindings []], T1 (ARef "g") [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 $`-`` $ $`-``$$
 $`-``$$`-``$$
-T0
+T1
   (AApplication
-     [T0
-        (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
-           (AOSym "-")),
-      T0 (ARef ""), T0 (ARef "")]
+     [T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []],
+            T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []],
+      T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 $`-`` $`-``$$ $
 $`-``$`-``$$$
-T0
+T1
   (AApplication
-     [T0 (ARef ""),
-      T0
-        (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
-           (AOSym "-")),
-      T0 (ARef "")]
+     [T1 (ARef "") [AFBindings []],
+      T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []],
+            T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []],
+      T1 (ARef "") [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 $ $ $ ```-
 $$$```-
-T0
-  (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
+T1
+  (AApplication
+     [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []],
+      T1 (ARef "") [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 -``` $ $ $
 -```$$$
-T0
-  (AApplication [T0 (ARef ""), T0 (ARef ""), T0 (ARef "")]
+T1
+  (AApplication
+     [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []],
+      T1 (ARef "") [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 //@
 //@
-T0 (ABind (T0 (ALiteral "")) "")
+T1 (ABind (T1 (ASelector "") [AFBindings []]) "") [AFBindings [""]]
 =========================================
 //@a_b
 //@a_b
-T0 (ABind (T0 (ALiteral "")) "a_b")
+T1 (ABind (T1 (ASelector "") [AFBindings []]) "a_b")
+  [AFBindings ["a_b"]]
 =========================================
 //@a_
 //@a_
-T0 (ABind (T0 (ALiteral "")) "a_")
+T1 (ABind (T1 (ASelector "") [AFBindings []]) "a_")
+  [AFBindings ["a_"]]
 =========================================
 //@_b
 //@_b
-T0 (ABind (T0 (ALiteral "")) "_b")
+T1 (ABind (T1 (ASelector "") [AFBindings []]) "_b")
+  [AFBindings ["_b"]]
 =========================================
 $abcf@kkk+++/.whatever//.kkk/@abc@def+++○div○@123@1@1
 $abcf@kkk+++/.whatever//.kkk/@abc@def+++○div○@123@1@1
-T0
+T1
   (AApplication
-     [T0
+     [T1
         (AApplication
-           [T0 (ABind (T0 (ARef "abcf")) "kkk"),
-            T0
-              (ABind (T0 (ABind (T0 (ALiteral ".whatever/.kkk")) "abc")) "def")]
-           (AOSym "+++")),
-      T0
-        (ABind (T0 (ABind (T0 (ABind (T0 (ALiteral "div")) "123")) "1"))
-           "1")]
-     (AOSym "+++"))
-=========================================
-$@+++/.whatever//.kkk/@@+++○div○@@@
-$@+++/.whatever//.kkk/@@+++○div○@@@
-T0
-  (AApplication
-     [T0
-        (AApplication
-           [T0 (ABind (T0 (ARef "")) ""),
-            T0 (ABind (T0 (ABind (T0 (ALiteral ".whatever/.kkk")) "")) "")]
-           (AOSym "+++")),
-      T0
-        (ABind (T0 (ABind (T0 (ABind (T0 (ALiteral "div")) "")) "")) "")]
-     (AOSym "+++"))
-=========================================
-$aaa@kkk-_
-$aaa@kkk-_
-T0
-  (AApplication [T0 (ABind (T0 (ARef "aaa")) "kkk"), T0 ASlot]
-     (AOSym "-"))
-=========================================
---`$abcf
---`$abcf
-T0 (AApplication [T0 (ARef "abcf")] (AOSym "--"))
-=========================================
---``/.ww/@1$1
---``/.ww/@1$1
-T0
-  (AApplication [T0 (ABind (T0 (ALiteral ".ww")) "1"), T0 (ARef "1")]
-     (AOSym "--"))
-=========================================
-$a$b``+$1``+
-$a$b``+$1``+
-T0
-  (AApplication
-     [T0 (AApplication [T0 (ARef "a"), T0 (ARef "b")] (AOSym "+")),
-      T0 (ARef "1")]
-     (AOSym "+"))
-=========================================
-$1`+@5
-$1`+@5
-T0 (ABind (T0 (AApplication [T0 (ARef "1")] (AOSym "+"))) "5")
-=========================================
-+`$1@5
-+`$1@5
-T0 (AApplication [T0 (ABind (T0 (ARef "1")) "5")] (AOSym "+"))
-=========================================
-$1--$2@3
-$1--$2@3
-T0
-  (AApplication [T0 (ARef "1"), T0 (ABind (T0 (ARef "2")) "3")]
-     (AOSym "--"))
-=========================================
-$1--$2@3$4@5$5@6```x
-$1--$2@3$4@5$5@6```x
-T0
-  (AApplication
-     [T0
-        (AApplication [T0 (ARef "1"), T0 (ABind (T0 (ARef "2")) "3")]
-           (AOSym "--")),
-      T0 (ABind (T0 (ARef "4")) "5"), T0 (ABind (T0 (ARef "5")) "6")]
-     (AOAlpha "x"))
-=========================================
-$1--$2@3$4@5$5@6```x/a/@1``y
-$1--$2@3$4@5$5@6```x/a/@1``y
-T0
-  (AApplication
-     [T0
-        (AApplication
-           [T0
-              (AApplication [T0 (ARef "1"), T0 (ABind (T0 (ARef "2")) "3")]
-                 (AOSym "--")),
-            T0 (ABind (T0 (ARef "4")) "5"), T0 (ABind (T0 (ARef "5")) "6")]
-           (AOAlpha "x")),
-      T0 (ABind (T0 (ALiteral "a")) "1")]
-     (AOAlpha "y"))
-=========================================
-$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z
-$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z
-T0
-  (AApplication
-     [T0
-        (AApplication
-           [T0
-              (AApplication
-                 [T0
-                    (AApplication [T0 (ARef "1"), T0 (ABind (T0 (ARef "2")) "3")]
-                       (AOSym "--")),
-                  T0 (ABind (T0 (ARef "4")) "5"), T0 (ABind (T0 (ARef "5")) "6")]
-                 (AOAlpha "x")),
-            T0 (ABind (T0 (ALiteral "a")) "1")]
-           (AOAlpha "y")),
-      T0 (ABind (T0 (ALiteral "b")) "2")]
-     (AOAlpha "z"))
-=========================================
-$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z-/fff/@5
-$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z-/fff/@5
-T0
-  (AApplication
-     [T0
-        (AApplication
-           [T0
-              (AApplication
-                 [T0
-                    (AApplication
-                       [T0
-                          (AApplication [T0 (ARef "1"), T0 (ABind (T0 (ARef "2")) "3")]
-                             (AOSym "--")),
-                        T0 (ABind (T0 (ARef "4")) "5"), T0 (ABind (T0 (ARef "5")) "6")]
-                       (AOAlpha "x")),
-                  T0 (ABind (T0 (ALiteral "a")) "1")]
-                 (AOAlpha "y")),
-            T0 (ABind (T0 (ALiteral "b")) "2")]
-           (AOAlpha "z")),
-      T0 (ABind (T0 (ALiteral "fff")) "5")]
-     (AOSym "-"))
-=========================================
-$--$@$@$@```x/a/@``y/b/@``z-/fff/@
-$--$@$@$@```x/a/@``y/b/@``z-/fff/@
-T0
-  (AApplication
-     [T0
-        (AApplication
-           [T0
-              (AApplication
-                 [T0
-                    (AApplication
-                       [T0
-                          (AApplication [T0 (ARef ""), T0 (ABind (T0 (ARef "")) "")]
-                             (AOSym "--")),
-                        T0 (ABind (T0 (ARef "")) ""), T0 (ABind (T0 (ARef "")) "")]
-                       (AOAlpha "x")),
-                  T0 (ABind (T0 (ALiteral "a")) "")]
-                 (AOAlpha "y")),
-            T0 (ABind (T0 (ALiteral "b")) "")]
-           (AOAlpha "z")),
-      T0 (ABind (T0 (ALiteral "fff")) "")]
-     (AOSym "-"))
-=========================================
-+``$1$2
-+``$1$2
-T0 (AApplication [T0 (ARef "1"), T0 (ARef "2")] (AOSym "+"))
-=========================================
-$2$3``-
-$2$3``-
-T0 (AApplication [T0 (ARef "2"), T0 (ARef "3")] (AOSym "-"))
-=========================================
-[+``$1$2]$3``-
-[+``$1$2]$3``-
-T0
-  (AApplication
-     [T0
-        (AMany
-           (AMSimple
-              [T0 (AApplication [T0 (ARef "1"), T0 (ARef "2")] (AOSym "+"))])),
-      T0 (ARef "3")]
-     (AOSym "-"))
-=========================================
-+``$1[$2$3``-]
-+``$1[$2$3``-]
-T0
-  (AApplication
-     [T0 (ARef "1"),
-      T0
-        (AMany
-           (AMSimple
-              [T0 (AApplication [T0 (ARef "2"), T0 (ARef "3")] (AOSym "-"))]))]
-     (AOSym "+"))
-=========================================
-+``$1$2$3``-
-+``$1$2$3``-
-T0
-  (AApplication
-     [T0 (AApplication [T0 (ARef "1"), T0 (ARef "2")] (AOSym "+")),
-      T0 (ARef "3")]
-     (AOSym "-"))
-=========================================
-+``@x$1@a$2@b$3@c$4@d```-@z
-+``@x$1@a$2@b$3@c$4@d```-@z
-T0
-  (ABind
-     (T0
-        (AApplication
-           [T0
+           [T1 (ABind (T1 (ARef "abcf") [AFBindings []]) "kkk")
+              [AFBindings ["kkk"]],
+            T1
               (ABind
-                 (T0
+                 (T1 (ABind (T1 (ASelector ".whatever/.kkk") [AFBindings []]) "abc")
+                    [AFBindings ["abc"]])
+                 "def")
+              [AFBindings ["def"]]]
+           (AOSym "+++"))
+        [AFBindings []],
+      T1
+        (ABind
+           (T1
+              (ABind
+                 (T1 (ABind (T1 (ASelector "div") [AFBindings []]) "123")
+                    [AFBindings ["123"]])
+                 "1")
+              [AFBindings ["1"]])
+           "1")
+        [AFBindings ["1"]]]
+     (AOSym "+++"))
+  [AFBindings []]
+=========================================
+$@+++/.whatever//.kkk/@@+++○div○@@@
+$@+++/.whatever//.kkk/@@+++○div○@@@
+T1
+  (AApplication
+     [T1
+        (AApplication
+           [T1 (ABind (T1 (ARef "") [AFBindings []]) "") [AFBindings [""]],
+            T1
+              (ABind
+                 (T1 (ABind (T1 (ASelector ".whatever/.kkk") [AFBindings []]) "")
+                    [AFBindings [""]])
+                 "")
+              [AFBindings [""]]]
+           (AOSym "+++"))
+        [AFBindings []],
+      T1
+        (ABind
+           (T1
+              (ABind
+                 (T1 (ABind (T1 (ASelector "div") [AFBindings []]) "")
+                    [AFBindings [""]])
+                 "")
+              [AFBindings [""]])
+           "")
+        [AFBindings [""]]]
+     (AOSym "+++"))
+  [AFBindings []]
+=========================================
+$aaa@kkk-_
+$aaa@kkk-_
+T1
+  (AApplication
+     [T1 (ABind (T1 (ARef "aaa") [AFBindings []]) "kkk")
+        [AFBindings ["kkk"]],
+      T1 ASlot [AFBindings []]]
+     (AOSym "-"))
+  [AFBindings []]
+=========================================
+--`$abcf
+--`$abcf
+T1 (AApplication [T1 (ARef "abcf") [AFBindings []]] (AOSym "--"))
+  [AFBindings []]
+=========================================
+--``/.ww/@1$1
+--``/.ww/@1$1
+T1
+  (AApplication
+     [T1 (ABind (T1 (ASelector ".ww") [AFBindings []]) "1")
+        [AFBindings ["1"]],
+      T1 (ARef "1") [AFBindings []]]
+     (AOSym "--"))
+  [AFBindings []]
+=========================================
+$a$b``+$1``+
+$a$b``+$1``+
+T1
+  (AApplication
+     [T1
+        (AApplication
+           [T1 (ARef "a") [AFBindings []], T1 (ARef "b") [AFBindings []]]
+           (AOSym "+"))
+        [AFBindings []],
+      T1 (ARef "1") [AFBindings []]]
+     (AOSym "+"))
+  [AFBindings []]
+=========================================
+$1`+@5
+$1`+@5
+T1
+  (ABind
+     (T1 (AApplication [T1 (ARef "1") [AFBindings []]] (AOSym "+"))
+        [AFBindings []])
+     "5")
+  [AFBindings ["5"]]
+=========================================
++`$1@5
++`$1@5
+T1
+  (AApplication
+     [T1 (ABind (T1 (ARef "1") [AFBindings []]) "5") [AFBindings ["5"]]]
+     (AOSym "+"))
+  [AFBindings []]
+=========================================
+$1--$2@3
+$1--$2@3
+T1
+  (AApplication
+     [T1 (ARef "1") [AFBindings []],
+      T1 (ABind (T1 (ARef "2") [AFBindings []]) "3") [AFBindings ["3"]]]
+     (AOSym "--"))
+  [AFBindings []]
+=========================================
+$1--$2@3$4@5$5@6```x
+$1--$2@3$4@5$5@6```x
+T1
+  (AApplication
+     [T1
+        (AApplication
+           [T1 (ARef "1") [AFBindings []],
+            T1 (ABind (T1 (ARef "2") [AFBindings []]) "3") [AFBindings ["3"]]]
+           (AOSym "--"))
+        [AFBindings []],
+      T1 (ABind (T1 (ARef "4") [AFBindings []]) "5") [AFBindings ["5"]],
+      T1 (ABind (T1 (ARef "5") [AFBindings []]) "6") [AFBindings ["6"]]]
+     (AOAlpha "x"))
+  [AFBindings []]
+=========================================
+$1--$2@3$4@5$5@6```x/a/@1``y
+$1--$2@3$4@5$5@6```x/a/@1``y
+T1
+  (AApplication
+     [T1
+        (AApplication
+           [T1
+              (AApplication
+                 [T1 (ARef "1") [AFBindings []],
+                  T1 (ABind (T1 (ARef "2") [AFBindings []]) "3") [AFBindings ["3"]]]
+                 (AOSym "--"))
+              [AFBindings []],
+            T1 (ABind (T1 (ARef "4") [AFBindings []]) "5") [AFBindings ["5"]],
+            T1 (ABind (T1 (ARef "5") [AFBindings []]) "6") [AFBindings ["6"]]]
+           (AOAlpha "x"))
+        [AFBindings []],
+      T1 (ABind (T1 (ASelector "a") [AFBindings []]) "1")
+        [AFBindings ["1"]]]
+     (AOAlpha "y"))
+  [AFBindings []]
+=========================================
+$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z
+$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z
+T1
+  (AApplication
+     [T1
+        (AApplication
+           [T1
+              (AApplication
+                 [T1
                     (AApplication
-                       [T0 (ABind (T0 (ARef "1")) "a"), T0 (ABind (T0 (ARef "2")) "b")]
-                       (AOSym "+")))
-                 "x"),
-            T0 (ABind (T0 (ARef "3")) "c"), T0 (ABind (T0 (ARef "4")) "d")]
-           (AOSym "-")))
+                       [T1 (ARef "1") [AFBindings []],
+                        T1 (ABind (T1 (ARef "2") [AFBindings []]) "3") [AFBindings ["3"]]]
+                       (AOSym "--"))
+                    [AFBindings []],
+                  T1 (ABind (T1 (ARef "4") [AFBindings []]) "5") [AFBindings ["5"]],
+                  T1 (ABind (T1 (ARef "5") [AFBindings []]) "6") [AFBindings ["6"]]]
+                 (AOAlpha "x"))
+              [AFBindings []],
+            T1 (ABind (T1 (ASelector "a") [AFBindings []]) "1")
+              [AFBindings ["1"]]]
+           (AOAlpha "y"))
+        [AFBindings []],
+      T1 (ABind (T1 (ASelector "b") [AFBindings []]) "2")
+        [AFBindings ["2"]]]
+     (AOAlpha "z"))
+  [AFBindings []]
+=========================================
+$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z-/fff/@5
+$1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z-/fff/@5
+T1
+  (AApplication
+     [T1
+        (AApplication
+           [T1
+              (AApplication
+                 [T1
+                    (AApplication
+                       [T1
+                          (AApplication
+                             [T1 (ARef "1") [AFBindings []],
+                              T1 (ABind (T1 (ARef "2") [AFBindings []]) "3") [AFBindings ["3"]]]
+                             (AOSym "--"))
+                          [AFBindings []],
+                        T1 (ABind (T1 (ARef "4") [AFBindings []]) "5") [AFBindings ["5"]],
+                        T1 (ABind (T1 (ARef "5") [AFBindings []]) "6") [AFBindings ["6"]]]
+                       (AOAlpha "x"))
+                    [AFBindings []],
+                  T1 (ABind (T1 (ASelector "a") [AFBindings []]) "1")
+                    [AFBindings ["1"]]]
+                 (AOAlpha "y"))
+              [AFBindings []],
+            T1 (ABind (T1 (ASelector "b") [AFBindings []]) "2")
+              [AFBindings ["2"]]]
+           (AOAlpha "z"))
+        [AFBindings []],
+      T1 (ABind (T1 (ASelector "fff") [AFBindings []]) "5")
+        [AFBindings ["5"]]]
+     (AOSym "-"))
+  [AFBindings []]
+=========================================
+$--$@$@$@```x/a/@``y/b/@``z-/fff/@
+$--$@$@$@```x/a/@``y/b/@``z-/fff/@
+T1
+  (AApplication
+     [T1
+        (AApplication
+           [T1
+              (AApplication
+                 [T1
+                    (AApplication
+                       [T1
+                          (AApplication
+                             [T1 (ARef "") [AFBindings []],
+                              T1 (ABind (T1 (ARef "") [AFBindings []]) "") [AFBindings [""]]]
+                             (AOSym "--"))
+                          [AFBindings []],
+                        T1 (ABind (T1 (ARef "") [AFBindings []]) "") [AFBindings [""]],
+                        T1 (ABind (T1 (ARef "") [AFBindings []]) "") [AFBindings [""]]]
+                       (AOAlpha "x"))
+                    [AFBindings []],
+                  T1 (ABind (T1 (ASelector "a") [AFBindings []]) "")
+                    [AFBindings [""]]]
+                 (AOAlpha "y"))
+              [AFBindings []],
+            T1 (ABind (T1 (ASelector "b") [AFBindings []]) "")
+              [AFBindings [""]]]
+           (AOAlpha "z"))
+        [AFBindings []],
+      T1 (ABind (T1 (ASelector "fff") [AFBindings []]) "")
+        [AFBindings [""]]]
+     (AOSym "-"))
+  [AFBindings []]
+=========================================
++``$1$2
++``$1$2
+T1
+  (AApplication
+     [T1 (ARef "1") [AFBindings []], T1 (ARef "2") [AFBindings []]]
+     (AOSym "+"))
+  [AFBindings []]
+=========================================
+$2$3``-
+$2$3``-
+T1
+  (AApplication
+     [T1 (ARef "2") [AFBindings []], T1 (ARef "3") [AFBindings []]]
+     (AOSym "-"))
+  [AFBindings []]
+=========================================
+[+``$1$2]$3``-
+[+``$1$2]$3``-
+T1
+  (AApplication
+     [T1
+        (AMany
+           (AMSimple
+              [T1
+                 (AApplication
+                    [T1 (ARef "1") [AFBindings []], T1 (ARef "2") [AFBindings []]]
+                    (AOSym "+"))
+                 [AFBindings []]]))
+        [AFBindings []],
+      T1 (ARef "3") [AFBindings []]]
+     (AOSym "-"))
+  [AFBindings []]
+=========================================
++``$1[$2$3``-]
++``$1[$2$3``-]
+T1
+  (AApplication
+     [T1 (ARef "1") [AFBindings []],
+      T1
+        (AMany
+           (AMSimple
+              [T1
+                 (AApplication
+                    [T1 (ARef "2") [AFBindings []], T1 (ARef "3") [AFBindings []]]
+                    (AOSym "-"))
+                 [AFBindings []]]))
+        [AFBindings []]]
+     (AOSym "+"))
+  [AFBindings []]
+=========================================
++``$1$2$3``-
++``$1$2$3``-
+T1
+  (AApplication
+     [T1
+        (AApplication
+           [T1 (ARef "1") [AFBindings []], T1 (ARef "2") [AFBindings []]]
+           (AOSym "+"))
+        [AFBindings []],
+      T1 (ARef "3") [AFBindings []]]
+     (AOSym "-"))
+  [AFBindings []]
+=========================================
++``@x$1@a$2@b$3@c$4@d```-@z
++``@x$1@a$2@b$3@c$4@d```-@z
+T1
+  (ABind
+     (T1
+        (AApplication
+           [T1
+              (ABind
+                 (T1
+                    (AApplication
+                       [T1 (ABind (T1 (ARef "1") [AFBindings []]) "a") [AFBindings ["a"]],
+                        T1 (ABind (T1 (ARef "2") [AFBindings []]) "b") [AFBindings ["b"]]]
+                       (AOSym "+"))
+                    [AFBindings []])
+                 "x")
+              [AFBindings ["x"]],
+            T1 (ABind (T1 (ARef "3") [AFBindings []]) "c") [AFBindings ["c"]],
+            T1 (ABind (T1 (ARef "4") [AFBindings []]) "d") [AFBindings ["d"]]]
+           (AOSym "-"))
+        [AFBindings []])
      "z")
+  [AFBindings ["z"]]
 =========================================
 $`a`$
 $`a`$
-T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOAlpha "a"))
+T1
+  (AApplication
+     [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+     (AOAlpha "a"))
+  [AFBindings []]
 =========================================
 $a$``a
 $a$``a
-T0 (AApplication [T0 (ARef "a"), T0 (ARef "")] (AOAlpha "a"))
+T1
+  (AApplication
+     [T1 (ARef "a") [AFBindings []], T1 (ARef "") [AFBindings []]]
+     (AOAlpha "a"))
+  [AFBindings []]
 =========================================
 $`[_`a]
 ExLeftRec (ExRef "")
@@ -314,190 +489,340 @@ ExLeftRec (ExRef "")
         [ExLeftRec ExSlot (LrrPostfix [] (OpAlphabetic "a") [])])
      [])
 $`[_`a]
-T0
-  (AApplication [T0 (ARef "")]
-     (AOMany (AMSimple [T0 (AApplication [T0 ASlot] (AOAlpha "a"))])))
+T1
+  (AApplication [T1 (ARef "") [AFBindings []]]
+     (AOMany
+        (AMSimple
+           [T1 (AApplication [T1 ASlot [AFBindings []]] (AOAlpha "a"))
+              [AFBindings []]])))
+  [AFBindings []]
 =========================================
 $ $ ``+
 ExLeftRec (ExRef "") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
 $$``+
-T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "+"))
+T1
+  (AApplication
+     [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+     (AOSym "+"))
+  [AFBindings []]
 =========================================
 $a $ ``+
 ExLeftRec (ExRef "a") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
 $a$``+
-T0 (AApplication [T0 (ARef "a"), T0 (ARef "")] (AOSym "+"))
+T1
+  (AApplication
+     [T1 (ARef "a") [AFBindings []], T1 (ARef "") [AFBindings []]]
+     (AOSym "+"))
+  [AFBindings []]
 =========================================
 $ $b ``+
 ExLeftRec (ExRef "") (LrrPostfix [ExRef "b"] (OpSymbolic "+") [])
 $$b``+
-T0 (AApplication [T0 (ARef ""), T0 (ARef "b")] (AOSym "+"))
+T1
+  (AApplication
+     [T1 (ARef "") [AFBindings []], T1 (ARef "b") [AFBindings []]]
+     (AOSym "+"))
+  [AFBindings []]
 =========================================
 $a $b ``+
 ExLeftRec (ExRef "a") (LrrPostfix [ExRef "b"] (OpSymbolic "+") [])
 $a$b``+
-T0 (AApplication [T0 (ARef "a"), T0 (ARef "b")] (AOSym "+"))
+T1
+  (AApplication
+     [T1 (ARef "a") [AFBindings []], T1 (ARef "b") [AFBindings []]]
+     (AOSym "+"))
+  [AFBindings []]
 =========================================
 $ $``+
 ExLeftRec (ExRef "") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
 $$``+
-T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "+"))
+T1
+  (AApplication
+     [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+     (AOSym "+"))
+  [AFBindings []]
 =========================================
 $$ ``+
 ExLeftRec (ExRef "") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
 $$``+
-T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "+"))
+T1
+  (AApplication
+     [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+     (AOSym "+"))
+  [AFBindings []]
 =========================================
 $ `+
 ExLeftRec (ExRef "") (LrrPostfix [] (OpSymbolic "+") [])
 $`+
-T0 (AApplication [T0 (ARef "")] (AOSym "+"))
+T1 (AApplication [T1 (ARef "") [AFBindings []]] (AOSym "+"))
+  [AFBindings []]
 =========================================
 [ /a/ ]
 ExBlock '[' ',' [ExSelector '/' "a"]
 [/a/]
-T0 (AMany (AMSimple [T0 (ALiteral "a")]))
+T1 (AMany (AMSimple [T1 (ASelector "a") [AFBindings []]]))
+  [AFBindings []]
 =========================================
 [/a/ ]
 ExBlock '[' ',' [ExSelector '/' "a"]
 [/a/]
-T0 (AMany (AMSimple [T0 (ALiteral "a")]))
+T1 (AMany (AMSimple [T1 (ASelector "a") [AFBindings []]]))
+  [AFBindings []]
 =========================================
 [ /a/]
 ExBlock '[' ',' [ExSelector '/' "a"]
 [/a/]
-T0 (AMany (AMSimple [T0 (ALiteral "a")]))
+T1 (AMany (AMSimple [T1 (ASelector "a") [AFBindings []]]))
+  [AFBindings []]
 =========================================
 [ ]
 ExBlock '[' ';' []
 []
-T0 (AMany (AMSimple []))
+T1 (AMany (AMSimple [])) [AFBindings []]
 =========================================
 -``[-``$$][-``$$]
 -``[-``$$][-``$$]
-T0
+T1
   (AApplication
-     [T0
+     [T1
         (AMany
            (AMSimple
-              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))])),
-      T0
+              [T1
+                 (AApplication
+                    [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+                    (AOSym "-"))
+                 [AFBindings []]]))
+        [AFBindings []],
+      T1
         (AMany
            (AMSimple
-              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]))]
+              [T1
+                 (AApplication
+                    [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+                    (AOSym "-"))
+                 [AFBindings []]]))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 -`` [-``$$] -``$$
 -``[-``$$]-``$$
-T0
+T1
   (AApplication
-     [T0
+     [T1
         (AMany
            (AMSimple
-              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))])),
-      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+              [T1
+                 (AApplication
+                    [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+                    (AOSym "-"))
+                 [AFBindings []]]))
+        [AFBindings []],
+      T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 -`` -``$$ [-``$$]
 -``-``$$[-``$$]
-T0
+T1
   (AApplication
-     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
-      T0
+     [T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []],
+      T1
         (AMany
            (AMSimple
-              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]))]
+              [T1
+                 (AApplication
+                    [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+                    (AOSym "-"))
+                 [AFBindings []]]))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 -``-``$$ [-``$$]
 -``-``$$[-``$$]
-T0
+T1
   (AApplication
-     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
-      T0
+     [T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []],
+      T1
         (AMany
            (AMSimple
-              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]))]
+              [T1
+                 (AApplication
+                    [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+                    (AOSym "-"))
+                 [AFBindings []]]))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 -`` -``$$ -``$$
 -``-``$$-``$$
-T0
+T1
   (AApplication
-     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
-      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+     [T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []],
+      T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 -``-``$$ -``$$
 -``-``$$-``$$
-T0
+T1
   (AApplication
-     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
-      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+     [T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []],
+      T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 [$$``-][$$``-]``-
 [$$``-][$$``-]``-
-T0
+T1
   (AApplication
-     [T0
+     [T1
         (AMany
            (AMSimple
-              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))])),
-      T0
+              [T1
+                 (AApplication
+                    [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+                    (AOSym "-"))
+                 [AFBindings []]]))
+        [AFBindings []],
+      T1
         (AMany
            (AMSimple
-              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]))]
+              [T1
+                 (AApplication
+                    [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+                    (AOSym "-"))
+                 [AFBindings []]]))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 $$``- [$$``-] ``-
 $$``-[$$``-]``-
-T0
+T1
   (AApplication
-     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
-      T0
+     [T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []],
+      T1
         (AMany
            (AMSimple
-              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]))]
+              [T1
+                 (AApplication
+                    [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+                    (AOSym "-"))
+                 [AFBindings []]]))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 [$$``-] $$``- ``-
 [$$``-]$$``-``-
-T0
+T1
   (AApplication
-     [T0
+     [T1
         (AMany
            (AMSimple
-              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))])),
-      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+              [T1
+                 (AApplication
+                    [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+                    (AOSym "-"))
+                 [AFBindings []]]))
+        [AFBindings []],
+      T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 [$$``-] $$``-``-
 [$$``-]$$``-``-
-T0
+T1
   (AApplication
-     [T0
+     [T1
         (AMany
            (AMSimple
-              [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))])),
-      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+              [T1
+                 (AApplication
+                    [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+                    (AOSym "-"))
+                 [AFBindings []]]))
+        [AFBindings []],
+      T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 $$``- $$``- ``-
 $$``-$$``-``-
-T0
+T1
   (AApplication
-     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
-      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+     [T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []],
+      T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 $$``- $$``-``-
 $$``-$$``-``-
-T0
+T1
   (AApplication
-     [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
-      T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-"))]
+     [T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []],
+      T1
+        (AApplication
+           [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 $-$-$`children
 ExLeftRec
@@ -506,46 +831,67 @@ ExLeftRec
      (LrrInfix (OpSymbolic "-") [] [ExRef ""]))
   (LrrPostfix [] (OpAlphabetic "children") [])
 $-$-$`children
-T0
+T1
   (AApplication
-     [T0
+     [T1
         (AApplication
-           [T0 (AApplication [T0 (ARef ""), T0 (ARef "")] (AOSym "-")),
-            T0 (ARef "")]
-           (AOSym "-"))]
+           [T1
+              (AApplication
+                 [T1 (ARef "") [AFBindings []], T1 (ARef "") [AFBindings []]]
+                 (AOSym "-"))
+              [AFBindings []],
+            T1 (ARef "") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []]]
      (AOAlpha "children"))
+  [AFBindings []]
 =========================================
 $1-$2-$3
 ExLeftRec
   (ExLeftRec (ExRef "1") (LrrInfix (OpSymbolic "-") [] [ExRef "2"]))
   (LrrInfix (OpSymbolic "-") [] [ExRef "3"])
 $1-$2-$3
-T0
+T1
   (AApplication
-     [T0 (AApplication [T0 (ARef "1"), T0 (ARef "2")] (AOSym "-")),
-      T0 (ARef "3")]
+     [T1
+        (AApplication
+           [T1 (ARef "1") [AFBindings []], T1 (ARef "2") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []],
+      T1 (ARef "3") [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 $1-$2$3``-
 ExLeftRec
   (ExLeftRec (ExRef "1") (LrrInfix (OpSymbolic "-") [] [ExRef "2"]))
   (LrrPostfix [ExRef "3"] (OpSymbolic "-") [])
 $1-$2$3``-
-T0
+T1
   (AApplication
-     [T0 (AApplication [T0 (ARef "1"), T0 (ARef "2")] (AOSym "-")),
-      T0 (ARef "3")]
+     [T1
+        (AApplication
+           [T1 (ARef "1") [AFBindings []], T1 (ARef "2") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []],
+      T1 (ARef "3") [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 $1-$2`-
 ExLeftRec
   (ExLeftRec (ExRef "1") (LrrInfix (OpSymbolic "-") [] [ExRef "2"]))
   (LrrPostfix [] (OpSymbolic "-") [])
 $1-$2`-
-T0
+T1
   (AApplication
-     [T0 (AApplication [T0 (ARef "1"), T0 (ARef "2")] (AOSym "-"))]
+     [T1
+        (AApplication
+           [T1 (ARef "1") [AFBindings []], T1 (ARef "2") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 $`[_-$a@x,_+$b@y,_`find`$c@z,_+$+//@+//@]
 ExLeftRec (ExRef "")
@@ -569,34 +915,52 @@ ExLeftRec (ExRef "")
               [ExNamed (ExSelector '/' "") (Name '@' Nothing "" Nothing)])])
      [])
 $`[_-$a@x,_+$b@y,_`find`$c@z,_+$+//@+//@]
-T0
-  (AApplication [T0 (ARef "")]
+T1
+  (AApplication [T1 (ARef "") [AFBindings []]]
      (AOMany
         (AMSimple
-           [T0
-              (AApplication [T0 ASlot, T0 (ABind (T0 (ARef "a")) "x")]
-                 (AOSym "-")),
-            T0
-              (AApplication [T0 ASlot, T0 (ABind (T0 (ARef "b")) "y")]
-                 (AOSym "+")),
-            T0
-              (AApplication [T0 ASlot, T0 (ABind (T0 (ARef "c")) "z")]
-                 (AOAlpha "find")),
-            T0
+           [T1
               (AApplication
-                 [T0
+                 [T1 ASlot [AFBindings []],
+                  T1 (ABind (T1 (ARef "a") [AFBindings []]) "x") [AFBindings ["x"]]]
+                 (AOSym "-"))
+              [AFBindings []],
+            T1
+              (AApplication
+                 [T1 ASlot [AFBindings []],
+                  T1 (ABind (T1 (ARef "b") [AFBindings []]) "y") [AFBindings ["y"]]]
+                 (AOSym "+"))
+              [AFBindings []],
+            T1
+              (AApplication
+                 [T1 ASlot [AFBindings []],
+                  T1 (ABind (T1 (ARef "c") [AFBindings []]) "z") [AFBindings ["z"]]]
+                 (AOAlpha "find"))
+              [AFBindings []],
+            T1
+              (AApplication
+                 [T1
                     (AApplication
-                       [T0 (AApplication [T0 ASlot, T0 (ARef "")] (AOSym "+")),
-                        T0 (ABind (T0 (ALiteral "")) "")]
-                       (AOSym "+")),
-                  T0 (ABind (T0 (ALiteral "")) "")]
-                 (AOSym "+"))])))
+                       [T1
+                          (AApplication
+                             [T1 ASlot [AFBindings []], T1 (ARef "") [AFBindings []]]
+                             (AOSym "+"))
+                          [AFBindings []],
+                        T1 (ABind (T1 (ASelector "") [AFBindings []]) "")
+                          [AFBindings [""]]]
+                       (AOSym "+"))
+                    [AFBindings []],
+                  T1 (ABind (T1 (ASelector "") [AFBindings []]) "")
+                    [AFBindings [""]]]
+                 (AOSym "+"))
+              [AFBindings []]])))
+  [AFBindings []]
 =========================================
 $
 
 ExRef ""
 $
-T0 (ARef "")
+T1 (ARef "") [AFBindings []]
 =========================================
 /div.menucardproduct/-[
 						/form/@formid ;
@@ -632,24 +996,52 @@ ExLeftRec (ExSelector '/' "div.menucardproduct")
          ExNamed (ExSelector '/' "div.menucardproductprice>a")
            (Name '@' Nothing "price_a_id" Nothing)]])
 /div.menucardproduct/-[/form/@formid;/.menucardproductname/@name;/.menucardproductdescription/@desc;/.productextradescription/@desc1;/input[name=product]/@id_product;/input[name=menucat]/@id_menucat;/input[name=rest]/@id_rest;/div.menucardproductprice>a/@price;/div.menucardproductprice>a/@price_a_id;]
-T0
+T1
   (AApplication
-     [T0 (ALiteral "div.menucardproduct"),
-      T0
+     [T1 (ASelector "div.menucardproduct") [AFBindings []],
+      T1
         (AMany
            (AMSimple
-              [T0 (ABind (T0 (ALiteral "form")) "formid"),
-               T0 (ABind (T0 (ALiteral ".menucardproductname")) "name"),
-               T0 (ABind (T0 (ALiteral ".menucardproductdescription")) "desc"),
-               T0 (ABind (T0 (ALiteral ".productextradescription")) "desc1"),
-               T0 (ABind (T0 (ALiteral "input[name=product]")) "id_product"),
-               T0 (ABind (T0 (ALiteral "input[name=menucat]")) "id_menucat"),
-               T0 (ABind (T0 (ALiteral "input[name=rest]")) "id_rest"),
-               T0 (ABind (T0 (ALiteral "div.menucardproductprice>a")) "price"),
-               T0
-                 (ABind (T0 (ALiteral "div.menucardproductprice>a"))
-                    "price_a_id")]))]
+              [T1 (ABind (T1 (ASelector "form") [AFBindings []]) "formid")
+                 [AFBindings ["formid"]],
+               T1
+                 (ABind (T1 (ASelector ".menucardproductname") [AFBindings []])
+                    "name")
+                 [AFBindings ["name"]],
+               T1
+                 (ABind
+                    (T1 (ASelector ".menucardproductdescription") [AFBindings []])
+                    "desc")
+                 [AFBindings ["desc"]],
+               T1
+                 (ABind (T1 (ASelector ".productextradescription") [AFBindings []])
+                    "desc1")
+                 [AFBindings ["desc1"]],
+               T1
+                 (ABind (T1 (ASelector "input[name=product]") [AFBindings []])
+                    "id_product")
+                 [AFBindings ["id_product"]],
+               T1
+                 (ABind (T1 (ASelector "input[name=menucat]") [AFBindings []])
+                    "id_menucat")
+                 [AFBindings ["id_menucat"]],
+               T1
+                 (ABind (T1 (ASelector "input[name=rest]") [AFBindings []])
+                    "id_rest")
+                 [AFBindings ["id_rest"]],
+               T1
+                 (ABind
+                    (T1 (ASelector "div.menucardproductprice>a") [AFBindings []])
+                    "price")
+                 [AFBindings ["price"]],
+               T1
+                 (ABind
+                    (T1 (ASelector "div.menucardproductprice>a") [AFBindings []])
+                    "price_a_id")
+                 [AFBindings ["price_a_id"]]]))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
     _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id-/.menucardcategoryheader/!@cat
 
@@ -665,24 +1057,30 @@ ExLeftRec
         [ExSelector '/' ".menucardcategoryheader"]))
   (LrrGrouping [Name '@' Nothing "cat" Nothing])
 _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id-/.menucardcategoryheader/!@cat
-T0
+T1
   (ABind
-     (T0
+     (T1
         (AApplication
-           [T0
+           [T1
               (ABind
-                 (T0
+                 (T1
                     (AApplication
-                       [T0
+                       [T1
                           (AApplication
-                             [T0 ASlot,
-                              T0 (ALiteral "#imenucard>.menucardproducts.menucardproducts")]
-                             (AOAlpha "closest"))]
-                       (AOAlpha "prev")))
-                 "cat_id"),
-            T0 (ALiteral ".menucardcategoryheader")]
-           (AOSym "-")))
+                             [T1 ASlot [AFBindings []],
+                              T1 (ASelector "#imenucard>.menucardproducts.menucardproducts")
+                                [AFBindings []]]
+                             (AOAlpha "closest"))
+                          [AFBindings []]]
+                       (AOAlpha "prev"))
+                    [AFBindings []])
+                 "cat_id")
+              [AFBindings ["cat_id"]],
+            T1 (ASelector ".menucardcategoryheader") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []])
      "cat")
+  [AFBindings ["cat"]]
 =========================================
     _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id!-@cat/.menucardcategoryheader/!
 
@@ -700,24 +1098,30 @@ ExLeftRec
         [ExSelector '/' ".menucardcategoryheader"]))
   (LrrGrouping [])
 _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id!-@cat/.menucardcategoryheader/!
-T0
+T1
   (ABind
-     (T0
+     (T1
         (AApplication
-           [T0
+           [T1
               (ABind
-                 (T0
+                 (T1
                     (AApplication
-                       [T0
+                       [T1
                           (AApplication
-                             [T0 ASlot,
-                              T0 (ALiteral "#imenucard>.menucardproducts.menucardproducts")]
-                             (AOAlpha "closest"))]
-                       (AOAlpha "prev")))
-                 "cat_id"),
-            T0 (ALiteral ".menucardcategoryheader")]
-           (AOSym "-")))
+                             [T1 ASlot [AFBindings []],
+                              T1 (ASelector "#imenucard>.menucardproducts.menucardproducts")
+                                [AFBindings []]]
+                             (AOAlpha "closest"))
+                          [AFBindings []]]
+                       (AOAlpha "prev"))
+                    [AFBindings []])
+                 "cat_id")
+              [AFBindings ["cat_id"]],
+            T1 (ASelector ".menucardcategoryheader") [AFBindings []]]
+           (AOSym "-"))
+        [AFBindings []])
      "cat")
+  [AFBindings ["cat"]]
 =========================================
 [
     _`closest`//`prev@cat_id-//@cat
@@ -733,21 +1137,29 @@ ExBlock '[' ','
      (LrrInfix (OpSymbolic "-") []
         [ExNamed (ExSelector '/' "") (Name '@' Nothing "cat" Nothing)])]
 [_`closest`//`prev@cat_id-//@cat]
-T0
+T1
   (AMany
      (AMSimple
-        [T0
+        [T1
            (AApplication
-              [T0
+              [T1
                  (ABind
-                    (T0
+                    (T1
                        (AApplication
-                          [T0
-                             (AApplication [T0 ASlot, T0 (ALiteral "")] (AOAlpha "closest"))]
-                          (AOAlpha "prev")))
-                    "cat_id"),
-               T0 (ABind (T0 (ALiteral "")) "cat")]
-              (AOSym "-"))]))
+                          [T1
+                             (AApplication
+                                [T1 ASlot [AFBindings []], T1 (ASelector "") [AFBindings []]]
+                                (AOAlpha "closest"))
+                             [AFBindings []]]
+                          (AOAlpha "prev"))
+                       [AFBindings []])
+                    "cat_id")
+                 [AFBindings ["cat_id"]],
+               T1 (ABind (T1 (ASelector "") [AFBindings []]) "cat")
+                 [AFBindings ["cat"]]]
+              (AOSym "-"))
+           [AFBindings []]]))
+  [AFBindings []]
 =========================================
 /div.menucardproduct/`[
     _`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,
@@ -804,54 +1216,92 @@ ExLeftRec (ExSelector '/' "div.menucardproduct")
                     (Name '@' Nothing "price_a_id" Nothing)]])])
      [])
 /div.menucardproduct/`[_`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,_-[/form/@formid;/.menucardproductname/@name;/.menucardproductdescription/@desc;/.productextradescription/@desc1;/input[name=product]/@id_product;/input[name=menucat]/@id_menucat;/input[name=rest]/@id_rest;/div.menucardproductprice>a/@price;/div.menucardproductprice>a/@price_a_id;]]
-T0
-  (AApplication [T0 (ALiteral "div.menucardproduct")]
+T1
+  (AApplication
+     [T1 (ASelector "div.menucardproduct") [AFBindings []]]
      (AOMany
         (AMSimple
-           [T0
+           [T1
               (ABind
-                 (T0
+                 (T1
                     (AApplication
-                       [T0
+                       [T1
                           (ABind
-                             (T0
+                             (T1
                                 (AApplication
-                                   [T0
+                                   [T1
                                       (ABind
-                                         (T0
+                                         (T1
                                             (AApplication
-                                               [T0 ASlot,
-                                                T0
+                                               [T1 ASlot [AFBindings []],
+                                                T1
                                                   (ABind
-                                                     (T0
-                                                        (ALiteral
-                                                           "#imenucard>.menucardproducts.menucardproducts"))
-                                                     "wtf")]
-                                               (AOAlpha "closest")))
-                                         "cat_prev")]
-                                   (AOAlpha "prev")))
-                             "cat_id"),
-                        T0 (ALiteral ".menucardcategoryheader")]
-                       (AOSym "-")))
-                 "cat"),
-            T0
+                                                     (T1
+                                                        (ASelector
+                                                           "#imenucard>.menucardproducts.menucardproducts")
+                                                        [AFBindings []])
+                                                     "wtf")
+                                                  [AFBindings ["wtf"]]]
+                                               (AOAlpha "closest"))
+                                            [AFBindings []])
+                                         "cat_prev")
+                                      [AFBindings ["cat_prev"]]]
+                                   (AOAlpha "prev"))
+                                [AFBindings []])
+                             "cat_id")
+                          [AFBindings ["cat_id"]],
+                        T1 (ASelector ".menucardcategoryheader") [AFBindings []]]
+                       (AOSym "-"))
+                    [AFBindings []])
+                 "cat")
+              [AFBindings ["cat"]],
+            T1
               (AApplication
-                 [T0 ASlot,
-                  T0
+                 [T1 ASlot [AFBindings []],
+                  T1
                     (AMany
                        (AMSimple
-                          [T0 (ABind (T0 (ALiteral "form")) "formid"),
-                           T0 (ABind (T0 (ALiteral ".menucardproductname")) "name"),
-                           T0 (ABind (T0 (ALiteral ".menucardproductdescription")) "desc"),
-                           T0 (ABind (T0 (ALiteral ".productextradescription")) "desc1"),
-                           T0 (ABind (T0 (ALiteral "input[name=product]")) "id_product"),
-                           T0 (ABind (T0 (ALiteral "input[name=menucat]")) "id_menucat"),
-                           T0 (ABind (T0 (ALiteral "input[name=rest]")) "id_rest"),
-                           T0 (ABind (T0 (ALiteral "div.menucardproductprice>a")) "price"),
-                           T0
-                             (ABind (T0 (ALiteral "div.menucardproductprice>a"))
-                                "price_a_id")]))]
-                 (AOSym "-"))])))
+                          [T1 (ABind (T1 (ASelector "form") [AFBindings []]) "formid")
+                             [AFBindings ["formid"]],
+                           T1
+                             (ABind (T1 (ASelector ".menucardproductname") [AFBindings []])
+                                "name")
+                             [AFBindings ["name"]],
+                           T1
+                             (ABind
+                                (T1 (ASelector ".menucardproductdescription") [AFBindings []])
+                                "desc")
+                             [AFBindings ["desc"]],
+                           T1
+                             (ABind (T1 (ASelector ".productextradescription") [AFBindings []])
+                                "desc1")
+                             [AFBindings ["desc1"]],
+                           T1
+                             (ABind (T1 (ASelector "input[name=product]") [AFBindings []])
+                                "id_product")
+                             [AFBindings ["id_product"]],
+                           T1
+                             (ABind (T1 (ASelector "input[name=menucat]") [AFBindings []])
+                                "id_menucat")
+                             [AFBindings ["id_menucat"]],
+                           T1
+                             (ABind (T1 (ASelector "input[name=rest]") [AFBindings []])
+                                "id_rest")
+                             [AFBindings ["id_rest"]],
+                           T1
+                             (ABind
+                                (T1 (ASelector "div.menucardproductprice>a") [AFBindings []])
+                                "price")
+                             [AFBindings ["price"]],
+                           T1
+                             (ABind
+                                (T1 (ASelector "div.menucardproductprice>a") [AFBindings []])
+                                "price_a_id")
+                             [AFBindings ["price_a_id"]]]))
+                    [AFBindings []]]
+                 (AOSym "-"))
+              [AFBindings []]])))
+  [AFBindings []]
 =========================================
 						/input/-[
 							_-/[name=product]/!@id_product ;
@@ -875,30 +1325,45 @@ ExLeftRec (ExSelector '/' "input")
               (LrrInfix (OpSymbolic "-") [] [ExSelector '/' "[name=rest]"]))
            (LrrGrouping [Name '@' Nothing "id_rest" Nothing])]])
 /input/-[_-/[name=product]/!@id_product;_-/[name=menucat]/!@id_menucat;_-/[name=rest]/!@id_rest;]
-T0
+T1
   (AApplication
-     [T0 (ALiteral "input"),
-      T0
+     [T1 (ASelector "input") [AFBindings []],
+      T1
         (AMany
            (AMSimple
-              [T0
+              [T1
                  (ABind
-                    (T0
-                       (AApplication [T0 ASlot, T0 (ALiteral "[name=product]")]
-                          (AOSym "-")))
-                    "id_product"),
-               T0
+                    (T1
+                       (AApplication
+                          [T1 ASlot [AFBindings []],
+                           T1 (ASelector "[name=product]") [AFBindings []]]
+                          (AOSym "-"))
+                       [AFBindings []])
+                    "id_product")
+                 [AFBindings ["id_product"]],
+               T1
                  (ABind
-                    (T0
-                       (AApplication [T0 ASlot, T0 (ALiteral "[name=menucat]")]
-                          (AOSym "-")))
-                    "id_menucat"),
-               T0
+                    (T1
+                       (AApplication
+                          [T1 ASlot [AFBindings []],
+                           T1 (ASelector "[name=menucat]") [AFBindings []]]
+                          (AOSym "-"))
+                       [AFBindings []])
+                    "id_menucat")
+                 [AFBindings ["id_menucat"]],
+               T1
                  (ABind
-                    (T0
-                       (AApplication [T0 ASlot, T0 (ALiteral "[name=rest]")] (AOSym "-")))
-                    "id_rest")]))]
+                    (T1
+                       (AApplication
+                          [T1 ASlot [AFBindings []],
+                           T1 (ASelector "[name=rest]") [AFBindings []]]
+                          (AOSym "-"))
+                       [AFBindings []])
+                    "id_rest")
+                 [AFBindings ["id_rest"]]]))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 						/input/-[
 							/[name=product]/#id_product ;
@@ -916,16 +1381,27 @@ ExLeftRec (ExSelector '/' "input")
          ExNamed (ExSelector '/' "[name=rest]")
            (Name '#' Nothing "id_rest" Nothing)]])
 /input/-[/[name=product]/#id_product;/[name=menucat]/#id_menucat;/[name=rest]/#id_rest;]
-T0
+T1
   (AApplication
-     [T0 (ALiteral "input"),
-      T0
+     [T1 (ASelector "input") [AFBindings []],
+      T1
         (AMany
            (AMSimple
-              [T0 (ALateBind (T0 (ALiteral "[name=product]")) "id_product"),
-               T0 (ALateBind (T0 (ALiteral "[name=menucat]")) "id_menucat"),
-               T0 (ALateBind (T0 (ALiteral "[name=rest]")) "id_rest")]))]
+              [T1
+                 (ALateBind (T1 (ASelector "[name=product]") [AFBindings []])
+                    "id_product")
+                 [AFBindings []],
+               T1
+                 (ALateBind (T1 (ASelector "[name=menucat]") [AFBindings []])
+                    "id_menucat")
+                 [AFBindings []],
+               T1
+                 (ALateBind (T1 (ASelector "[name=rest]") [AFBindings []])
+                    "id_rest")
+                 [AFBindings []]]))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 						/input/-[
 							/[name=product]/!@id_product ;
@@ -943,16 +1419,25 @@ ExLeftRec (ExSelector '/' "input")
          ExLeftRec (ExSelector '/' "[name=rest]")
            (LrrGrouping [Name '@' Nothing "id_rest" Nothing])]])
 /input/-[/[name=product]/!@id_product;/[name=menucat]/!@id_menucat;/[name=rest]/!@id_rest;]
-T0
+T1
   (AApplication
-     [T0 (ALiteral "input"),
-      T0
+     [T1 (ASelector "input") [AFBindings []],
+      T1
         (AMany
            (AMSimple
-              [T0 (ABind (T0 (ALiteral "[name=product]")) "id_product"),
-               T0 (ABind (T0 (ALiteral "[name=menucat]")) "id_menucat"),
-               T0 (ABind (T0 (ALiteral "[name=rest]")) "id_rest")]))]
+              [T1
+                 (ABind (T1 (ASelector "[name=product]") [AFBindings []])
+                    "id_product")
+                 [AFBindings ["id_product"]],
+               T1
+                 (ABind (T1 (ASelector "[name=menucat]") [AFBindings []])
+                    "id_menucat")
+                 [AFBindings ["id_menucat"]],
+               T1 (ABind (T1 (ASelector "[name=rest]") [AFBindings []]) "id_rest")
+                 [AFBindings ["id_rest"]]]))
+        [AFBindings []]]
      (AOSym "-"))
+  [AFBindings []]
 =========================================
 /div.menucardproduct/ `map` [_`[
     _`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,
@@ -1016,83 +1501,122 @@ ExLeftRec (ExSelector '/' "div.menucardproduct")
                              (Name '#' Nothing "price_a_id" Nothing)]])])
               [])]])
 /div.menucardproduct/`map`[_`[_`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,_-[/form/#formid;/.menucardproductname/#name;/.menucardproductdescription/#desc;/.productextradescription/#desc1;/input/!-[/[name=product]/!@id_product;/[name=menucat]/!@id_menucat;/[name=rest]/!@id_rest;];/div.menucardproductprice>a/#price#price_a_id;]]]
-T0
+T1
   (AApplication
-     [T0 (ALiteral "div.menucardproduct"),
-      T0
+     [T1 (ASelector "div.menucardproduct") [AFBindings []],
+      T1
         (AMany
            (AMSimple
-              [T0
-                 (AApplication [T0 ASlot]
+              [T1
+                 (AApplication [T1 ASlot [AFBindings []]]
                     (AOMany
                        (AMSimple
-                          [T0
+                          [T1
                              (ABind
-                                (T0
+                                (T1
                                    (AApplication
-                                      [T0
+                                      [T1
                                          (ABind
-                                            (T0
+                                            (T1
                                                (AApplication
-                                                  [T0
+                                                  [T1
                                                      (ABind
-                                                        (T0
+                                                        (T1
                                                            (AApplication
-                                                              [T0 ASlot,
-                                                               T0
+                                                              [T1 ASlot [AFBindings []],
+                                                               T1
                                                                  (ABind
-                                                                    (T0
-                                                                       (ALiteral
-                                                                          "#imenucard>.menucardproducts.menucardproducts"))
-                                                                    "wtf")]
-                                                              (AOAlpha "closest")))
-                                                        "cat_prev")]
-                                                  (AOAlpha "prev")))
-                                            "cat_id"),
-                                       T0 (ALiteral ".menucardcategoryheader")]
-                                      (AOSym "-")))
-                                "cat"),
-                           T0
+                                                                    (T1
+                                                                       (ASelector
+                                                                          "#imenucard>.menucardproducts.menucardproducts")
+                                                                       [AFBindings []])
+                                                                    "wtf")
+                                                                 [AFBindings ["wtf"]]]
+                                                              (AOAlpha "closest"))
+                                                           [AFBindings []])
+                                                        "cat_prev")
+                                                     [AFBindings ["cat_prev"]]]
+                                                  (AOAlpha "prev"))
+                                               [AFBindings []])
+                                            "cat_id")
+                                         [AFBindings ["cat_id"]],
+                                       T1 (ASelector ".menucardcategoryheader") [AFBindings []]]
+                                      (AOSym "-"))
+                                   [AFBindings []])
+                                "cat")
+                             [AFBindings ["cat"]],
+                           T1
                              (AApplication
-                                [T0 ASlot,
-                                 T0
+                                [T1 ASlot [AFBindings []],
+                                 T1
                                    (AMany
                                       (AMSimple
-                                         [T0 (ALateBind (T0 (ALiteral "form")) "formid"),
-                                          T0
-                                            (ALateBind (T0 (ALiteral ".menucardproductname"))
-                                               "name"),
-                                          T0
-                                            (ALateBind (T0 (ALiteral ".menucardproductdescription"))
-                                               "desc"),
-                                          T0
-                                            (ALateBind (T0 (ALiteral ".productextradescription"))
-                                               "desc1"),
-                                          T0
+                                         [T1
+                                            (ALateBind (T1 (ASelector "form") [AFBindings []])
+                                               "formid")
+                                            [AFBindings []],
+                                          T1
+                                            (ALateBind
+                                               (T1 (ASelector ".menucardproductname")
+                                                  [AFBindings []])
+                                               "name")
+                                            [AFBindings []],
+                                          T1
+                                            (ALateBind
+                                               (T1 (ASelector ".menucardproductdescription")
+                                                  [AFBindings []])
+                                               "desc")
+                                            [AFBindings []],
+                                          T1
+                                            (ALateBind
+                                               (T1 (ASelector ".productextradescription")
+                                                  [AFBindings []])
+                                               "desc1")
+                                            [AFBindings []],
+                                          T1
                                             (AApplication
-                                               [T0 (ALiteral "input"),
-                                                T0
+                                               [T1 (ASelector "input") [AFBindings []],
+                                                T1
                                                   (AMany
                                                      (AMSimple
-                                                        [T0
-                                                           (ABind (T0 (ALiteral "[name=product]"))
-                                                              "id_product"),
-                                                         T0
-                                                           (ABind (T0 (ALiteral "[name=menucat]"))
-                                                              "id_menucat"),
-                                                         T0
-                                                           (ABind (T0 (ALiteral "[name=rest]"))
-                                                              "id_rest")]))]
-                                               (AOSym "-")),
-                                          T0
+                                                        [T1
+                                                           (ABind
+                                                              (T1 (ASelector "[name=product]")
+                                                                 [AFBindings []])
+                                                              "id_product")
+                                                           [AFBindings ["id_product"]],
+                                                         T1
+                                                           (ABind
+                                                              (T1 (ASelector "[name=menucat]")
+                                                                 [AFBindings []])
+                                                              "id_menucat")
+                                                           [AFBindings ["id_menucat"]],
+                                                         T1
+                                                           (ABind
+                                                              (T1 (ASelector "[name=rest]")
+                                                                 [AFBindings []])
+                                                              "id_rest")
+                                                           [AFBindings ["id_rest"]]]))
+                                                  [AFBindings []]]
+                                               (AOSym "-"))
+                                            [AFBindings []],
+                                          T1
                                             (ALateBind
-                                               (T0
+                                               (T1
                                                   (ALateBind
-                                                     (T0 (ALiteral "div.menucardproductprice>a"))
-                                                     "price"))
-                                               "price_a_id")]))]
-                                (AOSym "-"))])))]))]
+                                                     (T1 (ASelector "div.menucardproductprice>a")
+                                                        [AFBindings []])
+                                                     "price")
+                                                  [AFBindings []])
+                                               "price_a_id")
+                                            [AFBindings []]]))
+                                   [AFBindings []]]
+                                (AOSym "-"))
+                             [AFBindings []]])))
+                 [AFBindings []]]))
+        [AFBindings []]]
      (AOAlpha "map"))
+  [AFBindings []]
 =========================================
 /div.menucardproductprice>a/`[ _`html#price, _`id#price_a_id ]
 
@@ -1107,16 +1631,24 @@ ExLeftRec (ExSelector '/' "div.menucardproductprice>a")
               [Name '#' Nothing "price_a_id" Nothing])])
      [])
 /div.menucardproductprice>a/`[_`html#price,_`id#price_a_id]
-T0
-  (AApplication [T0 (ALiteral "div.menucardproductprice>a")]
+T1
+  (AApplication
+     [T1 (ASelector "div.menucardproductprice>a") [AFBindings []]]
      (AOMany
         (AMSimple
-           [T0
-              (ALateBind (T0 (AApplication [T0 ASlot] (AOAlpha "html")))
-                 "price"),
-            T0
-              (ALateBind (T0 (AApplication [T0 ASlot] (AOAlpha "id")))
-                 "price_a_id")])))
+           [T1
+              (ALateBind
+                 (T1 (AApplication [T1 ASlot [AFBindings []]] (AOAlpha "html"))
+                    [AFBindings []])
+                 "price")
+              [AFBindings []],
+            T1
+              (ALateBind
+                 (T1 (AApplication [T1 ASlot [AFBindings []]] (AOAlpha "id"))
+                    [AFBindings []])
+                 "price_a_id")
+              [AFBindings []]])))
+  [AFBindings []]
 =========================================
 /div.menucardproductprice>a/#price^html#price_a_id^id
 
@@ -1125,19 +1657,25 @@ ExNamed
      (Name '#' Nothing "price" (Just "html")))
   (Name '#' Nothing "price_a_id" (Just "id"))
 /div.menucardproductprice>a/#price^html#price_a_id^id
-T0
+T1
   (AExtract
-     (T0
+     (T1
         (ALateBind
-           (T0
+           (T1
               (AExtract
-                 (T0
-                    (ALateBind (T0 (ALiteral "div.menucardproductprice>a")) "price"))
+                 (T1
+                    (ALateBind
+                       (T1 (ASelector "div.menucardproductprice>a") [AFBindings []])
+                       "price")
+                    [AFBindings []])
                  "html"
-                 "price"))
-           "price_a_id"))
+                 "price")
+              [AFBindings []])
+           "price_a_id")
+        [AFBindings []])
      "id"
      "price_a_id")
+  [AFBindings []]
 =========================================
 /div.menucardproductprice>a/#html:price#id:price_a_id
 
@@ -1146,19 +1684,25 @@ ExNamed
      (Name '#' (Just "html") "price" Nothing))
   (Name '#' (Just "id") "price_a_id" Nothing)
 /div.menucardproductprice>a/#html:price#id:price_a_id
-T0
+T1
   (AExtract
-     (T0
+     (T1
         (ALateBind
-           (T0
+           (T1
               (AExtract
-                 (T0
-                    (ALateBind (T0 (ALiteral "div.menucardproductprice>a")) "price"))
+                 (T1
+                    (ALateBind
+                       (T1 (ASelector "div.menucardproductprice>a") [AFBindings []])
+                       "price")
+                    [AFBindings []])
                  "html"
-                 "price"))
-           "price_a_id"))
+                 "price")
+              [AFBindings []])
+           "price_a_id")
+        [AFBindings []])
      "id"
      "price_a_id")
+  [AFBindings []]
 =========================================
 /div.menucardproductprice>a/[ `html#price, `id#price_a_id ]
 
@@ -1173,16 +1717,24 @@ ExLeftRec (ExSelector '/' "div.menucardproductprice>a")
            []])
      [])
 /div.menucardproductprice>a/[`html#price,`id#price_a_id]
-T0
-  (AApplication [T0 (ALiteral "div.menucardproductprice>a")]
+T1
+  (AApplication
+     [T1 (ASelector "div.menucardproductprice>a") [AFBindings []]]
      (AOMany
         (AMSimple
-           [T0
-              (ALateBind (T0 (AApplication [T0 ASlot] (AOAlpha "html")))
-                 "price"),
-            T0
-              (ALateBind (T0 (AApplication [T0 ASlot] (AOAlpha "id")))
-                 "price_a_id")])))
+           [T1
+              (ALateBind
+                 (T1 (AApplication [T1 ASlot [AFBindings []]] (AOAlpha "html"))
+                    [AFBindings []])
+                 "price")
+              [AFBindings []],
+            T1
+              (ALateBind
+                 (T1 (AApplication [T1 ASlot [AFBindings []]] (AOAlpha "id"))
+                    [AFBindings []])
+                 "price_a_id")
+              [AFBindings []]])))
+  [AFBindings []]
 =========================================
 /a/{`aid}@sss
 
@@ -1191,13 +1743,17 @@ ExLeftRec (ExSelector '/' "a")
      (OpComposed '{' ',' [ExCurriedLeft (OpAlphabetic "aid") [] []])
      [Name '@' Nothing "sss" Nothing])
 /a/{`aid}@sss
-T0
+T1
   (ABind
-     (T0
-        (AApplication [T0 (ALiteral "a")]
+     (T1
+        (AApplication [T1 (ASelector "a") [AFBindings []]]
            (AOMany
-              (AMAggeregate [T0 (AApplication [T0 ASlot] (AOAlpha "aid"))]))))
+              (AMAggeregate
+                 [T1 (AApplication [T1 ASlot [AFBindings []]] (AOAlpha "aid"))
+                    [AFBindings []]])))
+        [AFBindings []])
      "sss")
+  [AFBindings ["sss"]]
 =========================================
 /div.menucardproduct/ {
     `closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,
@@ -1256,63 +1812,101 @@ ExLeftRec (ExSelector '/' "div.menucardproduct")
                  (Name '#' Nothing "price_a_id" Nothing)]]])
      [])
 /div.menucardproduct/{`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,-[/form/#formid;/.menucardproductname/#name;/.menucardproductdescription/#desc;/.productextradescription/#desc1;/input/!-[/[name=product]/!@id_product;/[name=menucat]/!@id_menucat;/[name=rest]/!@id_rest;];/div.menucardproductprice>a/#price#price_a_id;]}
-T0
-  (AApplication [T0 (ALiteral "div.menucardproduct")]
+T1
+  (AApplication
+     [T1 (ASelector "div.menucardproduct") [AFBindings []]]
      (AOMany
         (AMAggeregate
-           [T0
+           [T1
               (ABind
-                 (T0
+                 (T1
                     (AApplication
-                       [T0
+                       [T1
                           (ABind
-                             (T0
+                             (T1
                                 (AApplication
-                                   [T0
+                                   [T1
                                       (ABind
-                                         (T0
+                                         (T1
                                             (AApplication
-                                               [T0 ASlot,
-                                                T0
+                                               [T1 ASlot [AFBindings []],
+                                                T1
                                                   (ABind
-                                                     (T0
-                                                        (ALiteral
-                                                           "#imenucard>.menucardproducts.menucardproducts"))
-                                                     "wtf")]
-                                               (AOAlpha "closest")))
-                                         "cat_prev")]
-                                   (AOAlpha "prev")))
-                             "cat_id"),
-                        T0 (ALiteral ".menucardcategoryheader")]
-                       (AOSym "-")))
-                 "cat"),
-            T0
+                                                     (T1
+                                                        (ASelector
+                                                           "#imenucard>.menucardproducts.menucardproducts")
+                                                        [AFBindings []])
+                                                     "wtf")
+                                                  [AFBindings ["wtf"]]]
+                                               (AOAlpha "closest"))
+                                            [AFBindings []])
+                                         "cat_prev")
+                                      [AFBindings ["cat_prev"]]]
+                                   (AOAlpha "prev"))
+                                [AFBindings []])
+                             "cat_id")
+                          [AFBindings ["cat_id"]],
+                        T1 (ASelector ".menucardcategoryheader") [AFBindings []]]
+                       (AOSym "-"))
+                    [AFBindings []])
+                 "cat")
+              [AFBindings ["cat"]],
+            T1
               (AApplication
-                 [T0 ASlot,
-                  T0
+                 [T1 ASlot [AFBindings []],
+                  T1
                     (AMany
                        (AMSimple
-                          [T0 (ALateBind (T0 (ALiteral "form")) "formid"),
-                           T0 (ALateBind (T0 (ALiteral ".menucardproductname")) "name"),
-                           T0
-                             (ALateBind (T0 (ALiteral ".menucardproductdescription")) "desc"),
-                           T0 (ALateBind (T0 (ALiteral ".productextradescription")) "desc1"),
-                           T0
+                          [T1 (ALateBind (T1 (ASelector "form") [AFBindings []]) "formid")
+                             [AFBindings []],
+                           T1
+                             (ALateBind (T1 (ASelector ".menucardproductname") [AFBindings []])
+                                "name")
+                             [AFBindings []],
+                           T1
+                             (ALateBind
+                                (T1 (ASelector ".menucardproductdescription") [AFBindings []])
+                                "desc")
+                             [AFBindings []],
+                           T1
+                             (ALateBind
+                                (T1 (ASelector ".productextradescription") [AFBindings []])
+                                "desc1")
+                             [AFBindings []],
+                           T1
                              (AApplication
-                                [T0 (ALiteral "input"),
-                                 T0
+                                [T1 (ASelector "input") [AFBindings []],
+                                 T1
                                    (AMany
                                       (AMSimple
-                                         [T0 (ABind (T0 (ALiteral "[name=product]")) "id_product"),
-                                          T0 (ABind (T0 (ALiteral "[name=menucat]")) "id_menucat"),
-                                          T0 (ABind (T0 (ALiteral "[name=rest]")) "id_rest")]))]
-                                (AOSym "-")),
-                           T0
+                                         [T1
+                                            (ABind (T1 (ASelector "[name=product]") [AFBindings []])
+                                               "id_product")
+                                            [AFBindings ["id_product"]],
+                                          T1
+                                            (ABind (T1 (ASelector "[name=menucat]") [AFBindings []])
+                                               "id_menucat")
+                                            [AFBindings ["id_menucat"]],
+                                          T1
+                                            (ABind (T1 (ASelector "[name=rest]") [AFBindings []])
+                                               "id_rest")
+                                            [AFBindings ["id_rest"]]]))
+                                   [AFBindings []]]
+                                (AOSym "-"))
+                             [AFBindings []],
+                           T1
                              (ALateBind
-                                (T0
-                                   (ALateBind (T0 (ALiteral "div.menucardproductprice>a")) "price"))
-                                "price_a_id")]))]
-                 (AOSym "-"))])))
+                                (T1
+                                   (ALateBind
+                                      (T1 (ASelector "div.menucardproductprice>a") [AFBindings []])
+                                      "price")
+                                   [AFBindings []])
+                                "price_a_id")
+                             [AFBindings []]]))
+                    [AFBindings []]]
+                 (AOSym "-"))
+              [AFBindings []]])))
+  [AFBindings []]
 *******
 DONE!!!
 *******
