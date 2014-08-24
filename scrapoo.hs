@@ -186,12 +186,6 @@ parseTreeToAST = \case
 -- Pattern Match only on the AST type
 -- Build AST as simply as possible first then do transformation on it.
 
------------------------------------------------------------------
-{-
-namedApp::[Expr]->Operator->[Name]->([JStat], SymbolTable, JExpr)
-
-application::[Expr]->Operator->([JStat], SymbolTable, JExpr)
--}
 -------------------------------------------------------------
 
 {- codegenTest ast = do
