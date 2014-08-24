@@ -108,9 +108,9 @@ data ASTMany a
 -- TODO : break []
 -- TODO : eliminate left grouping
 -- TODO : (?) eliminate {}
--- TODO : (?) eliminate Bind and LateBind
--- TODO : Build local symbol table
--- only {} affects scoping
+-- TODO : (?) eliminate AExtract
+-- DONE : Build local symbol table
+--		only {} affects scoping
 
 type Rewrite = AST AA -> AST AA
 
