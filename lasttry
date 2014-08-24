@@ -113,22 +113,23 @@ T1
 =========================================
 //@
 //@
-T1 (ABind (T1 (ASelector "") [AFBindings []]) "") [AFBindings [""]]
+T1 (ABind (T1 (ASelector "") [AFBindings []]) "")
+  [AFBindings ["", "a"]]
 =========================================
 //@a_b
 //@a_b
 T1 (ABind (T1 (ASelector "") [AFBindings []]) "a_b")
-  [AFBindings ["a_b"]]
+  [AFBindings ["a", "a_b"]]
 =========================================
 //@a_
 //@a_
 T1 (ABind (T1 (ASelector "") [AFBindings []]) "a_")
-  [AFBindings ["a_"]]
+  [AFBindings ["a", "a_"]]
 =========================================
 //@_b
 //@_b
 T1 (ABind (T1 (ASelector "") [AFBindings []]) "_b")
-  [AFBindings ["_b"]]
+  [AFBindings ["_b", "a"]]
 =========================================
 $abcf@kkk+++/.whatever//.kkk/@abc@def+++○div○@123@1@1
 $abcf@kkk+++/.whatever//.kkk/@abc@def+++○div○@123@1@1
@@ -137,13 +138,13 @@ T1
      [T1
         (AApplication
            [T1 (ABind (T1 (ARef "abcf") [AFBindings []]) "kkk")
-              [AFBindings ["kkk"]],
+              [AFBindings ["a", "kkk"]],
             T1
               (ABind
                  (T1 (ABind (T1 (ASelector ".whatever/.kkk") [AFBindings []]) "abc")
-                    [AFBindings ["abc"]])
+                    [AFBindings ["a", "abc"]])
                  "def")
-              [AFBindings ["def"]]]
+              [AFBindings ["a", "def"]]]
            (AOSym "+++"))
         [AFBindings []],
       T1
@@ -151,11 +152,11 @@ T1
            (T1
               (ABind
                  (T1 (ABind (T1 (ASelector "div") [AFBindings []]) "123")
-                    [AFBindings ["123"]])
+                    [AFBindings ["123", "a"]])
                  "1")
-              [AFBindings ["1"]])
+              [AFBindings ["1", "a"]])
            "1")
-        [AFBindings ["1"]]]
+        [AFBindings ["1", "a"]]]
      (AOSym "+++"))
   [AFBindings []]
 =========================================
@@ -165,13 +166,14 @@ T1
   (AApplication
      [T1
         (AApplication
-           [T1 (ABind (T1 (ARef "") [AFBindings []]) "") [AFBindings [""]],
+           [T1 (ABind (T1 (ARef "") [AFBindings []]) "")
+              [AFBindings ["", "a"]],
             T1
               (ABind
                  (T1 (ABind (T1 (ASelector ".whatever/.kkk") [AFBindings []]) "")
-                    [AFBindings [""]])
+                    [AFBindings ["", "a"]])
                  "")
-              [AFBindings [""]]]
+              [AFBindings ["", "a"]]]
            (AOSym "+++"))
         [AFBindings []],
       T1
@@ -179,11 +181,11 @@ T1
            (T1
               (ABind
                  (T1 (ABind (T1 (ASelector "div") [AFBindings []]) "")
-                    [AFBindings [""]])
+                    [AFBindings ["", "a"]])
                  "")
-              [AFBindings [""]])
+              [AFBindings ["", "a"]])
            "")
-        [AFBindings [""]]]
+        [AFBindings ["", "a"]]]
      (AOSym "+++"))
   [AFBindings []]
 =========================================
@@ -192,7 +194,7 @@ $aaa@kkk-_
 T1
   (AApplication
      [T1 (ABind (T1 (ARef "aaa") [AFBindings []]) "kkk")
-        [AFBindings ["kkk"]],
+        [AFBindings ["a", "kkk"]],
       T1 ASlot [AFBindings []]]
      (AOSym "-"))
   [AFBindings []]
@@ -207,7 +209,7 @@ T1 (AApplication [T1 (ARef "abcf") [AFBindings []]] (AOSym "--"))
 T1
   (AApplication
      [T1 (ABind (T1 (ASelector ".ww") [AFBindings []]) "1")
-        [AFBindings ["1"]],
+        [AFBindings ["1", "a"]],
       T1 (ARef "1") [AFBindings []]]
      (AOSym "--"))
   [AFBindings []]
@@ -232,13 +234,14 @@ T1
      (T1 (AApplication [T1 (ARef "1") [AFBindings []]] (AOSym "+"))
         [AFBindings []])
      "5")
-  [AFBindings ["5"]]
+  [AFBindings ["5", "a"]]
 =========================================
 +`$1@5
 +`$1@5
 T1
   (AApplication
-     [T1 (ABind (T1 (ARef "1") [AFBindings []]) "5") [AFBindings ["5"]]]
+     [T1 (ABind (T1 (ARef "1") [AFBindings []]) "5")
+        [AFBindings ["5", "a"]]]
      (AOSym "+"))
   [AFBindings []]
 =========================================
@@ -247,7 +250,8 @@ $1--$2@3
 T1
   (AApplication
      [T1 (ARef "1") [AFBindings []],
-      T1 (ABind (T1 (ARef "2") [AFBindings []]) "3") [AFBindings ["3"]]]
+      T1 (ABind (T1 (ARef "2") [AFBindings []]) "3")
+        [AFBindings ["3", "a"]]]
      (AOSym "--"))
   [AFBindings []]
 =========================================
@@ -258,11 +262,14 @@ T1
      [T1
         (AApplication
            [T1 (ARef "1") [AFBindings []],
-            T1 (ABind (T1 (ARef "2") [AFBindings []]) "3") [AFBindings ["3"]]]
+            T1 (ABind (T1 (ARef "2") [AFBindings []]) "3")
+              [AFBindings ["3", "a"]]]
            (AOSym "--"))
         [AFBindings []],
-      T1 (ABind (T1 (ARef "4") [AFBindings []]) "5") [AFBindings ["5"]],
-      T1 (ABind (T1 (ARef "5") [AFBindings []]) "6") [AFBindings ["6"]]]
+      T1 (ABind (T1 (ARef "4") [AFBindings []]) "5")
+        [AFBindings ["5", "a"]],
+      T1 (ABind (T1 (ARef "5") [AFBindings []]) "6")
+        [AFBindings ["6", "a"]]]
      (AOAlpha "x"))
   [AFBindings []]
 =========================================
@@ -275,15 +282,18 @@ T1
            [T1
               (AApplication
                  [T1 (ARef "1") [AFBindings []],
-                  T1 (ABind (T1 (ARef "2") [AFBindings []]) "3") [AFBindings ["3"]]]
+                  T1 (ABind (T1 (ARef "2") [AFBindings []]) "3")
+                    [AFBindings ["3", "a"]]]
                  (AOSym "--"))
               [AFBindings []],
-            T1 (ABind (T1 (ARef "4") [AFBindings []]) "5") [AFBindings ["5"]],
-            T1 (ABind (T1 (ARef "5") [AFBindings []]) "6") [AFBindings ["6"]]]
+            T1 (ABind (T1 (ARef "4") [AFBindings []]) "5")
+              [AFBindings ["5", "a"]],
+            T1 (ABind (T1 (ARef "5") [AFBindings []]) "6")
+              [AFBindings ["6", "a"]]]
            (AOAlpha "x"))
         [AFBindings []],
       T1 (ABind (T1 (ASelector "a") [AFBindings []]) "1")
-        [AFBindings ["1"]]]
+        [AFBindings ["1", "a"]]]
      (AOAlpha "y"))
   [AFBindings []]
 =========================================
@@ -298,19 +308,22 @@ T1
                  [T1
                     (AApplication
                        [T1 (ARef "1") [AFBindings []],
-                        T1 (ABind (T1 (ARef "2") [AFBindings []]) "3") [AFBindings ["3"]]]
+                        T1 (ABind (T1 (ARef "2") [AFBindings []]) "3")
+                          [AFBindings ["3", "a"]]]
                        (AOSym "--"))
                     [AFBindings []],
-                  T1 (ABind (T1 (ARef "4") [AFBindings []]) "5") [AFBindings ["5"]],
-                  T1 (ABind (T1 (ARef "5") [AFBindings []]) "6") [AFBindings ["6"]]]
+                  T1 (ABind (T1 (ARef "4") [AFBindings []]) "5")
+                    [AFBindings ["5", "a"]],
+                  T1 (ABind (T1 (ARef "5") [AFBindings []]) "6")
+                    [AFBindings ["6", "a"]]]
                  (AOAlpha "x"))
               [AFBindings []],
             T1 (ABind (T1 (ASelector "a") [AFBindings []]) "1")
-              [AFBindings ["1"]]]
+              [AFBindings ["1", "a"]]]
            (AOAlpha "y"))
         [AFBindings []],
       T1 (ABind (T1 (ASelector "b") [AFBindings []]) "2")
-        [AFBindings ["2"]]]
+        [AFBindings ["2", "a"]]]
      (AOAlpha "z"))
   [AFBindings []]
 =========================================
@@ -327,23 +340,26 @@ T1
                        [T1
                           (AApplication
                              [T1 (ARef "1") [AFBindings []],
-                              T1 (ABind (T1 (ARef "2") [AFBindings []]) "3") [AFBindings ["3"]]]
+                              T1 (ABind (T1 (ARef "2") [AFBindings []]) "3")
+                                [AFBindings ["3", "a"]]]
                              (AOSym "--"))
                           [AFBindings []],
-                        T1 (ABind (T1 (ARef "4") [AFBindings []]) "5") [AFBindings ["5"]],
-                        T1 (ABind (T1 (ARef "5") [AFBindings []]) "6") [AFBindings ["6"]]]
+                        T1 (ABind (T1 (ARef "4") [AFBindings []]) "5")
+                          [AFBindings ["5", "a"]],
+                        T1 (ABind (T1 (ARef "5") [AFBindings []]) "6")
+                          [AFBindings ["6", "a"]]]
                        (AOAlpha "x"))
                     [AFBindings []],
                   T1 (ABind (T1 (ASelector "a") [AFBindings []]) "1")
-                    [AFBindings ["1"]]]
+                    [AFBindings ["1", "a"]]]
                  (AOAlpha "y"))
               [AFBindings []],
             T1 (ABind (T1 (ASelector "b") [AFBindings []]) "2")
-              [AFBindings ["2"]]]
+              [AFBindings ["2", "a"]]]
            (AOAlpha "z"))
         [AFBindings []],
       T1 (ABind (T1 (ASelector "fff") [AFBindings []]) "5")
-        [AFBindings ["5"]]]
+        [AFBindings ["5", "a"]]]
      (AOSym "-"))
   [AFBindings []]
 =========================================
@@ -360,23 +376,26 @@ T1
                        [T1
                           (AApplication
                              [T1 (ARef "") [AFBindings []],
-                              T1 (ABind (T1 (ARef "") [AFBindings []]) "") [AFBindings [""]]]
+                              T1 (ABind (T1 (ARef "") [AFBindings []]) "")
+                                [AFBindings ["", "a"]]]
                              (AOSym "--"))
                           [AFBindings []],
-                        T1 (ABind (T1 (ARef "") [AFBindings []]) "") [AFBindings [""]],
-                        T1 (ABind (T1 (ARef "") [AFBindings []]) "") [AFBindings [""]]]
+                        T1 (ABind (T1 (ARef "") [AFBindings []]) "")
+                          [AFBindings ["", "a"]],
+                        T1 (ABind (T1 (ARef "") [AFBindings []]) "")
+                          [AFBindings ["", "a"]]]
                        (AOAlpha "x"))
                     [AFBindings []],
                   T1 (ABind (T1 (ASelector "a") [AFBindings []]) "")
-                    [AFBindings [""]]]
+                    [AFBindings ["", "a"]]]
                  (AOAlpha "y"))
               [AFBindings []],
             T1 (ABind (T1 (ASelector "b") [AFBindings []]) "")
-              [AFBindings [""]]]
+              [AFBindings ["", "a"]]]
            (AOAlpha "z"))
         [AFBindings []],
       T1 (ABind (T1 (ASelector "fff") [AFBindings []]) "")
-        [AFBindings [""]]]
+        [AFBindings ["", "a"]]]
      (AOSym "-"))
   [AFBindings []]
 =========================================
@@ -453,18 +472,22 @@ T1
               (ABind
                  (T1
                     (AApplication
-                       [T1 (ABind (T1 (ARef "1") [AFBindings []]) "a") [AFBindings ["a"]],
-                        T1 (ABind (T1 (ARef "2") [AFBindings []]) "b") [AFBindings ["b"]]]
+                       [T1 (ABind (T1 (ARef "1") [AFBindings []]) "a")
+                          [AFBindings ["a", "a"]],
+                        T1 (ABind (T1 (ARef "2") [AFBindings []]) "b")
+                          [AFBindings ["a", "b"]]]
                        (AOSym "+"))
                     [AFBindings []])
                  "x")
-              [AFBindings ["x"]],
-            T1 (ABind (T1 (ARef "3") [AFBindings []]) "c") [AFBindings ["c"]],
-            T1 (ABind (T1 (ARef "4") [AFBindings []]) "d") [AFBindings ["d"]]]
+              [AFBindings ["a", "x"]],
+            T1 (ABind (T1 (ARef "3") [AFBindings []]) "c")
+              [AFBindings ["a", "c"]],
+            T1 (ABind (T1 (ARef "4") [AFBindings []]) "d")
+              [AFBindings ["a", "d"]]]
            (AOSym "-"))
         [AFBindings []])
      "z")
-  [AFBindings ["z"]]
+  [AFBindings ["a", "z"]]
 =========================================
 $`a`$
 $`a`$
@@ -922,19 +945,22 @@ T1
            [T1
               (AApplication
                  [T1 ASlot [AFBindings []],
-                  T1 (ABind (T1 (ARef "a") [AFBindings []]) "x") [AFBindings ["x"]]]
+                  T1 (ABind (T1 (ARef "a") [AFBindings []]) "x")
+                    [AFBindings ["a", "x"]]]
                  (AOSym "-"))
               [AFBindings []],
             T1
               (AApplication
                  [T1 ASlot [AFBindings []],
-                  T1 (ABind (T1 (ARef "b") [AFBindings []]) "y") [AFBindings ["y"]]]
+                  T1 (ABind (T1 (ARef "b") [AFBindings []]) "y")
+                    [AFBindings ["a", "y"]]]
                  (AOSym "+"))
               [AFBindings []],
             T1
               (AApplication
                  [T1 ASlot [AFBindings []],
-                  T1 (ABind (T1 (ARef "c") [AFBindings []]) "z") [AFBindings ["z"]]]
+                  T1 (ABind (T1 (ARef "c") [AFBindings []]) "z")
+                    [AFBindings ["a", "z"]]]
                  (AOAlpha "find"))
               [AFBindings []],
             T1
@@ -947,11 +973,11 @@ T1
                              (AOSym "+"))
                           [AFBindings []],
                         T1 (ABind (T1 (ASelector "") [AFBindings []]) "")
-                          [AFBindings [""]]]
+                          [AFBindings ["", "a"]]]
                        (AOSym "+"))
                     [AFBindings []],
                   T1 (ABind (T1 (ASelector "") [AFBindings []]) "")
-                    [AFBindings [""]]]
+                    [AFBindings ["", "a"]]]
                  (AOSym "+"))
               [AFBindings []]])))
   [AFBindings []]
@@ -1003,42 +1029,42 @@ T1
         (AMany
            (AMSimple
               [T1 (ABind (T1 (ASelector "form") [AFBindings []]) "formid")
-                 [AFBindings ["formid"]],
+                 [AFBindings ["a", "formid"]],
                T1
                  (ABind (T1 (ASelector ".menucardproductname") [AFBindings []])
                     "name")
-                 [AFBindings ["name"]],
+                 [AFBindings ["a", "name"]],
                T1
                  (ABind
                     (T1 (ASelector ".menucardproductdescription") [AFBindings []])
                     "desc")
-                 [AFBindings ["desc"]],
+                 [AFBindings ["a", "desc"]],
                T1
                  (ABind (T1 (ASelector ".productextradescription") [AFBindings []])
                     "desc1")
-                 [AFBindings ["desc1"]],
+                 [AFBindings ["a", "desc1"]],
                T1
                  (ABind (T1 (ASelector "input[name=product]") [AFBindings []])
                     "id_product")
-                 [AFBindings ["id_product"]],
+                 [AFBindings ["a", "id_product"]],
                T1
                  (ABind (T1 (ASelector "input[name=menucat]") [AFBindings []])
                     "id_menucat")
-                 [AFBindings ["id_menucat"]],
+                 [AFBindings ["a", "id_menucat"]],
                T1
                  (ABind (T1 (ASelector "input[name=rest]") [AFBindings []])
                     "id_rest")
-                 [AFBindings ["id_rest"]],
+                 [AFBindings ["a", "id_rest"]],
                T1
                  (ABind
                     (T1 (ASelector "div.menucardproductprice>a") [AFBindings []])
                     "price")
-                 [AFBindings ["price"]],
+                 [AFBindings ["a", "price"]],
                T1
                  (ABind
                     (T1 (ASelector "div.menucardproductprice>a") [AFBindings []])
                     "price_a_id")
-                 [AFBindings ["price_a_id"]]]))
+                 [AFBindings ["a", "price_a_id"]]]))
         [AFBindings []]]
      (AOSym "-"))
   [AFBindings []]
@@ -1075,12 +1101,12 @@ T1
                        (AOAlpha "prev"))
                     [AFBindings []])
                  "cat_id")
-              [AFBindings ["cat_id"]],
+              [AFBindings ["a", "cat_id"]],
             T1 (ASelector ".menucardcategoryheader") [AFBindings []]]
            (AOSym "-"))
         [AFBindings []])
      "cat")
-  [AFBindings ["cat"]]
+  [AFBindings ["a", "cat"]]
 =========================================
     _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id!-@cat/.menucardcategoryheader/!
 
@@ -1116,12 +1142,12 @@ T1
                        (AOAlpha "prev"))
                     [AFBindings []])
                  "cat_id")
-              [AFBindings ["cat_id"]],
+              [AFBindings ["a", "cat_id"]],
             T1 (ASelector ".menucardcategoryheader") [AFBindings []]]
            (AOSym "-"))
         [AFBindings []])
      "cat")
-  [AFBindings ["cat"]]
+  [AFBindings ["a", "cat"]]
 =========================================
 [
     _`closest`//`prev@cat_id-//@cat
@@ -1154,9 +1180,9 @@ T1
                           (AOAlpha "prev"))
                        [AFBindings []])
                     "cat_id")
-                 [AFBindings ["cat_id"]],
+                 [AFBindings ["a", "cat_id"]],
                T1 (ABind (T1 (ASelector "") [AFBindings []]) "cat")
-                 [AFBindings ["cat"]]]
+                 [AFBindings ["a", "cat"]]]
               (AOSym "-"))
            [AFBindings []]]))
   [AFBindings []]
@@ -1241,20 +1267,20 @@ T1
                                                            "#imenucard>.menucardproducts.menucardproducts")
                                                         [AFBindings []])
                                                      "wtf")
-                                                  [AFBindings ["wtf"]]]
+                                                  [AFBindings ["a", "wtf"]]]
                                                (AOAlpha "closest"))
                                             [AFBindings []])
                                          "cat_prev")
-                                      [AFBindings ["cat_prev"]]]
+                                      [AFBindings ["a", "cat_prev"]]]
                                    (AOAlpha "prev"))
                                 [AFBindings []])
                              "cat_id")
-                          [AFBindings ["cat_id"]],
+                          [AFBindings ["a", "cat_id"]],
                         T1 (ASelector ".menucardcategoryheader") [AFBindings []]]
                        (AOSym "-"))
                     [AFBindings []])
                  "cat")
-              [AFBindings ["cat"]],
+              [AFBindings ["a", "cat"]],
             T1
               (AApplication
                  [T1 ASlot [AFBindings []],
@@ -1262,42 +1288,42 @@ T1
                     (AMany
                        (AMSimple
                           [T1 (ABind (T1 (ASelector "form") [AFBindings []]) "formid")
-                             [AFBindings ["formid"]],
+                             [AFBindings ["a", "formid"]],
                            T1
                              (ABind (T1 (ASelector ".menucardproductname") [AFBindings []])
                                 "name")
-                             [AFBindings ["name"]],
+                             [AFBindings ["a", "name"]],
                            T1
                              (ABind
                                 (T1 (ASelector ".menucardproductdescription") [AFBindings []])
                                 "desc")
-                             [AFBindings ["desc"]],
+                             [AFBindings ["a", "desc"]],
                            T1
                              (ABind (T1 (ASelector ".productextradescription") [AFBindings []])
                                 "desc1")
-                             [AFBindings ["desc1"]],
+                             [AFBindings ["a", "desc1"]],
                            T1
                              (ABind (T1 (ASelector "input[name=product]") [AFBindings []])
                                 "id_product")
-                             [AFBindings ["id_product"]],
+                             [AFBindings ["a", "id_product"]],
                            T1
                              (ABind (T1 (ASelector "input[name=menucat]") [AFBindings []])
                                 "id_menucat")
-                             [AFBindings ["id_menucat"]],
+                             [AFBindings ["a", "id_menucat"]],
                            T1
                              (ABind (T1 (ASelector "input[name=rest]") [AFBindings []])
                                 "id_rest")
-                             [AFBindings ["id_rest"]],
+                             [AFBindings ["a", "id_rest"]],
                            T1
                              (ABind
                                 (T1 (ASelector "div.menucardproductprice>a") [AFBindings []])
                                 "price")
-                             [AFBindings ["price"]],
+                             [AFBindings ["a", "price"]],
                            T1
                              (ABind
                                 (T1 (ASelector "div.menucardproductprice>a") [AFBindings []])
                                 "price_a_id")
-                             [AFBindings ["price_a_id"]]]))
+                             [AFBindings ["a", "price_a_id"]]]))
                     [AFBindings []]]
                  (AOSym "-"))
               [AFBindings []]])))
@@ -1340,7 +1366,7 @@ T1
                           (AOSym "-"))
                        [AFBindings []])
                     "id_product")
-                 [AFBindings ["id_product"]],
+                 [AFBindings ["a", "id_product"]],
                T1
                  (ABind
                     (T1
@@ -1350,7 +1376,7 @@ T1
                           (AOSym "-"))
                        [AFBindings []])
                     "id_menucat")
-                 [AFBindings ["id_menucat"]],
+                 [AFBindings ["a", "id_menucat"]],
                T1
                  (ABind
                     (T1
@@ -1360,7 +1386,7 @@ T1
                           (AOSym "-"))
                        [AFBindings []])
                     "id_rest")
-                 [AFBindings ["id_rest"]]]))
+                 [AFBindings ["a", "id_rest"]]]))
         [AFBindings []]]
      (AOSym "-"))
   [AFBindings []]
@@ -1428,13 +1454,13 @@ T1
               [T1
                  (ABind (T1 (ASelector "[name=product]") [AFBindings []])
                     "id_product")
-                 [AFBindings ["id_product"]],
+                 [AFBindings ["a", "id_product"]],
                T1
                  (ABind (T1 (ASelector "[name=menucat]") [AFBindings []])
                     "id_menucat")
-                 [AFBindings ["id_menucat"]],
+                 [AFBindings ["a", "id_menucat"]],
                T1 (ABind (T1 (ASelector "[name=rest]") [AFBindings []]) "id_rest")
-                 [AFBindings ["id_rest"]]]))
+                 [AFBindings ["a", "id_rest"]]]))
         [AFBindings []]]
      (AOSym "-"))
   [AFBindings []]
@@ -1531,20 +1557,20 @@ T1
                                                                           "#imenucard>.menucardproducts.menucardproducts")
                                                                        [AFBindings []])
                                                                     "wtf")
-                                                                 [AFBindings ["wtf"]]]
+                                                                 [AFBindings ["a", "wtf"]]]
                                                               (AOAlpha "closest"))
                                                            [AFBindings []])
                                                         "cat_prev")
-                                                     [AFBindings ["cat_prev"]]]
+                                                     [AFBindings ["a", "cat_prev"]]]
                                                   (AOAlpha "prev"))
                                                [AFBindings []])
                                             "cat_id")
-                                         [AFBindings ["cat_id"]],
+                                         [AFBindings ["a", "cat_id"]],
                                        T1 (ASelector ".menucardcategoryheader") [AFBindings []]]
                                       (AOSym "-"))
                                    [AFBindings []])
                                 "cat")
-                             [AFBindings ["cat"]],
+                             [AFBindings ["a", "cat"]],
                            T1
                              (AApplication
                                 [T1 ASlot [AFBindings []],
@@ -1584,19 +1610,19 @@ T1
                                                               (T1 (ASelector "[name=product]")
                                                                  [AFBindings []])
                                                               "id_product")
-                                                           [AFBindings ["id_product"]],
+                                                           [AFBindings ["a", "id_product"]],
                                                          T1
                                                            (ABind
                                                               (T1 (ASelector "[name=menucat]")
                                                                  [AFBindings []])
                                                               "id_menucat")
-                                                           [AFBindings ["id_menucat"]],
+                                                           [AFBindings ["a", "id_menucat"]],
                                                          T1
                                                            (ABind
                                                               (T1 (ASelector "[name=rest]")
                                                                  [AFBindings []])
                                                               "id_rest")
-                                                           [AFBindings ["id_rest"]]]))
+                                                           [AFBindings ["a", "id_rest"]]]))
                                                   [AFBindings []]]
                                                (AOSym "-"))
                                             [AFBindings []],
@@ -1753,7 +1779,7 @@ T1
                     [AFBindings []]])))
         [AFBindings []])
      "sss")
-  [AFBindings ["sss"]]
+  [AFBindings ["a", "sss"]]
 =========================================
 /div.menucardproduct/ {
     `closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,
@@ -1837,20 +1863,20 @@ T1
                                                            "#imenucard>.menucardproducts.menucardproducts")
                                                         [AFBindings []])
                                                      "wtf")
-                                                  [AFBindings ["wtf"]]]
+                                                  [AFBindings ["a", "wtf"]]]
                                                (AOAlpha "closest"))
                                             [AFBindings []])
                                          "cat_prev")
-                                      [AFBindings ["cat_prev"]]]
+                                      [AFBindings ["a", "cat_prev"]]]
                                    (AOAlpha "prev"))
                                 [AFBindings []])
                              "cat_id")
-                          [AFBindings ["cat_id"]],
+                          [AFBindings ["a", "cat_id"]],
                         T1 (ASelector ".menucardcategoryheader") [AFBindings []]]
                        (AOSym "-"))
                     [AFBindings []])
                  "cat")
-              [AFBindings ["cat"]],
+              [AFBindings ["a", "cat"]],
             T1
               (AApplication
                  [T1 ASlot [AFBindings []],
@@ -1882,15 +1908,15 @@ T1
                                          [T1
                                             (ABind (T1 (ASelector "[name=product]") [AFBindings []])
                                                "id_product")
-                                            [AFBindings ["id_product"]],
+                                            [AFBindings ["a", "id_product"]],
                                           T1
                                             (ABind (T1 (ASelector "[name=menucat]") [AFBindings []])
                                                "id_menucat")
-                                            [AFBindings ["id_menucat"]],
+                                            [AFBindings ["a", "id_menucat"]],
                                           T1
                                             (ABind (T1 (ASelector "[name=rest]") [AFBindings []])
                                                "id_rest")
-                                            [AFBindings ["id_rest"]]]))
+                                            [AFBindings ["a", "id_rest"]]]))
                                    [AFBindings []]]
                                 (AOSym "-"))
                              [AFBindings []],
@@ -1907,6 +1933,18 @@ T1
                  (AOSym "-"))
               [AFBindings []]])))
   [AFBindings []]
+=========================================
+$@1
+ExNamed (ExRef "") (Name '@' Nothing "1" Nothing)
+$@1
+T1 (ABind (T1 (ARef "") [AFBindings []]) "1")
+  [AFBindings ["1", "a"]]
+=========================================
+/div/@1
+ExNamed (ExSelector '/' "div") (Name '@' Nothing "1" Nothing)
+/div/@1
+T1 (ABind (T1 (ASelector "div") [AFBindings []]) "1")
+  [AFBindings ["1", "a"]]
 *******
 DONE!!!
 *******

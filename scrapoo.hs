@@ -124,12 +124,17 @@ rewriteAST = foldl1 (.) $ reverse [
 	id]
 	-- typing0]
 
-collectBindings = transform $ \(T1 x aa) -> T1 x $ (:aa) $ case x of 
-	ABind x1 s -> AFBindings $ merge [s] []
-	_ -> AFBindings []
+-- para :: Uniplate on => (on -> [r] -> r) -> on -> r
+-- para op x = op x $ map (para op) $ children x
+
+collectBindings = transform $ \self@(T1 x aa) -> T1 x $ (:aa) $ 
+	let
+		collect added = foldl merge added $ map (\_->["a"]) $ children self
+	in case x of 
+		ABind x1 s -> AFBindings $ collect [s]
+		_ -> AFBindings []
 
 markLeftmost = id -- transform $ \case (T1 a aa) -> case a of
-		
 
 --typing0::Rewrite
 --typing0 = transform $ \(T1 x aa) -> T1 x $ (\z->aa{aaType=z}) $ case x of
@@ -197,5 +202,5 @@ astTest expr = do
 main = do
 	nCheck<-getArgs
 	runSyntaxTests 
-		(\n p p' f x -> syntaxTest n p p' f x>>=astTest.head) 
+		(\n p p' f x -> syntaxTest n p p' f x >>= astTest.head) 
 		(head $ map read nCheck++[1])
