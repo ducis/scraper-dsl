@@ -65,6 +65,7 @@ data ASTResultType
 data ASTFlag
 	= AFLeft
 	| AFRight
+   | AFNonLeftmost
 	| AFTyped ASTResultType -- use SYB to query type from flags
 	| AFBindings [String] --keep sorted with merging
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
@@ -124,6 +125,12 @@ rewriteAST = foldl1 (.) $ reverse [
 	id]
 	-- typing0]
 
+markNonLeftmost = transform $ \case
+   T1 aa (AApplication (l:rs) op) -> T1 aa (AApplication (l:map f rs) op)
+      where
+      f (T1 aa x) = T1 (AFNonLeftmost:aa) x
+   x -> x
+
 -- para :: Uniplate on => (on -> [r] -> r) -> on -> r
 -- para op x = op x $ map (para op) $ children x
 
@@ -143,8 +150,6 @@ collectBindings = transform $ \self@(T1 aa x ) -> (`T1` x) $ (:aa) $
 		-- AMany (AMAggeregate _) -> AFBindings []
 		-- AApplication _ (AOExpr (AMAggeregate _)) -> AFBindings []
 		_ -> collect []
-
-markLeftmost = id -- transform $ \case (T1 a aa) -> case a of
 
 --typing0::Rewrite
 --typing0 = transform $ \(T1 x aa) -> T1 x $ (\z->aa{aaType=z}) $ case x of
