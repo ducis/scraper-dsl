@@ -58,9 +58,12 @@ proom = putStrLn.groom
 --TODO: use lens to create reversable mapping from parsetrees to ASTs and between ASTs before and after transformation.
 
 type SymbolTable a = SM.StringMap a
-data JGenContext = C { 
+data JGenContext = JGC { 
 		cNames::SymbolTable JExpr
 	}
+rootContext = JGC SM.empty
+-- TODO:: Top-level tag (symbols)
+--		Or just use AMany as root
 
 data ASTResultType 
 	= RTSelector
@@ -75,12 +78,6 @@ data ASTFlag
 	| AFBindings [String] --keep sorted with merging
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
 
---type AA = ASTAttachment
---data ASTAttachment = AA {
---	aaFlags::[ASTFlag]
---	}
---	deriving (Eq,Read,Show,Ord,Typeable,Data)
--- aa0 = AA { aaFlags = [] }
 type AA = [ASTFlag]
 aa0 = []
 
@@ -110,11 +107,16 @@ data ASTMany a
 	| AMAggeregate [AST a]
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
 
+jsGen :: JGenContext -> AST a -> JStat
+jsGen _ a = [j|var x = 1;|]
+-- jsx :: JGenContext -> Expr -> ([JStat],Expr)
+-- jx :: JGenContext -> Expr -> JExpr
+
 -- TODO : Type check
--- TODO : (?) break []
+-- NOTTODO : (?) break []
 -- DONE : eliminate redundant left grouping
 -- DONE : mark left-delegation. Keep non-redundant left grouping
--- TODO : (?) eliminate {}
+-- NOTTODO : (?) eliminate {}
 -- TODO : (?) eliminate AExtract
 -- DONE : Build local symbol table
 --		only {} affects scoping
@@ -156,9 +158,6 @@ markNonLeftmost = transform $ \case
       f (T1 aa x) = T1 (AFNonLeftmost:aa) x
    x -> x
 
--- para :: Uniplate on => (on -> [r] -> r) -> on -> r
--- para op x = op x $ map (para op) $ children x
-
 collectBindings = transform $ \self@(T1 aa x ) -> (`T1` x) $ (:aa) $ 
 	let
 		f = \case
@@ -168,15 +167,12 @@ collectBindings = transform $ \self@(T1 aa x ) -> (`T1` x) $ (:aa) $
 			T1 _ (AMany (AMAggeregate _)) -> []
 			T1 aa _->map f aa
 		collect added = AFBindings $ foldl merge added $ concat $ map g $ children self
-		--collect added = AFBindings $ foldl merge added $ map (\(T1 aa _)->[show $ length aa]) $ children self
-		--collect added = AFBindings [show $ length $ children self]
 	in case x of 
 		ABind x1 s -> collect [s]
 		-- AMany (AMAggeregate _) -> AFBindings []
 		-- AApplication _ (AOExpr (AMAggeregate _)) -> AFBindings []
 		_ -> collect []
 
---typing0::Rewrite
 --typing0 = transform $ \(T1 x aa) -> T1 x $ (\z->aa{aaType=z}) $ case x of
 --	ASelector s -> RTSelector
 --	_ -> RTSelection
@@ -187,9 +183,6 @@ simplify0::AST () -> AST ()
 simplify0 = everywhere' $ mkT $ \case
 	x -> x::AST ()
 
--- jsGen :: JGenContext -> Expr -> JStat
--- jsx :: JGenContext -> Expr -> ([JStat],Expr)
--- jx :: JGenContext -> Expr -> JExpr
 
 type AST0 = AST AA
 parseTreeToAST::Expr -> AST0
@@ -233,15 +226,25 @@ parseTreeToAST = \case
 
 -------------------------------------------------------------
 
-{- codegenTest ast = do
-	print $ renderJs $ jsGen ast -}
+codegenTest ast = do
+	print $ renderJs $ jsGen rootContext ast
 
 astTest expr = do
-	proom $ rewriteAST $ tagAST $ parseTreeToAST expr
+	let a = rewriteAST $ tagAST $ parseTreeToAST expr
+	proom a
+	return a
 
 main = do
 	nCheck<-getArgs
 	--TODO: diff AST between rewrites
 	runSyntaxTests 
-		(\n p p' f x -> syntaxTest n p p' f x >>= astTest.head) 
+		(\n p p' f x -> syntaxTest n p p' f x >>= astTest.head >>= codegenTest ) 
 		(head $ map read nCheck++[1])
+
+--type AA = ASTAttachment
+--data ASTAttachment = AA {
+--	aaFlags::[ASTFlag]
+--	}
+--	deriving (Eq,Read,Show,Ord,Typeable,Data)
+-- aa0 = AA { aaFlags = [] }
+

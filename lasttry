@@ -6,6 +6,8 @@ T1 [AFBindings []]
      [T1 [AFBindings []] (ARef ""),
       T1 [AFBindings [], AFNonLeftmost] (ARef "")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $`-``$$
 $`-``$$
@@ -15,6 +17,8 @@ T1 [AFBindings []]
       T1 [AFBindings [], AFNonLeftmost] (ARef ""),
       T1 [AFBindings [], AFNonLeftmost] (ARef "")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $`-``[$`-``$$][$`-``$$]
 $`-``[$`-``$$][$`-``$$]
@@ -40,6 +44,8 @@ T1 [AFBindings []]
                      T1 [AFBindings [], AFNonLeftmost] (ARef "")]
                     (AOSym "-"))]))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $a`-`` $b`-``$c$d $e`-``$f$g
 $a`-``$b`-``$c$d$e`-``$f$g
@@ -59,6 +65,8 @@ T1 [AFBindings []]
       T1 [AFBindings [], AFNonLeftmost] (ARef "f"),
       T1 [AFBindings [], AFNonLeftmost] (ARef "g")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $`-`` $ $`-``$$
 $`-``$$`-``$$
@@ -73,6 +81,8 @@ T1 [AFBindings []]
       T1 [AFBindings [], AFNonLeftmost] (ARef ""),
       T1 [AFBindings [], AFNonLeftmost] (ARef "")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $`-`` $`-``$$ $
 $`-``$`-``$$$
@@ -87,6 +97,8 @@ T1 [AFBindings []]
            (AOSym "-")),
       T1 [AFBindings [], AFNonLeftmost] (ARef "")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $ $ $ ```-
 $$$```-
@@ -96,6 +108,8 @@ T1 [AFBindings []]
       T1 [AFBindings [], AFNonLeftmost] (ARef ""),
       T1 [AFBindings [], AFNonLeftmost] (ARef "")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 -``` $ $ $
 -```$$$
@@ -105,25 +119,35 @@ T1 [AFBindings []]
       T1 [AFBindings [], AFNonLeftmost] (ARef ""),
       T1 [AFBindings [], AFNonLeftmost] (ARef "")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 //@
 //@
 T1 [AFBindings [""]] (ABind (T1 [AFBindings []] (ASelector "")) "")
+var jmId_0;
+jmId_0 = 1;
 =========================================
 //@a_b
 //@a_b
 T1 [AFBindings ["a_b"]]
   (ABind (T1 [AFBindings []] (ASelector "")) "a_b")
+var jmId_0;
+jmId_0 = 1;
 =========================================
 //@a_
 //@a_
 T1 [AFBindings ["a_"]]
   (ABind (T1 [AFBindings []] (ASelector "")) "a_")
+var jmId_0;
+jmId_0 = 1;
 =========================================
 //@_b
 //@_b
 T1 [AFBindings ["_b"]]
   (ABind (T1 [AFBindings []] (ASelector "")) "_b")
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $abcf@kkk+++/.whatever//.kkk/@abc@def+++○div○@123@1@1
 $abcf@kkk+++/.whatever//.kkk/@abc@def+++○div○@123@1@1
@@ -148,6 +172,8 @@ T1 [AFBindings ["1", "1", "123", "abc", "def", "kkk"]]
                  "1"))
            "1")]
      (AOSym "+++"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $@+++/.whatever//.kkk/@@+++○div○@@@
 $@+++/.whatever//.kkk/@@+++○div○@@@
@@ -171,6 +197,8 @@ T1 [AFBindings ["", "", "", "", "", ""]]
                  ""))
            "")]
      (AOSym "+++"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $aaa@kkk-_
 $aaa@kkk-_
@@ -180,11 +208,15 @@ T1 [AFBindings ["kkk"]]
         (ABind (T1 [AFBindings []] (ARef "aaa")) "kkk"),
       T1 [AFBindings [], AFNonLeftmost] ASlot]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 --`$abcf
 --`$abcf
 T1 [AFBindings []]
   (AApplication [T1 [AFBindings []] (ARef "abcf")] (AOSym "--"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 --``/.ww/@1$1
 --``/.ww/@1$1
@@ -194,6 +226,8 @@ T1 [AFBindings ["1"]]
         (ABind (T1 [AFBindings []] (ASelector ".ww")) "1"),
       T1 [AFBindings [], AFNonLeftmost] (ARef "1")]
      (AOSym "--"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $a$b``+$1``+
 $a$b``+$1``+
@@ -206,6 +240,8 @@ T1 [AFBindings []]
            (AOSym "+")),
       T1 [AFBindings [], AFNonLeftmost] (ARef "1")]
      (AOSym "+"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $1`+@5
 $1`+@5
@@ -214,6 +250,8 @@ T1 [AFBindings ["5"]]
      (T1 [AFBindings []]
         (AApplication [T1 [AFBindings []] (ARef "1")] (AOSym "+")))
      "5")
+var jmId_0;
+jmId_0 = 1;
 =========================================
 +`$1@5
 +`$1@5
@@ -221,6 +259,8 @@ T1 [AFBindings ["5"]]
   (AApplication
      [T1 [AFBindings ["5"]] (ABind (T1 [AFBindings []] (ARef "1")) "5")]
      (AOSym "+"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $1--$2@3
 $1--$2@3
@@ -230,6 +270,8 @@ T1 [AFBindings ["3"]]
       T1 [AFBindings ["3"], AFNonLeftmost]
         (ABind (T1 [AFBindings []] (ARef "2")) "3")]
      (AOSym "--"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $1--$2@3$4@5$5@6```x
 $1--$2@3$4@5$5@6```x
@@ -246,6 +288,8 @@ T1 [AFBindings ["3", "5", "6"]]
       T1 [AFBindings ["6"], AFNonLeftmost]
         (ABind (T1 [AFBindings []] (ARef "5")) "6")]
      (AOAlpha "x"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $1--$2@3$4@5$5@6```x/a/@1``y
 $1--$2@3$4@5$5@6```x/a/@1``y
@@ -267,6 +311,8 @@ T1 [AFBindings ["1", "3", "5", "6"]]
       T1 [AFBindings ["1"], AFNonLeftmost]
         (ABind (T1 [AFBindings []] (ASelector "a")) "1")]
      (AOAlpha "y"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z
 $1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z
@@ -293,6 +339,8 @@ T1 [AFBindings ["1", "2", "3", "5", "6"]]
       T1 [AFBindings ["2"], AFNonLeftmost]
         (ABind (T1 [AFBindings []] (ASelector "b")) "2")]
      (AOAlpha "z"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z-/fff/@5
 $1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z-/fff/@5
@@ -324,6 +372,8 @@ T1 [AFBindings ["1", "2", "3", "5", "5", "6"]]
       T1 [AFBindings ["5"], AFNonLeftmost]
         (ABind (T1 [AFBindings []] (ASelector "fff")) "5")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $--$@$@$@```x/a/@``y/b/@``z-/fff/@
 $--$@$@$@```x/a/@``y/b/@``z-/fff/@
@@ -355,6 +405,8 @@ T1 [AFBindings ["", "", "", "", "", ""]]
       T1 [AFBindings [""], AFNonLeftmost]
         (ABind (T1 [AFBindings []] (ASelector "fff")) "")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 +``$1$2
 +``$1$2
@@ -363,6 +415,8 @@ T1 [AFBindings []]
      [T1 [AFBindings []] (ARef "1"),
       T1 [AFBindings [], AFNonLeftmost] (ARef "2")]
      (AOSym "+"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $2$3``-
 $2$3``-
@@ -371,6 +425,8 @@ T1 [AFBindings []]
      [T1 [AFBindings []] (ARef "2"),
       T1 [AFBindings [], AFNonLeftmost] (ARef "3")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 [+``$1$2]$3``-
 [+``$1$2]$3``-
@@ -386,6 +442,8 @@ T1 [AFBindings []]
                     (AOSym "+"))])),
       T1 [AFBindings [], AFNonLeftmost] (ARef "3")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 +``$1[$2$3``-]
 +``$1[$2$3``-]
@@ -401,6 +459,8 @@ T1 [AFBindings []]
                      T1 [AFBindings [], AFNonLeftmost] (ARef "3")]
                     (AOSym "-"))]))]
      (AOSym "+"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 +``$1$2$3``-
 +``$1$2$3``-
@@ -413,6 +473,8 @@ T1 [AFBindings []]
            (AOSym "+")),
       T1 [AFBindings [], AFNonLeftmost] (ARef "3")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 +``@x$1@a$2@b$3@c$4@d```-@z
 +``@x$1@a$2@b$3@c$4@d```-@z
@@ -435,6 +497,8 @@ T1 [AFBindings ["a", "b", "c", "d", "x", "z"]]
               (ABind (T1 [AFBindings []] (ARef "4")) "d")]
            (AOSym "-")))
      "z")
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $`a`$
 $`a`$
@@ -443,6 +507,8 @@ T1 [AFBindings []]
      [T1 [AFBindings []] (ARef ""),
       T1 [AFBindings [], AFNonLeftmost] (ARef "")]
      (AOAlpha "a"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $a$``a
 $a$``a
@@ -451,6 +517,8 @@ T1 [AFBindings []]
      [T1 [AFBindings []] (ARef "a"),
       T1 [AFBindings [], AFNonLeftmost] (ARef "")]
      (AOAlpha "a"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $`[_`a]
 ExLeftRec (ExRef "")
@@ -467,6 +535,8 @@ T1 [AFBindings []]
               (AMSimple
                  [T1 [AFBindings []]
                     (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "a"))])))))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $ $ ``+
 ExLeftRec (ExRef "") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
@@ -476,6 +546,8 @@ T1 [AFBindings []]
      [T1 [AFBindings []] (ARef ""),
       T1 [AFBindings [], AFNonLeftmost] (ARef "")]
      (AOSym "+"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $a $ ``+
 ExLeftRec (ExRef "a") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
@@ -485,6 +557,8 @@ T1 [AFBindings []]
      [T1 [AFBindings []] (ARef "a"),
       T1 [AFBindings [], AFNonLeftmost] (ARef "")]
      (AOSym "+"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $ $b ``+
 ExLeftRec (ExRef "") (LrrPostfix [ExRef "b"] (OpSymbolic "+") [])
@@ -494,6 +568,8 @@ T1 [AFBindings []]
      [T1 [AFBindings []] (ARef ""),
       T1 [AFBindings [], AFNonLeftmost] (ARef "b")]
      (AOSym "+"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $a $b ``+
 ExLeftRec (ExRef "a") (LrrPostfix [ExRef "b"] (OpSymbolic "+") [])
@@ -503,6 +579,8 @@ T1 [AFBindings []]
      [T1 [AFBindings []] (ARef "a"),
       T1 [AFBindings [], AFNonLeftmost] (ARef "b")]
      (AOSym "+"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $ $``+
 ExLeftRec (ExRef "") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
@@ -512,6 +590,8 @@ T1 [AFBindings []]
      [T1 [AFBindings []] (ARef ""),
       T1 [AFBindings [], AFNonLeftmost] (ARef "")]
      (AOSym "+"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $$ ``+
 ExLeftRec (ExRef "") (LrrPostfix [ExRef ""] (OpSymbolic "+") [])
@@ -521,35 +601,47 @@ T1 [AFBindings []]
      [T1 [AFBindings []] (ARef ""),
       T1 [AFBindings [], AFNonLeftmost] (ARef "")]
      (AOSym "+"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $ `+
 ExLeftRec (ExRef "") (LrrPostfix [] (OpSymbolic "+") [])
 $`+
 T1 [AFBindings []]
   (AApplication [T1 [AFBindings []] (ARef "")] (AOSym "+"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 [ /a/ ]
 ExBlock '[' ',' [ExSelector '/' "a"]
 [/a/]
 T1 [AFBindings []]
   (AMany (AMSimple [T1 [AFBindings []] (ASelector "a")]))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 [/a/ ]
 ExBlock '[' ',' [ExSelector '/' "a"]
 [/a/]
 T1 [AFBindings []]
   (AMany (AMSimple [T1 [AFBindings []] (ASelector "a")]))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 [ /a/]
 ExBlock '[' ',' [ExSelector '/' "a"]
 [/a/]
 T1 [AFBindings []]
   (AMany (AMSimple [T1 [AFBindings []] (ASelector "a")]))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 [ ]
 ExBlock '[' ';' []
 []
 T1 [AFBindings []] (AMany (AMSimple []))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 -``[-``$$][-``$$]
 -``[-``$$][-``$$]
@@ -572,6 +664,8 @@ T1 [AFBindings []]
                      T1 [AFBindings [], AFNonLeftmost] (ARef "")]
                     (AOSym "-"))]))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 -`` [-``$$] -``$$
 -``[-``$$]-``$$
@@ -591,6 +685,8 @@ T1 [AFBindings []]
             T1 [AFBindings [], AFNonLeftmost] (ARef "")]
            (AOSym "-"))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 -`` -``$$ [-``$$]
 -``-``$$[-``$$]
@@ -610,6 +706,8 @@ T1 [AFBindings []]
                      T1 [AFBindings [], AFNonLeftmost] (ARef "")]
                     (AOSym "-"))]))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 -``-``$$ [-``$$]
 -``-``$$[-``$$]
@@ -629,6 +727,8 @@ T1 [AFBindings []]
                      T1 [AFBindings [], AFNonLeftmost] (ARef "")]
                     (AOSym "-"))]))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 -`` -``$$ -``$$
 -``-``$$-``$$
@@ -645,6 +745,8 @@ T1 [AFBindings []]
             T1 [AFBindings [], AFNonLeftmost] (ARef "")]
            (AOSym "-"))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 -``-``$$ -``$$
 -``-``$$-``$$
@@ -661,6 +763,8 @@ T1 [AFBindings []]
             T1 [AFBindings [], AFNonLeftmost] (ARef "")]
            (AOSym "-"))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 [$$``-][$$``-]``-
 [$$``-][$$``-]``-
@@ -683,6 +787,8 @@ T1 [AFBindings []]
                      T1 [AFBindings [], AFNonLeftmost] (ARef "")]
                     (AOSym "-"))]))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $$``- [$$``-] ``-
 $$``-[$$``-]``-
@@ -702,6 +808,8 @@ T1 [AFBindings []]
                      T1 [AFBindings [], AFNonLeftmost] (ARef "")]
                     (AOSym "-"))]))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 [$$``-] $$``- ``-
 [$$``-]$$``-``-
@@ -721,6 +829,8 @@ T1 [AFBindings []]
             T1 [AFBindings [], AFNonLeftmost] (ARef "")]
            (AOSym "-"))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 [$$``-] $$``-``-
 [$$``-]$$``-``-
@@ -740,6 +850,8 @@ T1 [AFBindings []]
             T1 [AFBindings [], AFNonLeftmost] (ARef "")]
            (AOSym "-"))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $$``- $$``- ``-
 $$``-$$``-``-
@@ -756,6 +868,8 @@ T1 [AFBindings []]
             T1 [AFBindings [], AFNonLeftmost] (ARef "")]
            (AOSym "-"))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $$``- $$``-``-
 $$``-$$``-``-
@@ -772,6 +886,8 @@ T1 [AFBindings []]
             T1 [AFBindings [], AFNonLeftmost] (ARef "")]
            (AOSym "-"))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $-$-$`children
 ExLeftRec
@@ -792,6 +908,8 @@ T1 [AFBindings []]
             T1 [AFBindings [], AFNonLeftmost] (ARef "")]
            (AOSym "-"))]
      (AOAlpha "children"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $1-$2-$3
 ExLeftRec
@@ -807,6 +925,8 @@ T1 [AFBindings []]
            (AOSym "-")),
       T1 [AFBindings [], AFNonLeftmost] (ARef "3")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $1-$2$3``-
 ExLeftRec
@@ -822,6 +942,8 @@ T1 [AFBindings []]
            (AOSym "-")),
       T1 [AFBindings [], AFNonLeftmost] (ARef "3")]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $1-$2`-
 ExLeftRec
@@ -836,6 +958,8 @@ T1 [AFBindings []]
             T1 [AFBindings [], AFNonLeftmost] (ARef "2")]
            (AOSym "-"))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $`[_-$a@x,_+$b@y,_`find`$c@z,_+$+//@+//@]
 ExLeftRec (ExRef "")
@@ -898,12 +1022,16 @@ T1 [AFBindings ["", "", "x", "y", "z"]]
                         T1 [AFBindings [""], AFNonLeftmost]
                           (ABind (T1 [AFBindings []] (ASelector "")) "")]
                        (AOSym "+"))])))))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $
 
 ExRef ""
 $
 T1 [AFBindings []] (ARef "")
+var jmId_0;
+jmId_0 = 1;
 =========================================
 /div.menucardproduct/-[
 						/form/@formid ;
@@ -982,6 +1110,8 @@ T1
                     (T1 [AFBindings []] (ASelector "div.menucardproductprice>a"))
                     "price_a_id")]))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
     _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id-/.menucardcategoryheader/!@cat
 
@@ -1017,6 +1147,8 @@ T1 [AFBindings ["cat", "cat_id"]]
               (ASelector ".menucardcategoryheader")]
            (AOSym "-")))
      "cat")
+var jmId_0;
+jmId_0 = 1;
 =========================================
     _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id!-@cat/.menucardcategoryheader/!
 
@@ -1059,6 +1191,8 @@ T1 [AFBindings ["cat", "cat_id"], AFLeftDelegation]
                     (ASelector ".menucardcategoryheader")]
                  (AOSym "-")))
            "cat")))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 [
     _`closest`//`prev@cat_id-//@cat
@@ -1093,6 +1227,8 @@ T1 [AFBindings ["cat", "cat_id"]]
                T1 [AFBindings ["cat"], AFNonLeftmost]
                  (ABind (T1 [AFBindings []] (ASelector "")) "cat")]
               (AOSym "-"))]))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 /div.menucardproduct/`[
     _`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,
@@ -1235,6 +1371,8 @@ T1
                                       (T1 [AFBindings []] (ASelector "div.menucardproductprice>a"))
                                       "price_a_id")]))]
                        (AOSym "-"))])))))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 						/input/-[
 							_-/[name=product]/!@id_product ;
@@ -1290,6 +1428,8 @@ T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
                           (AOSym "-")))
                     "id_rest")]))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 						/input/-[
 							/[name=product]/#id_product ;
@@ -1323,6 +1463,8 @@ T1 [AFBindings []]
                  (ALateBind (T1 [AFBindings []] (ASelector "[name=rest]"))
                     "id_rest")]))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 						/input/-[
 							/[name=product]/!@id_product ;
@@ -1363,6 +1505,8 @@ T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
                        (ALeftGrouping (T1 [AFBindings []] (ASelector "[name=rest]"))))
                     "id_rest")]))]
      (AOSym "-"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 /div.menucardproduct/ `map` [_`[
     _`closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,
@@ -1569,6 +1713,8 @@ T1
                                                      "price_a_id")]))]
                                       (AOSym "-"))])))))]))]
      (AOAlpha "map"))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 /div.menucardproductprice>a/`[ _`html#price, _`id#price_a_id ]
 
@@ -1600,6 +1746,8 @@ T1 [AFBindings []]
                        (T1 [AFBindings []]
                           (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "id")))
                        "price_a_id")])))))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 /div.menucardproductprice>a/#price^html#price_a_id^id
 
@@ -1623,6 +1771,8 @@ T1 [AFBindings []]
            "price_a_id"))
      "id"
      "price_a_id")
+var jmId_0;
+jmId_0 = 1;
 =========================================
 /div.menucardproductprice>a/#html:price#id:price_a_id
 
@@ -1646,6 +1796,8 @@ T1 [AFBindings []]
            "price_a_id"))
      "id"
      "price_a_id")
+var jmId_0;
+jmId_0 = 1;
 =========================================
 /div.menucardproductprice>a/[ `html#price, `id#price_a_id ]
 
@@ -1677,6 +1829,8 @@ T1 [AFBindings []]
                        (T1 [AFBindings []]
                           (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "id")))
                        "price_a_id")])))))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 /a/{`aid}@sss
 
@@ -1696,6 +1850,8 @@ T1 [AFBindings ["sss"]]
                        [T1 [AFBindings []]
                           (AApplication [T1 [AFBindings []] ASlot] (AOAlpha "aid"))]))))))
      "sss")
+var jmId_0;
+jmId_0 = 1;
 =========================================
 /div.menucardproduct/ {
     `closest`@cat_prev/#imenucard>.menucardproducts.menucardproducts/@wtf`prev@cat_id-/.menucardcategoryheader/!@cat,
@@ -1854,11 +2010,15 @@ T1 [AFBindings []]
                                             "price"))
                                       "price_a_id")]))]
                        (AOSym "-"))])))))
+var jmId_0;
+jmId_0 = 1;
 =========================================
 $@1
 ExNamed (ExRef "") (Name '@' Nothing "1" Nothing)
 $@1
 T1 [AFBindings ["1"]] (ABind (T1 [AFBindings []] (ARef "")) "1")
+var jmId_0;
+jmId_0 = 1;
 =========================================
 /div/+[/div/@1]
 ExLeftRec (ExSelector '/' "div")
@@ -1875,6 +2035,8 @@ T1 [AFBindings ["1"]]
               [T1 [AFBindings ["1"]]
                  (ABind (T1 [AFBindings []] (ASelector "div")) "1")]))]
      (AOSym "+"))
+var jmId_0;
+jmId_0 = 1;
 *******
 DONE!!!
 *******
