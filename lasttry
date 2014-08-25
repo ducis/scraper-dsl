@@ -1034,13 +1034,13 @@ ExLeftRec
         [ExSelector '/' ".menucardcategoryheader"]))
   (LrrGrouping [])
 _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id!-@cat/.menucardcategoryheader/!
-T1 [AFBindings ["cat", "cat_id"]]
+T1 [AFBindings ["cat", "cat_id"], AFLeftDelegation]
   (ALeftGrouping
-     (T1 [AFBindings ["cat", "cat_id"]]
+     (T1 [AFBindings ["cat", "cat_id"], AFLeftDelegation]
         (ABind
-           (T1 [AFBindings ["cat_id"]]
+           (T1 [AFBindings ["cat_id"], AFLeftDelegation]
               (AApplication
-                 [T1 [AFBindings ["cat_id"]]
+                 [T1 [AFBindings ["cat_id"], AFLeftDelegation]
                     (ALeftGrouping
                        (T1 [AFBindings ["cat_id"]]
                           (ABind
@@ -1347,19 +1347,19 @@ T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
         [AFBindings ["id_menucat", "id_product", "id_rest"], AFNonLeftmost]
         (AMany
            (AMSimple
-              [T1 [AFBindings ["id_product"]]
+              [T1 [AFBindings ["id_product"], AFLeftDelegation]
                  (ABind
-                    (T1 [AFBindings []]
+                    (T1 [AFBindings [], AFLeftDelegation]
                        (ALeftGrouping (T1 [AFBindings []] (ASelector "[name=product]"))))
                     "id_product"),
-               T1 [AFBindings ["id_menucat"]]
+               T1 [AFBindings ["id_menucat"], AFLeftDelegation]
                  (ABind
-                    (T1 [AFBindings []]
+                    (T1 [AFBindings [], AFLeftDelegation]
                        (ALeftGrouping (T1 [AFBindings []] (ASelector "[name=menucat]"))))
                     "id_menucat"),
-               T1 [AFBindings ["id_rest"]]
+               T1 [AFBindings ["id_rest"], AFLeftDelegation]
                  (ABind
-                    (T1 [AFBindings []]
+                    (T1 [AFBindings [], AFLeftDelegation]
                        (ALeftGrouping (T1 [AFBindings []] (ASelector "[name=rest]"))))
                     "id_rest")]))]
      (AOSym "-"))
@@ -1508,9 +1508,10 @@ T1
                                                      "desc1"),
                                                 T1
                                                   [AFBindings
-                                                     ["id_menucat", "id_product", "id_rest"]]
+                                                     ["id_menucat", "id_product", "id_rest"],
+                                                   AFLeftDelegation]
                                                   (AApplication
-                                                     [T1 [AFBindings []]
+                                                     [T1 [AFBindings [], AFLeftDelegation]
                                                         (ALeftGrouping
                                                            (T1 [AFBindings []]
                                                               (ASelector "input"))),
@@ -1520,25 +1521,37 @@ T1
                                                          AFNonLeftmost]
                                                         (AMany
                                                            (AMSimple
-                                                              [T1 [AFBindings ["id_product"]]
+                                                              [T1
+                                                                 [AFBindings ["id_product"],
+                                                                  AFLeftDelegation]
                                                                  (ABind
-                                                                    (T1 [AFBindings []]
+                                                                    (T1
+                                                                       [AFBindings [],
+                                                                        AFLeftDelegation]
                                                                        (ALeftGrouping
                                                                           (T1 [AFBindings []]
                                                                              (ASelector
                                                                                 "[name=product]"))))
                                                                     "id_product"),
-                                                               T1 [AFBindings ["id_menucat"]]
+                                                               T1
+                                                                 [AFBindings ["id_menucat"],
+                                                                  AFLeftDelegation]
                                                                  (ABind
-                                                                    (T1 [AFBindings []]
+                                                                    (T1
+                                                                       [AFBindings [],
+                                                                        AFLeftDelegation]
                                                                        (ALeftGrouping
                                                                           (T1 [AFBindings []]
                                                                              (ASelector
                                                                                 "[name=menucat]"))))
                                                                     "id_menucat"),
-                                                               T1 [AFBindings ["id_rest"]]
+                                                               T1
+                                                                 [AFBindings ["id_rest"],
+                                                                  AFLeftDelegation]
                                                                  (ABind
-                                                                    (T1 [AFBindings []]
+                                                                    (T1
+                                                                       [AFBindings [],
+                                                                        AFLeftDelegation]
                                                                        (ALeftGrouping
                                                                           (T1 [AFBindings []]
                                                                              (ASelector
@@ -1799,32 +1812,34 @@ T1 [AFBindings []]
                                    (ALateBind
                                       (T1 [AFBindings []] (ASelector ".productextradescription"))
                                       "desc1"),
-                                 T1 [AFBindings ["id_menucat", "id_product", "id_rest"]]
+                                 T1
+                                   [AFBindings ["id_menucat", "id_product", "id_rest"],
+                                    AFLeftDelegation]
                                    (AApplication
-                                      [T1 [AFBindings []]
+                                      [T1 [AFBindings [], AFLeftDelegation]
                                          (ALeftGrouping (T1 [AFBindings []] (ASelector "input"))),
                                        T1
                                          [AFBindings ["id_menucat", "id_product", "id_rest"],
                                           AFNonLeftmost]
                                          (AMany
                                             (AMSimple
-                                               [T1 [AFBindings ["id_product"]]
+                                               [T1 [AFBindings ["id_product"], AFLeftDelegation]
                                                   (ABind
-                                                     (T1 [AFBindings []]
+                                                     (T1 [AFBindings [], AFLeftDelegation]
                                                         (ALeftGrouping
                                                            (T1 [AFBindings []]
                                                               (ASelector "[name=product]"))))
                                                      "id_product"),
-                                                T1 [AFBindings ["id_menucat"]]
+                                                T1 [AFBindings ["id_menucat"], AFLeftDelegation]
                                                   (ABind
-                                                     (T1 [AFBindings []]
+                                                     (T1 [AFBindings [], AFLeftDelegation]
                                                         (ALeftGrouping
                                                            (T1 [AFBindings []]
                                                               (ASelector "[name=menucat]"))))
                                                      "id_menucat"),
-                                                T1 [AFBindings ["id_rest"]]
+                                                T1 [AFBindings ["id_rest"], AFLeftDelegation]
                                                   (ABind
-                                                     (T1 [AFBindings []]
+                                                     (T1 [AFBindings [], AFLeftDelegation]
                                                         (ALeftGrouping
                                                            (T1 [AFBindings []]
                                                               (ASelector "[name=rest]"))))

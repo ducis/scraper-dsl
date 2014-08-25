@@ -70,6 +70,7 @@ data ASTFlag
 	= AFLeft
 	| AFRight
    | AFNonLeftmost
+	| AFLeftDelegation
 	| AFTyped ASTResultType -- use SYB to query type from flags
 	| AFBindings [String] --keep sorted with merging
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
@@ -110,10 +111,9 @@ data ASTMany a
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
 
 -- TODO : Type check
--- TODO : break []
--- TODO : eliminate left grouping
---		DONE: remove redundant
---		TODO: replace meaningful ones
+-- TODO : (?) break []
+-- DONE : eliminate redundant left grouping
+-- DONE : mark left-delegation. Keep non-redundant left grouping
 -- TODO : (?) eliminate {}
 -- TODO : (?) eliminate AExtract
 -- DONE : Build local symbol table
@@ -125,12 +125,23 @@ tagAST::Rewrite
 tagAST = transform $ \(T0 a)-> T1 aa0 a
 
 rewriteAST::Rewrite
-rewriteAST = foldl1 (.) $ reverse [
+rewriteAST = foldl1 (.) $ reverse rewrites
+	
+rewrites::[Rewrite]
+rewrites = [
 	markNonLeftmost,
 	eliminateRedundantLeftGrouping,
+	markLeftDelegation,
 	collectBindings,
 	id]
-	-- typing0]
+
+markLeftDelegation = transform $ \self@(T1 aa x) -> (`T1` x) $ ($ aa) $ case x of
+	ALeftGrouping _ -> go
+	AMany _ -> id
+	_ | or [AFLeftDelegation `elem` aa | T1 aa _<-children self] -> go
+	_ -> id
+	where
+	go = (AFLeftDelegation:)
 
 eliminateRedundantLeftGrouping = transform $ \case
 	g@(T1 aa' (ALeftGrouping x)) -> case x of
