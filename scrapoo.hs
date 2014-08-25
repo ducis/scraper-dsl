@@ -131,6 +131,8 @@ rewriteAST = foldl1 (.) $ reverse [
 	-- typing0]
 
 eliminateRedundantLeftGrouping = transform $ \case
+	g@(T1 aa' (ALeftGrouping x)) -> case x of
+		(T1 aa (AApplication _ _))
    x -> x
 
 markNonLeftmost = transform $ \case
