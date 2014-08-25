@@ -6,6 +6,10 @@
 	StandaloneDeriving, GADTSyntax, GADTs, TypeFamilies, DeriveDataTypeable,
 	TypeSynonymInstances, RankNTypes #-}
 
+import Control.Category
+import Data.Label
+import Prelude hiding ((.), id)
+
 import DSL.Scrapoo.ParseTree
 import DSL.Scrapoo.Syntax
 import System.Environment
@@ -121,9 +125,13 @@ tagAST = transform $ \(T0 a)-> T1 aa0 a
 rewriteAST::Rewrite
 rewriteAST = foldl1 (.) $ reverse [
 	collectBindings,
-	markLeftmost,
+	markNonLeftmost,
+	eliminateRedundantLeftGrouping,
 	id]
 	-- typing0]
+
+eliminateRedundantLeftGrouping = transform $ \case
+   x -> x
 
 markNonLeftmost = transform $ \case
    T1 aa (AApplication (l:rs) op) -> T1 aa (AApplication (l:map f rs) op)
