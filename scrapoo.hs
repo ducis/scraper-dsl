@@ -112,6 +112,8 @@ data ASTMany a
 -- TODO : Type check
 -- TODO : break []
 -- TODO : eliminate left grouping
+--		DONE: remove redundant
+--		TODO: replace meaningful ones
 -- TODO : (?) eliminate {}
 -- TODO : (?) eliminate AExtract
 -- DONE : Build local symbol table
