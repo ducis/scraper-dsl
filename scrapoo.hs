@@ -124,16 +124,18 @@ tagAST = transform $ \(T0 a)-> T1 aa0 a
 
 rewriteAST::Rewrite
 rewriteAST = foldl1 (.) $ reverse [
-	collectBindings,
 	markNonLeftmost,
 	eliminateRedundantLeftGrouping,
+	collectBindings,
 	id]
 	-- typing0]
 
 eliminateRedundantLeftGrouping = transform $ \case
 	g@(T1 aa' (ALeftGrouping x)) -> case x of
-		(T1 aa (AApplication _ _))
-   x -> x
+		(T1 _ (AApplication _ _)) -> x
+		_ | (AFNonLeftmost `elem` aa') -> x
+		_ -> g
+	x -> x
 
 markNonLeftmost = transform $ \case
    T1 aa (AApplication (l:rs) op) -> T1 aa (AApplication (l:map f rs) op)
@@ -186,7 +188,7 @@ parseTreeToAST = \case
 	ExLeftRec x lrr -> case lrr of
 		LrrInfix op ns xs -> fNmdApp (x:xs) op ns
 		LrrPostfix xs op ns -> fNmdApp (x:xs) op ns
-		LrrGrouping ns -> fNs ns $ self x
+		LrrGrouping ns -> fNs ns $ T0 $ ALeftGrouping $ self x
 	ExCurriedLeft op ns xs -> fNmdApp (ExSlot:xs) op ns
 	ExPrefix op ns xs -> fNmdApp xs op ns
 	ExNamed x n -> fName (self x) n
@@ -226,6 +228,7 @@ astTest expr = do
 
 main = do
 	nCheck<-getArgs
+	--TODO: diff AST between rewrites
 	runSyntaxTests 
 		(\n p p' f x -> syntaxTest n p p' f x >>= astTest.head) 
 		(head $ map read nCheck++[1])
