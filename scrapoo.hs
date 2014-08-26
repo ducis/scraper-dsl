@@ -120,6 +120,7 @@ jsGen _ a = [j|var x = 1;|]
 -- TODO : (?) eliminate AExtract
 -- DONE : Build local symbol table
 --		only {} affects scoping
+-- TODO : Mark anonymous vars and collect them
 
 type Rewrite = AST AA -> AST AA
 
