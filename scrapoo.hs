@@ -74,7 +74,7 @@ data ASTResultType
 data ASTFlag
 	= AFLeft
 	| AFRight
-   | AFNonLeftmost
+	| AFNonLeftmost
 	| AFLeftDelegation
 	| AFTyped ASTResultType -- use SYB to query type from flags
 	| AFBindings [String] --keep sorted with merging
@@ -135,8 +135,9 @@ lr0 = LR [] Nothing
 
 jsxU :: JGenContext -> AST AA -> (JGenContext, [LocalResult] -> LocalResult)
 jsxU cx0@JGC{..} (T1 aa axpr) = case axpr of
-	AMany (AMAggeregate _) -> c0 $ \_->LR [[jE|function(f){`stats`;}|]] Nothing
+	AMany (AMAggeregate _) -> (cx,) $ \_->LR [[jE|function(f){`stats`;}|]] Nothing
 		where
+		cx = cx0{
 		stats :: JStat
 		stats = mconcat $ decls ++ inits
 		symtbl = SM.fromList $ zip vars jNames
@@ -147,22 +148,27 @@ jsxU cx0@JGC{..} (T1 aa axpr) = case axpr of
 		decls = [ DeclStat (StrI x) Nothing | x<-jNames ]
 		inits = [ DeclStat (StrI $ "init" ++ x) Nothing | x<-jNames ]
 	AMany (AMSimple _) -> c0 $ \_->LR [[jE|2|]] Nothing
-   ASelector (JMU.jstr->s) -> if nonLeftmost 
-      then justXpr s
-      else justXpr [jE| $(`s`) |] -- LeftGrouped selector should not go to here
-   ASlot -> [[jE|!x;|]]
+	ASelector (JMU.jstr->s) -> justXpr $ if nonLeftmost 
+		then s
+		else [jE| $(`s`) |] -- LeftGrouped selector should not go to here
+	ASlot -> justXpr [jE|!x|] -- TODO::just not right
+	ABind _ name -> c0 $ \[LR xs ts]->case xs of
+		[x]->LR [justExpr] $ (maybe id mappend s)
+		where
+		jName = cSymbols
+		--TODO : binding arrays
 	where
-   justXprs xs = c0 $ \[]->LR xs Nothing
-   justXpr x = justXprs [x]
+	justXprs xs = c0 $ \[]->LR xs Nothing
+	justXpr x = justXprs [x]
 	c0 = (cx0,)
 	sanName = ("spoo_"++)
-   nonLeftmost = (AFNonLeftmost `elem` aa)
+	nonLeftmost = (AFNonLeftmost `elem` aa)
 
 
 {-
 (function() {
-    var jQuery = { /* all my methods go here */ };
-    window.jQuery = jQuery.
+	 var jQuery = { /* all my methods go here */ };
+	 window.jQuery = jQuery.
 })();
 
 Wrapping everything in a function which is then immediately invoked means all the variables within that function are bound to the local scope. 
@@ -216,10 +222,10 @@ eliminateRedundantLeftGrouping = transform $ \case
 	x -> x
 
 markNonLeftmost = transform $ \case
-   T1 aa (AApplication (l:rs) op) -> T1 aa (AApplication (l:map f rs) op)
-      where
-      f (T1 aa x) = T1 (AFNonLeftmost:aa) x
-   x -> x
+	T1 aa (AApplication (l:rs) op) -> T1 aa (AApplication (l:map f rs) op)
+		where
+		f (T1 aa x) = T1 (AFNonLeftmost:aa) x
+	x -> x
 
 collectBindings = transform $ \self@(T1 aa x ) -> (`T1` x) $ (:aa) $ 
 	let
