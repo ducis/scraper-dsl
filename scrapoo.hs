@@ -26,6 +26,7 @@ import Data.Maybe
 import Data.Generics.Uniplate.Operations
 import Data.Generics.Uniplate.Data
 import Data.List.Utils
+import Data.String.Here
 
 proom = putStrLn.groom
 
@@ -84,7 +85,7 @@ aa0 = []
 data Taggable t a = T0 a | T1 t a
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
 
-type AST a = Taggable AA (ASTExpr a)
+type AST a = Taggable a (ASTExpr a)
 
 data ASTExpr a
 	= ASelector String
@@ -107,11 +108,47 @@ data ASTMany a
 	| AMAggeregate [AST a]
 	deriving (Eq,Read,Show,Ord,Typeable,Data)
 
-jsGen :: JGenContext -> AST a -> JStat
-jsGen _ a = [j|var x = 1;|]
--- jsx :: JGenContext -> Expr -> ([JStat],Expr)
--- jx :: JGenContext -> Expr -> JExpr
+paraCx :: Uniplate on => cx -> (cx -> on -> (cx, [r] -> r)) -> on -> r
+paraCx cx0 op x = f $ map (paraCx cx1 op) $ children x
+	where
+	(cx1, f) = op cx0 x
 
+jsGen :: JGenContext -> AST AA -> JStat
+jsGen cx ast = (maybe id mappend s) 
+	[j|console.log(JSON.stringify(`e`,null,'\t'))|]
+	where
+	LR [e] s = paraCx cx jsxU ast
+-- jsGen JGC{..} (T1 aa axpr) = case axpr of
+	-- AMany (AMAggeregate xs) -> [j|var x=1;|]
+	-- _ -> [j|console.log("I shouldn't be here.\n"+`groom axpr`);|]
+
+-- jx :: JGenContext -> AST AA -> [JExpr]
+
+data LocalResult = LR{lrExprs::[JExpr], lrStat::Maybe JStat}
+lr0 = LR [] Nothing
+
+-- jsx :: JGenContext -> AST AA -> LocalResult
+-- jsx JGC {..} (T1 aa axpr) = case axpr of
+-- 	AMany (AMAggeregate as) -> 
+-- 	AMany (AMSimple as) ->
+
+jsxU :: JGenContext -> AST AA -> (JGenContext, [LocalResult] -> LocalResult)
+jsxU cx0@JGC{..} (T1 aa axpr) = case axpr of
+	AMany (AMAggeregate _) -> c0 $ \_->LR [[jE|1|]] Nothing
+	AMany (AMSimple _) -> c0 $ \_->LR [[jE|2|]] Nothing
+	where
+	c0 = (cx0,)
+
+{-
+(function() {
+    var jQuery = { /* all my methods go here */ };
+    window.jQuery = jQuery.
+})();
+
+Wrapping everything in a function which is then immediately invoked means all the variables within that function are bound to the local scope. 
+-}
+
+-- Separate bind and extract
 -- TODO : Type check
 -- NOTTODO : (?) break []
 -- DONE : eliminate redundant left grouping
@@ -120,7 +157,7 @@ jsGen _ a = [j|var x = 1;|]
 -- TODO : (?) eliminate AExtract
 -- DONE : Build local symbol table
 --		only {} affects scoping
--- TODO : Mark anonymous vars and collect them
+-- TODO : (?)Mark anonymous vars and collect them
 
 type Rewrite = AST AA -> AST AA
 
@@ -132,11 +169,16 @@ rewriteAST = foldl1 (.) $ reverse rewrites
 	
 rewrites::[Rewrite]
 rewrites = [
+	addToplevelContext,
 	markNonLeftmost,
 	eliminateRedundantLeftGrouping,
 	markLeftDelegation,
 	collectBindings,
 	id]
+
+addToplevelContext x = case x of
+	T1 _ (AMany (AMAggeregate _)) -> x
+	_ -> T1 aa0 $ AMany $ AMAggeregate [x]
 
 markLeftDelegation = transform $ \self@(T1 aa x) -> (`T1` x) $ ($ aa) $ case x of
 	ALeftGrouping _ -> go
