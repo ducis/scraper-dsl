@@ -137,10 +137,10 @@ jsxU :: JGenContext -> AST AA -> (JGenContext, [LocalResult] -> LocalResult)
 jsxU cx0@JGC{..} (T1 aa axpr) = case axpr of
 	AMany (AMAggeregate _) -> (cx,) $ \_->LR [[jE|function(f){`stats`;}|]] Nothing
 		where
-		cx = cx0{
+		cx = cx0{cSymbols = SM.union cSymbols symNew
 		stats :: JStat
 		stats = mconcat $ decls ++ inits
-		symtbl = SM.fromList $ zip vars jNames
+		symNew = SM.fromList $ zip vars jNames
 		vars = head $ (`map` aa) $ \case
 			AFBindings bs -> bs
 			_ -> []
@@ -153,10 +153,12 @@ jsxU cx0@JGC{..} (T1 aa axpr) = case axpr of
 		else [jE| $(`s`) |] -- LeftGrouped selector should not go to here
 	ASlot -> justXpr [jE|!x|] -- TODO::just not right
 	ABind _ name -> c0 $ \[LR xs ts]->case xs of
-		[x]->LR [justExpr] $ (maybe id mappend s)
-		where
-		jName = cSymbols
+		[x]->LR [ValExpr $ JVar $ sanName name] $ (maybe id mappend ts) $ --TODO:define initializer
 		--TODO : binding arrays
+      xs->LR [
+      [] -> fail "binding nothing"
+		where
+		jName = sanName name
 	where
 	justXprs xs = c0 $ \[]->LR xs Nothing
 	justXpr x = justXprs [x]
