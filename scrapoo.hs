@@ -138,12 +138,14 @@ jsxU cx0@JGC{..} (T1 aa axpr) = case axpr of
 	AMany (AMAggeregate _) -> c0 $ \_->LR [[jE|function(f){`stats`;}|]] Nothing
 		where
 		stats :: JStat
-		stats = mconcat decls
-		-- symtbl = SM.
+		stats = mconcat $ decls ++ inits
+		symtbl = SM.fromList $ zip vars jNames
 		vars = head $ (`map` aa) $ \case
 			AFBindings bs -> bs
 			_ -> []
-		decls = [DeclStat (StrI $ sanName x) Nothing|x<-vars]
+		jNames = map sanName vars
+		decls = [ DeclStat (StrI $ x) Nothing | x<-jNames ]
+		inits = [ DeclStat (StrI $ "init" ++ x) Nothing | x<-jNames ]
 	AMany (AMSimple _) -> c0 $ \_->LR [[jE|2|]] Nothing
 	where
 	c0 = (cx0,)

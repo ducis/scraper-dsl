@@ -173,6 +173,7 @@ console.log(JSON.
 stringify((function(jmId_0)
            {
              var spoo_;
+             var initspoo_;
            }), null, "\t"));
 =========================================
 //@a_b
@@ -186,6 +187,7 @@ console.log(JSON.
 stringify((function(jmId_0)
            {
              var spoo_a_b;
+             var initspoo_a_b;
            }), null, "\t"));
 =========================================
 //@a_
@@ -199,6 +201,7 @@ console.log(JSON.
 stringify((function(jmId_0)
            {
              var spoo_a_;
+             var initspoo_a_;
            }), null, "\t"));
 =========================================
 //@_b
@@ -212,6 +215,7 @@ console.log(JSON.
 stringify((function(jmId_0)
            {
              var spoo__b;
+             var initspoo__b;
            }), null, "\t"));
 =========================================
 $abcf@kkk+++/.whatever//.kkk/@abc@def+++○div○@123@1@1
@@ -249,6 +253,12 @@ stringify((function(jmId_0)
              var spoo_abc;
              var spoo_def;
              var spoo_kkk;
+             var initspoo_1;
+             var initspoo_1;
+             var initspoo_123;
+             var initspoo_abc;
+             var initspoo_def;
+             var initspoo_kkk;
            }), null, "\t"));
 =========================================
 $@+++/.whatever//.kkk/@@+++○div○@@@
@@ -285,6 +295,12 @@ stringify((function(jmId_0)
              var spoo_;
              var spoo_;
              var spoo_;
+             var initspoo_;
+             var initspoo_;
+             var initspoo_;
+             var initspoo_;
+             var initspoo_;
+             var initspoo_;
            }), null, "\t"));
 =========================================
 $aaa@kkk-_
@@ -302,6 +318,7 @@ console.log(JSON.
 stringify((function(jmId_0)
            {
              var spoo_kkk;
+             var initspoo_kkk;
            }), null, "\t"));
 =========================================
 --`$abcf
@@ -331,6 +348,7 @@ console.log(JSON.
 stringify((function(jmId_0)
            {
              var spoo_1;
+             var initspoo_1;
            }), null, "\t"));
 =========================================
 $a$b``+$1``+
@@ -366,6 +384,7 @@ console.log(JSON.
 stringify((function(jmId_0)
            {
              var spoo_5;
+             var initspoo_5;
            }), null, "\t"));
 =========================================
 +`$1@5
@@ -381,6 +400,7 @@ console.log(JSON.
 stringify((function(jmId_0)
            {
              var spoo_5;
+             var initspoo_5;
            }), null, "\t"));
 =========================================
 $1--$2@3
@@ -398,6 +418,7 @@ console.log(JSON.
 stringify((function(jmId_0)
            {
              var spoo_3;
+             var initspoo_3;
            }), null, "\t"));
 =========================================
 $1--$2@3$4@5$5@6```x
@@ -424,6 +445,9 @@ stringify((function(jmId_0)
              var spoo_3;
              var spoo_5;
              var spoo_6;
+             var initspoo_3;
+             var initspoo_5;
+             var initspoo_6;
            }), null, "\t"));
 =========================================
 $1--$2@3$4@5$5@6```x/a/@1``y
@@ -456,6 +480,10 @@ stringify((function(jmId_0)
              var spoo_3;
              var spoo_5;
              var spoo_6;
+             var initspoo_1;
+             var initspoo_3;
+             var initspoo_5;
+             var initspoo_6;
            }), null, "\t"));
 =========================================
 $1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z
@@ -494,6 +522,11 @@ stringify((function(jmId_0)
              var spoo_3;
              var spoo_5;
              var spoo_6;
+             var initspoo_1;
+             var initspoo_2;
+             var initspoo_3;
+             var initspoo_5;
+             var initspoo_6;
            }), null, "\t"));
 =========================================
 $1--$2@3$4@5$5@6```x/a/@1``y/b/@2``z-/fff/@5
@@ -538,6 +571,12 @@ stringify((function(jmId_0)
              var spoo_5;
              var spoo_5;
              var spoo_6;
+             var initspoo_1;
+             var initspoo_2;
+             var initspoo_3;
+             var initspoo_5;
+             var initspoo_5;
+             var initspoo_6;
            }), null, "\t"));
 =========================================
 $--$@$@$@```x/a/@``y/b/@``z-/fff/@
@@ -582,6 +621,12 @@ stringify((function(jmId_0)
              var spoo_;
              var spoo_;
              var spoo_;
+             var initspoo_;
+             var initspoo_;
+             var initspoo_;
+             var initspoo_;
+             var initspoo_;
+             var initspoo_;
            }), null, "\t"));
 =========================================
 +``$1$2
@@ -710,6 +755,12 @@ stringify((function(jmId_0)
              var spoo_d;
              var spoo_x;
              var spoo_z;
+             var initspoo_a;
+             var initspoo_b;
+             var initspoo_c;
+             var initspoo_d;
+             var initspoo_x;
+             var initspoo_z;
            }), null, "\t"));
 =========================================
 $`a`$
@@ -1393,6 +1444,11 @@ stringify((function(jmId_0)
              var spoo_x;
              var spoo_y;
              var spoo_z;
+             var initspoo_;
+             var initspoo_;
+             var initspoo_x;
+             var initspoo_y;
+             var initspoo_z;
            }), null, "\t"));
 =========================================
 $
@@ -1501,6 +1557,15 @@ stringify((function(jmId_0)
              var spoo_name;
              var spoo_price;
              var spoo_price_a_id;
+             var initspoo_desc;
+             var initspoo_desc1;
+             var initspoo_formid;
+             var initspoo_id_menucat;
+             var initspoo_id_product;
+             var initspoo_id_rest;
+             var initspoo_name;
+             var initspoo_price;
+             var initspoo_price_a_id;
            }), null, "\t"));
 =========================================
     _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id-/.menucardcategoryheader/!@cat
@@ -1546,6 +1611,8 @@ stringify((function(jmId_0)
            {
              var spoo_cat;
              var spoo_cat_id;
+             var initspoo_cat;
+             var initspoo_cat_id;
            }), null, "\t"));
 =========================================
     _`closest`/#imenucard>.menucardproducts.menucardproducts/`prev@cat_id!-@cat/.menucardcategoryheader/!
@@ -1597,6 +1664,8 @@ stringify((function(jmId_0)
            {
              var spoo_cat;
              var spoo_cat_id;
+             var initspoo_cat;
+             var initspoo_cat_id;
            }), null, "\t"));
 =========================================
 [
@@ -1640,6 +1709,8 @@ stringify((function(jmId_0)
            {
              var spoo_cat;
              var spoo_cat_id;
+             var initspoo_cat;
+             var initspoo_cat_id;
            }), null, "\t"));
 =========================================
 /div.menucardproduct/`[
@@ -1819,6 +1890,19 @@ stringify((function(jmId_0)
              var spoo_price;
              var spoo_price_a_id;
              var spoo_wtf;
+             var initspoo_cat;
+             var initspoo_cat_id;
+             var initspoo_cat_prev;
+             var initspoo_desc;
+             var initspoo_desc1;
+             var initspoo_formid;
+             var initspoo_id_menucat;
+             var initspoo_id_product;
+             var initspoo_id_rest;
+             var initspoo_name;
+             var initspoo_price;
+             var initspoo_price_a_id;
+             var initspoo_wtf;
            }), null, "\t"));
 =========================================
 						/input/-[
@@ -1884,6 +1968,9 @@ stringify((function(jmId_0)
              var spoo_id_menucat;
              var spoo_id_product;
              var spoo_id_rest;
+             var initspoo_id_menucat;
+             var initspoo_id_product;
+             var initspoo_id_rest;
            }), null, "\t"));
 =========================================
 						/input/-[
@@ -1974,6 +2061,9 @@ stringify((function(jmId_0)
              var spoo_id_menucat;
              var spoo_id_product;
              var spoo_id_rest;
+             var initspoo_id_menucat;
+             var initspoo_id_product;
+             var initspoo_id_rest;
            }), null, "\t"));
 =========================================
 /div.menucardproduct/ `map` [_`[
@@ -2216,6 +2306,13 @@ stringify((function(jmId_0)
              var spoo_id_product;
              var spoo_id_rest;
              var spoo_wtf;
+             var initspoo_cat;
+             var initspoo_cat_id;
+             var initspoo_cat_prev;
+             var initspoo_id_menucat;
+             var initspoo_id_product;
+             var initspoo_id_rest;
+             var initspoo_wtf;
            }), null, "\t"));
 =========================================
 /div.menucardproductprice>a/`[ _`html#price, _`id#price_a_id ]
@@ -2379,6 +2476,7 @@ console.log(JSON.
 stringify((function(jmId_0)
            {
              var spoo_sss;
+             var initspoo_sss;
            }), null, "\t"));
 =========================================
 /div.menucardproduct/ {
@@ -2576,6 +2674,7 @@ console.log(JSON.
 stringify((function(jmId_0)
            {
              var spoo_1;
+             var initspoo_1;
            }), null, "\t"));
 =========================================
 /div/+[/div/@1]
@@ -2600,6 +2699,7 @@ console.log(JSON.
 stringify((function(jmId_0)
            {
              var spoo_1;
+             var initspoo_1;
            }), null, "\t"));
 *******
 DONE!!!
