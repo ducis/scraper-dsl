@@ -27,6 +27,7 @@ import Data.Generics.Uniplate.Operations
 import Data.Generics.Uniplate.Data
 import Data.List.Utils
 import Data.String.Here
+import qualified Language.Javascript.JMacro.Util as JMU
 
 proom = putStrLn.groom
 
@@ -134,10 +135,19 @@ lr0 = LR [] Nothing
 
 jsxU :: JGenContext -> AST AA -> (JGenContext, [LocalResult] -> LocalResult)
 jsxU cx0@JGC{..} (T1 aa axpr) = case axpr of
-	AMany (AMAggeregate _) -> c0 $ \_->LR [[jE|1|]] Nothing
+	AMany (AMAggeregate _) -> c0 $ \_->LR [[jE|function(f){`stats`;}|]] Nothing
+		where
+		stats :: JStat
+		stats = mconcat decls
+		-- symtbl = SM.
+		vars = head $ (`map` aa) $ \case
+			AFBindings bs -> bs
+			_ -> []
+		decls = [DeclStat (StrI $ sanName x) Nothing|x<-vars]
 	AMany (AMSimple _) -> c0 $ \_->LR [[jE|2|]] Nothing
 	where
 	c0 = (cx0,)
+	sanName = ("spoo_"++)
 
 {-
 (function() {
