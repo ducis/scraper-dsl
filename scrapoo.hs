@@ -61,6 +61,8 @@ proom = putStrLn.groom
 --		 returns a unary lambda taking possibly a function
 --TODO: use lens to create reversable mapping from parsetrees to ASTs and between ASTs before and after transformation.
 
+data CodegenConf --operator table
+extractorTable, operatorTable::SM.StringMap Stringc--includes identity
 type JExpr = String 
 type JStat = String
 
@@ -178,7 +180,13 @@ function ${fName}{
 		where
 		fName = initName jName
 		jName = sanName name
-	AExtract _ name func -> c0 $ \[LR xs ts]->LR xs ts
+	AExtract _ name func -> c0 $ \[LR xs ts]->LR (xs++[extract]) ts
+      where
+      extract = [i|y.${name} = ${expr};|]
+      expr = case xs of
+         [x] -> x 
+         _ -> intercalate [i|
+
 		--	SUB-TODO: extractor table
 	where
 	justXprs xs = c0 $ \[]->LR xs []
