@@ -17,7 +17,7 @@ import Text.Groom
 import Data.Typeable
 -- import Data.Data
 import Data.Generics
-import Language.Javascript.JMacro
+import qualified Language.Javascript.JMacro as JM
 import Data.Monoid
 import Text.PrettyPrint.Leijen.Text (Doc)
 import DSL.Scrapoo.CodegenQQAbbr
@@ -27,7 +27,9 @@ import Data.Generics.Uniplate.Operations
 import Data.Generics.Uniplate.Data
 import Data.List.Utils
 import Data.String.Here
+-- import qualified Language.ECMAScript3 as JS
 import qualified Language.Javascript.JMacro.Util as JMU
+import Text.Heredoc
 
 proom = putStrLn.groom
 
@@ -58,6 +60,9 @@ proom = putStrLn.groom
 --TODO: referring to names defined later in the source. Needs initialization functions.
 --		 returns a unary lambda taking possibly a function
 --TODO: use lens to create reversable mapping from parsetrees to ASTs and between ASTs before and after transformation.
+
+type JExpr = String 
+type JStat = String
 
 type SymbolTable a = SM.StringMap a
 data JGenContext = JGC { 
@@ -114,9 +119,9 @@ paraCx cx0 op x = f $ map (paraCx cx1 op) $ children x
 	where
 	(cx1, f) = op cx0 x
 
-jsGen :: JGenContext -> AST AA -> JStat
-jsGen cx ast = (maybe id mappend s) 
-	[j|console.log(JSON.stringify(`e`,null,'\t'))|]
+jsGen :: JGenContext -> AST AA -> [JStat]
+jsGen cx ast = s++
+	[[i|console.log(JSON.stringify(${e},null,'\t'))|]]
 	where
 	LR [e] s = paraCx cx jsxU ast
 -- jsGen JGC{..} (T1 aa axpr) = case axpr of
@@ -125,44 +130,61 @@ jsGen cx ast = (maybe id mappend s)
 
 -- jx :: JGenContext -> AST AA -> [JExpr]
 
-data LocalResult = LR{lrExprs::[JExpr], lrStat::Maybe JStat}
-lr0 = LR [] Nothing
+data LocalResult = LR{lrExprs::[JExpr], lrStat::[JStat]}
+lr0 = LR [] []
 
 -- jsx :: JGenContext -> AST AA -> LocalResult
 -- jsx JGC {..} (T1 aa axpr) = case axpr of
 -- 	AMany (AMAggeregate as) -> 
 -- 	AMany (AMSimple as) ->
 
+jsEsc :: String -> String
+jsEsc = show . JM.renderJs . JMU.jstr
+
 jsxU :: JGenContext -> AST AA -> (JGenContext, [LocalResult] -> LocalResult)
 jsxU cx0@JGC{..} (T1 aa axpr) = case axpr of
-	AMany (AMAggeregate _) -> (cx,) $ \_->LR [[jE|function(f){`stats`;}|]] Nothing
+	AMany (AMAggeregate _) -> (cx,) $ \_->LR 
+		[[iTrim|
+function(f){
+${body}	
+} 
+		|]] []
 		where
-		cx = cx0{cSymbols = SM.union cSymbols symNew
-		stats :: JStat
-		stats = mconcat $ decls ++ inits
+		cx = cx0{cNames = SM.union cNames symNew}
+		body :: JStat
+		body = unlines $ declRec : decls ++ inits ++ [retRec]
 		symNew = SM.fromList $ zip vars jNames
 		vars = head $ (`map` aa) $ \case
 			AFBindings bs -> bs
 			_ -> []
 		jNames = map sanName vars
-		decls = [ DeclStat (StrI x) Nothing | x<-jNames ]
-		inits = [ DeclStat (StrI $ "init" ++ x) Nothing | x<-jNames ]
-	AMany (AMSimple _) -> c0 $ \_->LR [[jE|2|]] Nothing
-	ASelector (JMU.jstr->s) -> justXpr $ if nonLeftmost 
+		decls = [ [i|var ${x}; |]| x<-jNames ]
+		inits = [ [i|var ${initName x}; |] | x<-jNames ]
+		declRec = "var y={};";
+		retRec = "return y;"
+	AMany (AMSimple _) -> c0 $ \_->LR ["2"] []
+	ASelector (jsEsc->s) -> justXpr $ if nonLeftmost 
 		then s
-		else [jE| $(`s`) |] -- LeftGrouped selector should not go to here
-	ASlot -> justXpr [jE|!x|] -- TODO::just not right
+		else [i| $(${s}) |] -- LeftGrouped selector should not go to here
+	ASlot -> justXpr "x" -- TODO::just not right
 	ABind _ name -> c0 $ \[LR xs ts]->case xs of
-		[x]->LR [ValExpr $ JVar $ sanName name] $ (maybe id mappend ts) $ --TODO:define initializer
+		-- [] -> fail "binding nothing"
+		[x]->LR [jName] $ ts++[[i|
+function ${fName}{
+}
+			|]]
 		--TODO : binding arrays
-      xs->LR [
-      [] -> fail "binding nothing"
+		-- xs@(length->n)->LR [
 		where
+		fName = initName jName
 		jName = sanName name
+	AExtract _ name func -> c0 $ \[LR xs ts]->LR xs ts
+		--	SUB-TODO: extractor table
 	where
-	justXprs xs = c0 $ \[]->LR xs Nothing
+	justXprs xs = c0 $ \[]->LR xs []
 	justXpr x = justXprs [x]
 	c0 = (cx0,)
+	initName = ("init"++)
 	sanName = ("spoo_"++)
 	nonLeftmost = (AFNonLeftmost `elem` aa)
 
@@ -298,7 +320,8 @@ parseTreeToAST = \case
 -------------------------------------------------------------
 
 codegenTest ast = do
-	print $ renderJs $ jsGen rootContext ast
+	putStrLn $ unlines $ jsGen rootContext ast
+	--print $ renderJs $ jsGen rootContext ast
 
 astTest expr = do
 	let a = rewriteAST $ tagAST $ parseTreeToAST expr

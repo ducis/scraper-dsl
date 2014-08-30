@@ -295,4 +295,6 @@ runSyntaxTests test cap = do
 	t' "$@1"
 	t' "/div/+[/div/@1]"
 
+	t' "/div/@div:html"
+
 	putStrLn "*******\nDONE!!!\n*******"
