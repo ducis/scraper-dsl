@@ -30,6 +30,11 @@ import Data.String.Here
 -- import qualified Language.ECMAScript3 as JS
 import qualified Language.Javascript.JMacro.Util as JMU
 import Text.Heredoc
+import Data.List
+import qualified Data.DList as DL --TODO::use this
+import Control.Exception
+
+instance Exception String
 
 proom = putStrLn.groom
 
@@ -61,8 +66,12 @@ proom = putStrLn.groom
 --		 returns a unary lambda taking possibly a function
 --TODO: use lens to create reversable mapping from parsetrees to ASTs and between ASTs before and after transformation.
 
-data CodegenConf --operator table
-extractorTable, operatorTable::SM.StringMap Stringc--includes identity
+type Str2Str = SM.StringMap String
+
+data CodegenConf = Conf {
+		cfExtractors, cfOperators :: Str2Str
+	}
+-- defaultExtractorTable, defaultOperatorTable::Str2Str --includes identity
 type JExpr = String 
 type JStat = String
 
@@ -125,7 +134,9 @@ jsGen :: JGenContext -> AST AA -> [JStat]
 jsGen cx ast = s++
 	[[i|console.log(JSON.stringify(${e},null,'\t'))|]]
 	where
-	LR [e] s = paraCx cx jsxU ast
+	LR [e] s = 
+		paraCx cx jsxU ast
+		-- jsx cx ast
 -- jsGen JGC{..} (T1 aa axpr) = case axpr of
 	-- AMany (AMAggeregate xs) -> [j|var x=1;|]
 	-- _ -> [j|console.log("I shouldn't be here.\n"+`groom axpr`);|]
@@ -143,59 +154,139 @@ lr0 = LR [] []
 jsEsc :: String -> String
 jsEsc = show . JM.renderJs . JMU.jstr
 
+jsx :: JGenContext -> AST AA -> LocalResult
+jsx cx0@JGC{..} (T1 aa axpr) = 
+	let
+		self = jsx
+		initName = ("init"++)
+		sanName = ("spoo_"++)
+		initSanName = initName.sanName
+		nonLeftmost = (AFNonLeftmost `elem` aa)
+		justXprs xs = LR xs []
+		justXpr x = justXprs [x]
+	in case axpr of
+		AMany (AMAggeregate xprs) -> LR [[iTrim|
+function(f){
+${body}
+} 
+				|]] []
+			where
+			body :: JStat
+			body = unlines $ declRec : decls ++ inits ++ (concat $ map lrStat rs) ++ [retRec]
+			declRec = "var y={};"
+			retRec = "return y;"
+			symNew = SM.fromList $ zip vars jNames
+			vars = head $ (`map` aa) $ \case
+				AFBindings bs -> bs
+				_ -> []
+			jNames = map sanName vars
+			decls = [ [i|var ${x}; |] | x<-jNames ]
+			inits = [ [i|var ${initName x}; |] | x<-jNames ]
+			cx = cx0{cNames = SM.union cNames symNew}
+			rs = map (self cx) xprs
+		AMany (AMSimple _) -> LR ["2"] []
+		ASelector (jsEsc->s) -> justXpr $ if nonLeftmost 
+			then s
+			else [i| $(${s}) |] -- LeftGrouped selector should not go to here
+		ASlot -> justXpr "x" -- TODO::just not right
+		ARef s -> justXpr [i|(${initSanName s}(),${sanName s})|]
+		ABind xpr name -> case xs of
+			[] ->throw ("binding nothing"::String)
+			[x]->LR [jName] $ ts++[[i|
+function ${fName}{
+}
+				|]]
+			_ ->throw (show axpr::String)
+			--TODO : binding arrays
+			-- xs@(length->n)->LR [
+			where
+			LR xs ts = self cx0 xpr
+			fName = initName jName
+			jName = sanName name
+		AApplication xprs op -> LR (f (map lrExprs rs)) $ concat $ map lrStat rs
+			where
+			rs = map (self cx0) xprs
+			f = concat
+		AExtract xpr name func -> LR xs (ts++[extract xs])
+			where
+			LR xs ts = self cx0 xpr
+			extract xs = [i|y.${name} = ${expr xs};|]
+			expr xs = case xs of
+				[x] -> x 
+				_ -> [i|
+[
+${intercalate ",\n" xs}
+]
+				|]
+		--	SUB-TODO: extractor table
+
+
+
 jsxU :: JGenContext -> AST AA -> (JGenContext, [LocalResult] -> LocalResult)
-jsxU cx0@JGC{..} (T1 aa axpr) = case axpr of
-	AMany (AMAggeregate _) -> (cx,) $ \_->LR 
-		[[iTrim|
+jsxU cx0@JGC{..} (T1 aa axpr) = 
+	let
+		justXprs xs = c0 $ \[]->LR xs []
+		justXpr x = justXprs [x]
+		c0 = (cx0,)
+		initName = ("init"++)
+		sanName = ("spoo_"++)
+		initSanName = initName.sanName
+		nonLeftmost = (AFNonLeftmost `elem` aa)
+	in case axpr of
+		AMany (AMAggeregate _) -> (cx,) $ \rs->
+			let
+				body :: JStat
+				body = unlines $ declRec : decls ++ inits ++ (concat $ map lrStat rs) ++ [retRec]
+				declRec = "var y={};"
+				retRec = "return y;"
+			in LR [[iTrim|
 function(f){
 ${body}	
 } 
-		|]] []
-		where
-		cx = cx0{cNames = SM.union cNames symNew}
-		body :: JStat
-		body = unlines $ declRec : decls ++ inits ++ [retRec]
-		symNew = SM.fromList $ zip vars jNames
-		vars = head $ (`map` aa) $ \case
-			AFBindings bs -> bs
-			_ -> []
-		jNames = map sanName vars
-		decls = [ [i|var ${x}; |]| x<-jNames ]
-		inits = [ [i|var ${initName x}; |] | x<-jNames ]
-		declRec = "var y={};";
-		retRec = "return y;"
-	AMany (AMSimple _) -> c0 $ \_->LR ["2"] []
-	ASelector (jsEsc->s) -> justXpr $ if nonLeftmost 
-		then s
-		else [i| $(${s}) |] -- LeftGrouped selector should not go to here
-	ASlot -> justXpr "x" -- TODO::just not right
-	ABind _ name -> c0 $ \[LR xs ts]->case xs of
-		-- [] -> fail "binding nothing"
-		[x]->LR [jName] $ ts++[[i|
+				|]] []
+			where
+			cx = cx0{cNames = SM.union cNames symNew}
+			symNew = SM.fromList $ zip vars jNames
+			vars = head $ (`map` aa) $ \case
+				AFBindings bs -> bs
+				_ -> []
+			jNames = map sanName vars
+			decls = [ [i|var ${x}; |] | x<-jNames ]
+			inits = [ [i|var ${initName x}; |] | x<-jNames ]
+		ARef x -> c0 $ \_->LR [[i|(${initSanName x}(),${sanName x})|]] []
+		AMany (AMSimple _) -> c0 $ \_->LR ["2"] []
+		ASelector (jsEsc->s) -> justXpr $ if nonLeftmost 
+			then s
+			else [i| $(${s}) |] -- LeftGrouped selector should not go to here
+		ASlot -> justXpr "x" -- TODO::just not right
+		ABind _ name -> c0 $ \[LR xs ts]->case xs of
+			[] ->throw ("binding nothing"::String)
+			[x]->LR [jName] $ ts++[[i|
 function ${fName}{
 }
-			|]]
-		--TODO : binding arrays
-		-- xs@(length->n)->LR [
-		where
-		fName = initName jName
-		jName = sanName name
-	AExtract _ name func -> c0 $ \[LR xs ts]->LR (xs++[extract]) ts
-      where
-      extract = [i|y.${name} = ${expr};|]
-      expr = case xs of
-         [x] -> x 
-         _ -> intercalate [i|
+				|]]
+			_ ->throw (show axpr::String) --TODO : binding arrays
+			-- xs@(length->n)->LR [
+			where
+			fName = initName jName
+			jName = sanName name
+		AApplication _ op -> c0 $ \case
+			rs -> LR (f (map lrExprs rs)) $ concat $ map lrStat rs
+			where
+			f = \case
+				x:xs -> 
+		AExtract _ name func -> c0 $ \[LR xs ts]->LR xs (ts++[extract xs])
+			where
+			extract xs = [i|y.${name} = ${expr xs};|]
+			expr xs = case xs of
+				[x] -> x 
+				_ -> [i|
+[
+${intercalate ",\n" xs}
+]
+				|]
 
 		--	SUB-TODO: extractor table
-	where
-	justXprs xs = c0 $ \[]->LR xs []
-	justXpr x = justXprs [x]
-	c0 = (cx0,)
-	initName = ("init"++)
-	sanName = ("spoo_"++)
-	nonLeftmost = (AFNonLeftmost `elem` aa)
-
 
 {-
 (function() {
@@ -332,7 +423,9 @@ codegenTest ast = do
 	--print $ renderJs $ jsGen rootContext ast
 
 astTest expr = do
-	let a = rewriteAST $ tagAST $ parseTreeToAST expr
+	let a0 = parseTreeToAST expr
+	proom a0
+	let a = rewriteAST $ tagAST $ a0
 	proom a
 	return a
 
