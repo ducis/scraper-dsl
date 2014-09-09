@@ -207,6 +207,7 @@ runSyntaxTests test cap = do
 	let t0 = test 999 expr expr $ \_->return ()
 	-- let z x s = putStr ">>" >> print s >> mapM_ print (Parser.parse x s)
 	-- test 999 curriedList curriedList (putStrLn.groom) "(`html@1,`text@2)"
+	t0 "+``@x$1@a$2@b$3@c$4@d```-@html:z"
 	t0 "$ - $"
 	t0 "$`-``$$"
 	t0 "$`-``[$`-``$$][$`-``$$]"

@@ -1,7 +1,7 @@
+tryhead:
+	runghc scrapoo.hs | head -n 80
 try:
 	runghc scrapoo.hs | tee lasttry
-tryhead:
-	runghc scrapoo.hs | head -n 20
 full:
 	runghc scrapoo.hs 999
 

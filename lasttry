@@ -1,0 +1,53 @@
+=========================================
++``@x$1@a$2@b$3@c$4@d```-@z
++``@x$1@a$2@b$3@c$4@d```-@z
+T0
+  (ABind
+     (T0
+        (AApplication
+           [T0
+              (ABind
+                 (T0
+                    (AApplication
+                       [T0 (ABind (T0 (ARef "1")) "a"), T0 (ABind (T0 (ARef "2")) "b")]
+                       (AOSym "+")))
+                 "x"),
+            T0 (ABind (T0 (ARef "3")) "c"), T0 (ABind (T0 (ARef "4")) "d")]
+           (AOSym "-")))
+     "z")
+T1 [AFBindings ["a", "b", "c", "d", "x", "z"]]
+  (AMany
+     (AMAggeregate
+        [T1 [AFBindings ["a", "b", "c", "d", "x", "z"]]
+           (ABind
+              (T1 [AFBindings ["a", "b", "c", "d", "x"]]
+                 (AApplication
+                    [T1 [AFBindings ["a", "b", "x"]]
+                       (ABind
+                          (T1 [AFBindings ["a", "b"]]
+                             (AApplication
+                                [T1 [AFBindings ["a"]] (ABind (T1 [AFBindings []] (ARef "1")) "a"),
+                                 T1 [AFBindings ["b"], AFNonLeftmost]
+                                   (ABind (T1 [AFBindings []] (ARef "2")) "b")]
+                                (AOSym "+")))
+                          "x"),
+                     T1 [AFBindings ["c"], AFNonLeftmost]
+                       (ABind (T1 [AFBindings []] (ARef "3")) "c"),
+                     T1 [AFBindings ["d"], AFNonLeftmost]
+                       (ABind (T1 [AFBindings []] (ARef "4")) "d")]
+                    (AOSym "-")))
+              "z")]))
+console.log(JSON.stringify(function(f){
+var y={};
+var spoo_a; 
+var spoo_b; 
+var spoo_c; 
+var spoo_d; 
+var spoo_x; 
+var spoo_z; 
+var initspoo_a; 
+var initspoo_b; 
+var initspoo_c; 
+var initspoo_d; 
+var initspoo_x; 
+var initspoo_z; 
